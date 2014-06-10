@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinique.Model", "Clinique.Model\Clinique.Model.csproj", "{8DAE0284-A0B4-4B56-A328-AA013C2C0459}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinique.Test", "Clinique.Test\Clinique.Test.csproj", "{90FBB537-A9AD-44CF-9DDB-74941290B6AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{8DAE0284-A0B4-4B56-A328-AA013C2C0459}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DAE0284-A0B4-4B56-A328-AA013C2C0459}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DAE0284-A0B4-4B56-A328-AA013C2C0459}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90FBB537-A9AD-44CF-9DDB-74941290B6AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90FBB537-A9AD-44CF-9DDB-74941290B6AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90FBB537-A9AD-44CF-9DDB-74941290B6AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90FBB537-A9AD-44CF-9DDB-74941290B6AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1085B764-E835-4169-86B0-A92F32D583CC}</ProjectGuid>
+    <ProjectGuid>{8DAE0284-A0B4-4B56-A328-AA013C2C0459}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Clinique.Model</RootNamespace>
@@ -39,10 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animaux.cs" />
-    <Compile Include="Baremes.cs" />
-    <Compile Include="Clients.cs" />
+    <Compile Include="Agenda.cs" />
+    <Compile Include="Animal.cs" />
+    <Compile Include="Bareme.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="Consultation.cs" />
+    <Compile Include="Facture.cs" />
+    <Compile Include="LigneConsultation.cs" />
+    <Compile Include="LigneFacture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Race.cs" />
+    <Compile Include="Vaccin.cs" />
+    <Compile Include="Veterinaire.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
