@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8DAE0284-A0B4-4B56-A328-AA013C2C0459}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{90FBB537-A9AD-44CF-9DDB-74941290B6AB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Clinique.Model</RootNamespace>
-    <AssemblyName>Clinique.Model</AssemblyName>
+    <RootNamespace>Clinique.Test</RootNamespace>
+    <AssemblyName>Clinique.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,20 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Agenda.cs" />
-    <Compile Include="Animal.cs" />
-    <Compile Include="Bareme.cs" />
-    <Compile Include="Client.cs" />
-    <Compile Include="Consultation.cs" />
-    <Compile Include="Facture.cs" />
-    <Compile Include="LigneConsultation.cs" />
-    <Compile Include="LigneFacture.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Race.cs" />
-    <Compile Include="Vaccin.cs" />
-    <Compile Include="Veterinaire.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clinique.Model\Clinique.Model.csproj">
+      <Project>{8dae0284-a0b4-4b56-a328-aa013c2c0459}</Project>
+      <Name>Clinique.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Clinique.Store\Clinique.Store.csproj">
       <Project>{13ec545b-0b69-4f63-9d91-9b95e0f70ea1}</Project>
       <Name>Clinique.Store</Name>

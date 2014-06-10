@@ -102,7 +102,7 @@ namespace Clinique.Model
         public Boolean Archive
         {
             get { return _archive; }
-            set { Boolean _archive = value; }
+            set { _archive = value; }
         }
         
 

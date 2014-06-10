@@ -24,7 +24,7 @@ namespace Clinique.Model
             set { _nomAnimal = value; }
         }
 
-        enum eSexe
+        public enum eSexe
 	{M, F, H }
 
         private eSexe _sexe;
@@ -40,7 +40,7 @@ namespace Clinique.Model
         public string Couleur
         {
             get { return _couleur; }
-            set { string _couleur = value; }
+            set { _couleur = value; }
         }
 
         private string _race;
@@ -48,7 +48,7 @@ namespace Clinique.Model
         public string Race
         {
             get { return _race; }
-            set { string _race = value; }
+            set { _race = value; }
         }
 
         private string _espece;

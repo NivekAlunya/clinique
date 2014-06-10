@@ -21,15 +21,15 @@ namespace Clinique.Model
         public string DateVigueur
         {
             get { return _dateVigueur; }
-            set { string _dateVigueur = value; }
+            set { _dateVigueur = value; }
         }
 
-        enum eTypeActe
+        public enum eTypeActe
         {CONS, VACC, GYCA, CHIR, TATO, DIVE}
 
         private eTypeActe _typeActe;
 
-        public eTypeActe MyProperty
+        public eTypeActe TypeActe
         {
             get { return _typeActe; }
             set { _typeActe = value; }
