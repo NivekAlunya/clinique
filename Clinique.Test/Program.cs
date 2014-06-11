@@ -9,6 +9,8 @@ using System.Data;
 using System.Configuration;
 using Clinique.Model;
 using Clinique.Store;
+using Clinique.Controller;
+
 using System.Reflection;
 namespace Clinique.Test
 {
@@ -16,7 +18,9 @@ namespace Clinique.Test
     {
         static void Main(string[] args)
         {
-            run();
+            //run();
+            runConnection();
+            
             Console.ReadKey();
         }
 
@@ -36,8 +40,28 @@ namespace Clinique.Test
                     Console.WriteLine(((Persist)att).DbType);
                 }
             }
-
-
         }
+
+        private static void runConnection ()
+        {
+
+            if (ConnexionStore.VerifConnexion("BosapinE", "123") == true)
+            { 
+                Console.WriteLine("Test OK : BosapinE, 123");
+            }
+            else
+            {
+                Console.WriteLine("Probléme de déclaration de Verif Connexion");
+            }
+
+
+            if (ConnexionStore.VerifConnexion("fdds", "123") == false)
+            { Console.WriteLine("Test OK"); }
+            else
+            {
+                Console.WriteLine("Probléme de déclaration de Verif Connexion");
+            }       
+        }
+
     }
 }

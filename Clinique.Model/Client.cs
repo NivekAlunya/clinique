@@ -8,13 +8,34 @@ namespace Clinique.Model
 {
     public class Client
     {
-        private int _codeClient;
+        
+        public Client( int codeClient, string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
+            string ville, string numTel, string assurance, string email, string remarque, Boolean archive)
+        {
+           CodeClient = codeClient;
+           NomClient = nomClient;
+           PrenomClient=prenomClient;
+           Adresse1 = adresse1;
+           Adresse2=adresse2;
+           CodePostal=codePostal;
+           Ville = ville;
+           NumTel = numTel;
+           Assurance = assurance;
+           Email = email;
+           Remarque = remarque;
+            Archive = archive;
+        }
+        
 
+        private int _codeClient;
+        
         public int CodeClient
         {
             get { return _codeClient; }
-            set { _codeClient = value; }
+            private set {_codeClient = value; }
         }
+
+       
 
         private string _nomClient;
 
@@ -104,8 +125,6 @@ namespace Clinique.Model
             get { return _archive; }
             set { _archive = value; }
         }
-        
-
 
     }
 }

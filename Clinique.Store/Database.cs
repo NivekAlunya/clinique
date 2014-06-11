@@ -17,8 +17,8 @@ namespace Clinique.Store
         IDbConnection _connection;
         #endregion
         #region Singleton immplementation
-        private Database _instance;
-        public Database Instance
+        static private Database _instance;
+        static public Database Instance
         {
             get { return null == _instance ? _instance = new Database() : _instance; }
         }

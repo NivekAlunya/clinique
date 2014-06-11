@@ -43,6 +43,7 @@
     <Compile Include="Animal.cs" />
     <Compile Include="Bareme.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="Connection.cs" />
     <Compile Include="Consultation.cs" />
     <Compile Include="Facture.cs" />
     <Compile Include="LigneConsultation.cs" />

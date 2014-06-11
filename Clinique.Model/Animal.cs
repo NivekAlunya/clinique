@@ -8,12 +8,30 @@ namespace Clinique.Model
 {
     public class Animal
     {
+
+        public Animal(int codeAnimal, string nomAnimal, eSexe sexe, string couleur, string race, string espece,
+            ulong codeClient, string tatouage, string antecedant, Boolean archive, Client client)
+        {
+        CodeAnimal = codeAnimal;
+        NomAnimal = nomAnimal;
+        Sexe = sexe;
+        Couleur = couleur;
+        Race_ = race;
+        Espece = espece;
+        CodeClient = codeClient;
+        Tatouage = tatouage;
+        Antecedant = antecedant;
+        Archive = archive;
+        Client = client;
+        }
+        
+        
         private int _codeAnimal;
 
         public int CodeAnimal
         {
             get { return _codeAnimal; }
-            set { _codeAnimal = value; }
+            private set { _codeAnimal = value; }
         }
 
         private string _nomAnimal;
@@ -42,13 +60,15 @@ namespace Clinique.Model
             get { return _couleur; }
             set { _couleur = value; }
         }
+        
 
-        private string _race;
 
-        public string Race
+        private string _race_;
+
+        public string Race_
         {
-            get { return _race; }
-            set { _race = value; }
+            get { return _race_; }
+            set { _race_ = value; }
         }
 
         private string _espece;
@@ -90,7 +110,24 @@ namespace Clinique.Model
             get { return _archive; }
             set { _archive = value; }
         }
-        
+
+        private Client _client;
+
+        public Client Client
+        {
+            get { return _client; }
+            set { _client = value; }
+        }
+
+
+        private Race _race;
+
+        public Race Race
+        {
+            get { return _race; }
+            set { _race = value;}
+        }
+
 
     }
 }

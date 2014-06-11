@@ -49,6 +49,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Clinique.Controller\Clinique.Controller.csproj">
+      <Project>{e1a1e04e-dd60-43be-b3a9-4a7264ef08d5}</Project>
+      <Name>Clinique.Controller</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Clinique.Model\Clinique.Model.csproj">
       <Project>{8dae0284-a0b4-4b56-a328-aa013c2c0459}</Project>
       <Name>Clinique.Model</Name>
