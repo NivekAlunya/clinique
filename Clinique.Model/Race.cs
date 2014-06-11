@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using Clinique.Store;
 namespace Clinique.Model
 {
+    [Persist("Races")]
     public class Race
     {
         private string _race;
 
         [Persist(System.Data.SqlDbType.VarChar)]
-        public string race
+        public string Race_
         {
             get { return _race; }
             set { _race = value; }
