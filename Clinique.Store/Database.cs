@@ -8,6 +8,7 @@ using System.Data;
 using System.Configuration;
 using System.Data.Common;
 using System.Reflection;
+
 namespace Clinique.Store
 {
     public class Database
@@ -40,14 +41,24 @@ namespace Clinique.Store
 
         public bool save<T>(T c)
         {
+            string table = "";
+
+            foreach (System.Attribute att in System.Attribute.GetCustomAttributes(c.GetType()))
+            {
+                if(att is Persist)
+                    table = (att as Persist).Table;
+            }
+
             foreach (PropertyInfo p in c.GetType().GetProperties())
             {
                 System.Attribute[] attrs = System.Attribute.GetCustomAttributes(p);
                 foreach (System.Attribute att in attrs)
                 {
-                    Console.WriteLine(((Persist)att).DbType);
+                    if (att is Persist)
+                        Console.WriteLine(((Persist)att).DbType);
                 }
             }
+
             return true;
         }
         
