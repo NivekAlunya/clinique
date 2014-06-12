@@ -14,14 +14,26 @@ namespace Clinique.Store
         private SqlDbType _dbtype;
         public SqlDbType DbType { get { return _dbtype; } }
 
+        private FieldBehaviour _behaviour;
+        public FieldBehaviour Behaviour { get { return _behaviour; } }
+
+        private string _field;
+        public string Field { get { return _field; } }
+
         private string _table;
         public string Table { get { return _table; } }
-
-        public Persist(SqlDbType dbtype,bool isPrimaryKey =false, string dbfield = "")
+        public enum FieldBehaviour{
+            common = 0,
+            pk = 1,
+            autoincrement = 2
+        }
+        public Persist(SqlDbType dbtype, FieldBehaviour behaviour = FieldBehaviour.common, string dbfield = "")
         {
             _dbtype = dbtype;
-
+            _behaviour = behaviour;
+            _field = dbfield;
         }
+
         public Persist(string table)
         {
             _table = table;

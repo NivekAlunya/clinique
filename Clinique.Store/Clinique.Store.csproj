@@ -43,14 +43,10 @@
     <Compile Include="ConnexionStore.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Persist.cs" />
-    <Compile Include="RaceStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fixture\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Patch_SQL\CreationTableConnexions.sql" />

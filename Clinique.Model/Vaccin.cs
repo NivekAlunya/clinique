@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Clinique.Store;
 
 namespace Clinique.Model
 {
+    [Persist("Vaccins")]
     public class Vaccin
     {
-        private int _codeVaccin;
-
-        public int CodeVaccin
+        private Guid _codeVaccin;
+        [Persist(System.Data.SqlDbType.UniqueIdentifier,Persist.FieldBehaviour.pk)]
+        public Guid CodeVaccin
         {
             get { return _codeVaccin; }
             set { _codeVaccin = value; }
@@ -18,6 +20,7 @@ namespace Clinique.Model
 
         private string _nomVaccin;
 
+        [Persist(System.Data.SqlDbType.VarChar)]
         public string NomVaccin
         {
             get { return _nomVaccin; }
@@ -26,6 +29,7 @@ namespace Clinique.Model
 
         private int _quantiteStock;
 
+        [Persist(System.Data.SqlDbType.Int)]
         public int QuantiteStock
         {
             get { return _quantiteStock; }
@@ -34,6 +38,7 @@ namespace Clinique.Model
 
         private byte _periodeValidite;
 
+        [Persist(System.Data.SqlDbType.Char)]
         public byte PeriodeValidite
         {
             get { return _periodeValidite; }
@@ -42,11 +47,11 @@ namespace Clinique.Model
 
         private bool _archive ;
 
+        [Persist(System.Data.SqlDbType.Bit)]
         public bool Archive
         {
             get { return _archive; }
             set { _archive = value; }
         }
-        
     }
 }

@@ -11,7 +11,7 @@ namespace Clinique.Model
     {
         private string _race;
 
-        [Persist(System.Data.SqlDbType.VarChar)]
+        [Persist(System.Data.SqlDbType.VarChar,Persist.FieldBehaviour.pk,"Race")]
         public string Race_
         {
             get { return _race; }

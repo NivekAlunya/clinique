@@ -26,20 +26,18 @@ namespace Clinique.Test
 
         private static void run()
         {
-            //ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["SqlServer"];
-            //IDbConnection cn = DbProviderFactories.GetFactory(settings.ProviderName).CreateConnection();
-            //cn.ConnectionString = settings.ConnectionString;
-            //cn.Open();
-            //cn.Close();
-            Race r = new Race();
-            foreach(PropertyInfo p in r.GetType().GetProperties())
-            {
-                System.Attribute[] attrs = System.Attribute.GetCustomAttributes(p);
-                foreach(System.Attribute att in attrs)
-                {
-                    Console.WriteLine(((Persist)att).DbType);
-                }
-            }
+            //Race r = new Race();
+            //r.Espece = "Chien";
+            //r.Race_ = "Berger";
+            //Database.Instance.insert(r);
+
+            Vaccin v = new Vaccin { CodeVaccin= Guid.NewGuid(), Archive = false, NomVaccin = "Ebola3", PeriodeValidite = 6, QuantiteStock = 50 };
+            Database.Instance.insert(v);
+            v.QuantiteStock = 100;
+            Database.Instance.update(v);
+            Database.Instance.delete(v);
+
+            Console.WriteLine(v.CodeVaccin);
         }
 
         private static void runConnection ()
@@ -53,7 +51,6 @@ namespace Clinique.Test
             {
                 Console.WriteLine("Probléme de déclaration de Verif Connexion");
             }
-
 
             if (ConnexionStore.VerifConnexion("fdds", "123") == false)
             { Console.WriteLine("Test OK"); }
