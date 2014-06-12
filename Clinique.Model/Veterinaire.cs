@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Clinique.Store;
+using System.Data;
 
 namespace Clinique.Model
 {
+    [Persist("Veterinaires")]
     public class Veterinaire
     {
         private int _codeVeto;
-
+        [Persist(System.Data.SqlDbType.UniqueIdentifier, Persist.FieldBehaviour.pk)]
         public int CodeVeto
         {
             get { return _codeVeto; }
@@ -17,7 +20,7 @@ namespace Clinique.Model
         }
 
         private string  _nomVeto;
-
+        [Persist(System.Data.SqlDbType.VarChar)]
         public string  NomVeto
         {
             get { return _nomVeto; }
@@ -26,7 +29,7 @@ namespace Clinique.Model
 
 
         private string _motDePasse;
-
+        [Persist(System.Data.SqlDbType.VarChar)]
         public string MotDePasse
         {
             get { return _motDePasse; }
@@ -34,7 +37,7 @@ namespace Clinique.Model
         }
 
         private bool _archive;
-
+        [Persist(System.Data.SqlDbType.Bit)]
         public bool Archive
         {
             get { return _archive; }

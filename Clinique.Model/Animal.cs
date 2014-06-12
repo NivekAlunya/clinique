@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using Clinique.Store;
 
 namespace Clinique.Model
 {
+    [Persist("Animaux")]
     public class Animal
     {
 
-        public Animal(int codeAnimal, string nomAnimal, eSexe sexe, string couleur, string race, string espece,
-            ulong codeClient, string tatouage, string antecedant, Boolean archive, Client client)
+        public Animal(Guid codeAnimal, string nomAnimal, eSexe sexe, string couleur, Race race,
+             string tatouage, string antecedant, Boolean archive, Client client)
         {
         CodeAnimal = codeAnimal;
         NomAnimal = nomAnimal;
         Sexe = sexe;
         Couleur = couleur;
-        Race_ = race;
-        Espece = espece;
-        CodeClient = codeClient;
+        Race = race;
         Tatouage = tatouage;
         Antecedant = antecedant;
         Archive = archive;
@@ -26,16 +27,16 @@ namespace Clinique.Model
         }
         
         
-        private int _codeAnimal;
-
-        public int CodeAnimal
+        private Guid _codeAnimal;
+        [Persist(System.Data.SqlDbType.UniqueIdentifier, Persist.FieldBehaviour.pk)]
+        public Guid CodeAnimal
         {
             get { return _codeAnimal; }
             private set { _codeAnimal = value; }
         }
 
         private string _nomAnimal;
-
+        [Persist(SqlDbType.VarChar)]
         public string NomAnimal
         {
             get { return _nomAnimal; }
@@ -46,7 +47,7 @@ namespace Clinique.Model
 	{M, F, H }
 
         private eSexe _sexe;
-
+        [Persist(SqlDbType.Char)]
         public eSexe Sexe
         {
             get { return _sexe; }
@@ -54,7 +55,7 @@ namespace Clinique.Model
         }
 
         private string _couleur;
-
+        [Persist(SqlDbType.VarChar)]
         public string Couleur
         {
             get { return _couleur; }
@@ -64,15 +65,15 @@ namespace Clinique.Model
 
 
         private string _race_;
-
+        [Persist(SqlDbType.VarChar)]
         public string Race_
         {
             get { return _race_; }
-            set { _race_ = value; }
+            private set { _race_ = value; }
         }
 
         private string _espece;
-
+        [Persist(SqlDbType.VarChar)]
         public string Espece
         {
             get { return _espece; }
@@ -80,7 +81,7 @@ namespace Clinique.Model
         }
 
         private ulong _codeClient;
-
+        [Persist(SqlDbType.UniqueIdentifier)]
         public ulong CodeClient
         {
             get { return _codeClient; }
@@ -88,7 +89,7 @@ namespace Clinique.Model
         }
 
         private string _tatouage;
-
+        [Persist(SqlDbType.VarChar)]
         public string Tatouage
         {
             get { return _tatouage; }
@@ -96,7 +97,7 @@ namespace Clinique.Model
         }
 
         private string _antecedant;
-
+        [Persist(SqlDbType.VarChar)]
         public string Antecedant
         {
             get { return _antecedant; }
@@ -104,7 +105,7 @@ namespace Clinique.Model
         }
 
         private Boolean _archive;
-
+        [Persist(SqlDbType.Bit)]
         public Boolean Archive
         {
             get { return _archive; }
@@ -112,7 +113,7 @@ namespace Clinique.Model
         }
 
         private Client _client;
-
+        
         public Client Client
         {
             get { return _client; }
@@ -125,7 +126,11 @@ namespace Clinique.Model
         public Race Race
         {
             get { return _race; }
-            set { _race = value;}
+            set { 
+                    _race = value;
+                    Race_ = _race.Race_;
+                    Espece = _race.Espece;
+                }
         }
 
 

@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using Clinique.Store;
 
 namespace Clinique.Model
 {
+    [Persist("Clients")]
     public class Client
     {
+        public Client()
+        { 
         
-        public Client( int codeClient, string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
+        }
+
+
+        public Client( Guid codeClient, string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
             string ville, string numTel, string assurance, string email, string remarque, Boolean archive)
         {
+
            CodeClient = codeClient;
            NomClient = nomClient;
            PrenomClient=prenomClient;
@@ -24,12 +33,13 @@ namespace Clinique.Model
            Email = email;
            Remarque = remarque;
             Archive = archive;
+            
         }
         
 
-        private int _codeClient;
-        
-        public int CodeClient
+        private Guid _codeClient;
+        [Persist(System.Data.SqlDbType.UniqueIdentifier, Persist.FieldBehaviour.pk)]
+        public Guid CodeClient
         {
             get { return _codeClient; }
             private set {_codeClient = value; }
@@ -38,7 +48,7 @@ namespace Clinique.Model
        
 
         private string _nomClient;
-
+        [Persist(SqlDbType.VarChar)]
         public string NomClient
         {
             get { return _nomClient; }
@@ -46,7 +56,7 @@ namespace Clinique.Model
         }
 
         private string _prenomClient;
-
+        [Persist(SqlDbType.VarChar)]
         public string PrenomClient
         {
             get { return _prenomClient; }
@@ -54,7 +64,7 @@ namespace Clinique.Model
         }
 
         private string _adresse1;
-
+        [Persist(SqlDbType.VarChar)]
         public string Adresse1
         {
             get { return _adresse1; }
@@ -62,7 +72,7 @@ namespace Clinique.Model
         }
 
         private string _adresse2;
-
+        [Persist(SqlDbType.VarChar)]
         public string Adresse2
         {
             get { return _adresse2; }
@@ -70,7 +80,7 @@ namespace Clinique.Model
         }
 
         private string _codePostal;
-
+        [Persist(SqlDbType.VarChar)]
         public string CodePostal
         {
             get { return _codePostal; }
@@ -78,7 +88,7 @@ namespace Clinique.Model
         }
 
         private string _ville;
-
+        [Persist(SqlDbType.VarChar)]
         public string Ville
         {
             get { return _ville; }
@@ -87,7 +97,7 @@ namespace Clinique.Model
 
         
         private string _numTel;
-
+        [Persist(SqlDbType.VarChar)]
         public string NumTel
         {
             get { return _numTel; }
@@ -95,7 +105,7 @@ namespace Clinique.Model
         }
 
         private string _assurance;
-
+        [Persist(SqlDbType.VarChar)]
         public string Assurance
         {
             get { return _assurance; }
@@ -103,7 +113,7 @@ namespace Clinique.Model
         }
 
         private string _email;
-
+        [Persist(SqlDbType.VarChar)]
         public string Email
         {
             get { return _email; }
@@ -111,7 +121,7 @@ namespace Clinique.Model
         }
 
         private string _remarque;
-
+        [Persist(SqlDbType.VarChar)]
         public string Remarque
         {
             get { return _remarque; }
@@ -119,7 +129,7 @@ namespace Clinique.Model
         }
 
         private Boolean _archive;
-
+        [Persist(SqlDbType.Bit)]
         public Boolean Archive
         {
             get { return _archive; }

@@ -20,8 +20,24 @@ namespace Clinique.Test
         {
             //run();
             //runConnection();
-            runCreation();
+            //runCreation();
+            runCreationClient();
             Console.ReadKey();
+        }
+
+        private static void runCreationClient()
+        {
+            
+            Client cred = new Client(Guid.NewGuid(),"Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire" ,"0666785713", "Non" , "bens360@jjh.fr", "Pas de remarque" , false);
+            Console.WriteLine("INSERT");
+            Database.Instance.insert(cred);
+            Console.ReadKey();
+            Console.WriteLine("UPDATE");
+            cred.Adresse1 = "1234";
+            Database.Instance.update(cred);
+            Console.ReadKey();
+            Console.WriteLine("DELETE");
+            Database.Instance.delete(cred);
         }
 
         private static void runCreation()
@@ -46,7 +62,7 @@ namespace Clinique.Test
             //r.Race_ = "Berger";
             //Database.Instance.insert(r);
 
-            Vaccin v = new Vaccin { CodeVaccin= Guid.NewGuid(), Archive = false, NomVaccin = "Ebola3", PeriodeValidite = 6, QuantiteStock = 50 };
+            Vaccin v = new Vaccin (Guid.NewGuid(), "Ebola3", 50 ,6, false);
             Database.Instance.insert(v);
             v.QuantiteStock = 100;
             Database.Instance.update(v);

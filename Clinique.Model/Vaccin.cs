@@ -4,12 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Clinique.Store;
+using System.Data;
 
 namespace Clinique.Model
 {
     [Persist("Vaccins")]
     public class Vaccin
     {
+        public Vaccin(Guid codeVaccin, string nomVaccin, int quantiteStock, byte periodeValidite, bool archive)
+        {
+        CodeVaccin = codeVaccin;
+        NomVaccin = nomVaccin;
+        QuantiteStock = quantiteStock;
+        PeriodeValidite = periodeValidite;
+        Archive = archive;
+        }
+
         private Guid _codeVaccin;
         [Persist(System.Data.SqlDbType.UniqueIdentifier,Persist.FieldBehaviour.pk)]
         public Guid CodeVaccin
