@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using Clinique.Store;
+using Clinique.Tools;
 
 namespace Clinique.Model
 {

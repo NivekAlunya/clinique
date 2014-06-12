@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlTypes;
 using System.Data;
 
-namespace Clinique.Store
+namespace Clinique.Tools
 {
     [System.AttributeUsage(System.AttributeTargets.Property|System.AttributeTargets.Class)]
     public class Persist : System.Attribute

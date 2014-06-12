@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Clinique.Store;
+using Clinique.Tools;
 using System.Data;
 
 namespace Clinique.Model
@@ -90,5 +90,18 @@ namespace Clinique.Model
             get { return _rappelEnvoye; }
             set { _rappelEnvoye = value; }
         }
+
+        public Facture(Guid numFacture,Client client,DateTime dateFacture,eFactureEtats etat, decimal totaFacture,bool rappelEnvoye,bool archive)
+        {
+            NumFacture =  numFacture;
+            Client = client;
+            DateFacture = dateFacture;
+            Etat = etat;
+            TotaFacture = totaFacture;
+            RappelEnvoye = rappelEnvoye;
+            Archive = archive;
+        }
+
+
     }
 }

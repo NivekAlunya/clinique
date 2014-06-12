@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Clinique.Store;
+using Clinique.Tools;
 using System.Data;
 
 namespace Clinique.Model
