@@ -11,9 +11,10 @@ namespace Clinique.Model
     [Persist("Veterinaires")]
     public class Veterinaire
     {
-        private int _codeVeto;
+        private Guid _codeVeto;
+
         [Persist(System.Data.SqlDbType.UniqueIdentifier, Persist.FieldBehaviour.pk)]
-        public int CodeVeto
+        public Guid CodeVeto
         {
             get { return _codeVeto; }
             set { _codeVeto = value; }
@@ -26,7 +27,6 @@ namespace Clinique.Model
             get { return _nomVeto; }
             set { _nomVeto = value; }
         }
-
 
         private string _motDePasse;
         [Persist(System.Data.SqlDbType.VarChar)]

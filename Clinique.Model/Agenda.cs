@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Clinique.Store;
+using System.Data;
 
 namespace Clinique.Model
 {
@@ -13,20 +15,24 @@ namespace Clinique.Model
         public Veterinaire Veto
         {
             get { return _veto; }
-            set { _veto = value; }
+            set { 
+                _veto = value;
+                CodeVeto = _veto.CodeVeto;
+            }
         }
-        
-        private int _codeVeto;
 
-        public int CodeVeto
+        private Guid _codeVeto;
+        [Persist(SqlDbType.UniqueIdentifier,Persist.FieldBehaviour.pk)]
+        public Guid CodeVeto
         {
             get { return _codeVeto; }
-            set { _codeVeto = value; }
+            private set { _codeVeto = value; }
         }
 
 
         private DateTime _dateRdv;
 
+        [Persist(SqlDbType.DateTime, Persist.FieldBehaviour.pk)]
         public DateTime DateRdv
         {
             get { return _dateRdv; }
@@ -38,18 +44,27 @@ namespace Clinique.Model
         public Animal Animal
         {
             get { return _animal; }
-            set { _animal = value; }
+            set { 
+                _animal = value;
+                CodeAnimal = _animal.CodeAnimal;
+            }
         }
         
+        private Guid _codeAnimal;
 
-        private int _codeAnimal;
-
-        public int CodeAnimal
+        [Persist(SqlDbType.UniqueIdentifier, Persist.FieldBehaviour.pk)]
+        public Guid CodeAnimal
         {
             get { return _codeAnimal; }
-            set { _codeAnimal = value; }
+            private set { _codeAnimal = value; }
         }
 
+        public Agenda(Veterinaire veto,Animal animal, DateTime dateRdv)
+        { 
+            Veto = veto;
+            Animal = animal;
+            DateRdv = dateRdv;
+        }
 
     }
 }

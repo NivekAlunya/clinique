@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Clinique.Store;
+using System.Data;
 
 namespace Clinique.Model
 {
+    [Persist("Factures")]
     public class Facture
     {
-        private int _numFacture;
-
-        public int NumFacture
+        private Guid _numFacture;
+        [Persist(SqlDbType.UniqueIdentifier,Persist.FieldBehaviour.pk)]
+        public Guid NumFacture
         {
             get { return _numFacture; }
             set { _numFacture = value; }
@@ -18,6 +21,7 @@ namespace Clinique.Model
 
         private DateTime _dateFacture;
 
+        [Persist(SqlDbType.DateTime)]
         public DateTime DateFacture
         {
             get { return _dateFacture; }
@@ -29,21 +33,25 @@ namespace Clinique.Model
         public Client Client
         {
             get { return _client; }
-            set { _client = value; }
+            set { 
+                _client = value;
+                CodeClient = _client.CodeClient;
+            }
         }
         
 
-        private int _codeClient;
+        private Guid _codeClient;
 
-        public int CodeClient
+        [Persist(SqlDbType.UniqueIdentifier)]
+        public Guid CodeClient
         {
             get { return _codeClient; }
-            set { _codeClient = value; }
+            private set { _codeClient = value; }
         }
 
 
         private decimal _totaFacture;
-
+        [Persist(SqlDbType.Money)]
         public decimal TotaFacture
         {
             get { return _totaFacture; }
@@ -52,6 +60,7 @@ namespace Clinique.Model
 
         private bool _archive;
 
+        [Persist(SqlDbType.Bit)]
         public bool Archive
         {
             get { return _archive; }
@@ -66,6 +75,7 @@ namespace Clinique.Model
 
         private eFactureEtats _etat;
 
+        [Persist(SqlDbType.TinyInt)]
         public eFactureEtats Etat
         {
             get { return _etat; }
@@ -74,11 +84,11 @@ namespace Clinique.Model
 
         private bool _rappelEnvoye;
 
+        [Persist(SqlDbType.Bit)]
         public bool RappelEnvoye
         {
             get { return _rappelEnvoye; }
             set { _rappelEnvoye = value; }
         }
-
     }
 }

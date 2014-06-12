@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Clinique.Store;
+using System.Data;
+
 namespace Clinique.Model
 {
     [Persist("Races")]
@@ -26,9 +28,11 @@ namespace Clinique.Model
             get { return _espece; }
             set { _espece = value; }
         }
-        public Race()
-            :base()
-        { 
+
+        public Race(string race,string espece)
+        {
+            Race_ = race;
+            Espece = espece;
         }
     }
 }
