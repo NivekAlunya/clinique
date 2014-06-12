@@ -42,10 +42,19 @@
   <ItemGroup>
     <Compile Include="ConnexionStore.cs" />
     <Compile Include="Database.cs" />
-    <Compile Include="Persist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VaccinStore.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Clinique.Model\Clinique.Model.csproj">
+      <Project>{8dae0284-a0b4-4b56-a328-aa013c2c0459}</Project>
+      <Name>Clinique.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clinique.Tools\Clinique.Tools.csproj">
+      <Project>{5366265a-00f0-4b1a-a597-9f874308e8f6}</Project>
+      <Name>Clinique.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Fixture\connexions.sql" />
     <Content Include="Patch_SQL\CreationTableConnexions.sql" />
