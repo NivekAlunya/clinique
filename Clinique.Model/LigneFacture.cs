@@ -22,9 +22,9 @@ namespace Clinique.Model
             }
         }
         
-        private int _numFacture;
+        private Guid _numFacture;
         [Persist(SqlDbType.UniqueIdentifier)]
-        public int NumFacture
+        public Guid NumFacture
         {
             get { return _numFacture; }
             private set { _numFacture = value; }
