@@ -45,10 +45,9 @@
     <Compile Include="Persist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Fixture\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Fixture\connexions.sql" />
     <Content Include="Patch_SQL\CreationTableConnexions.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

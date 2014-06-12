@@ -27,9 +27,14 @@ namespace Clinique.Test
         private static void runCreation()
         {
             Connection cred = new Connection { Login = "MalalanichM", Password = "123" };
+            Console.WriteLine("INSERT");
             Database.Instance.insert(cred);
+            Console.ReadKey();
+            Console.WriteLine("UPDATE");
             cred.Password = "1234";
             Database.Instance.update(cred);
+            Console.ReadKey();
+            Console.WriteLine("DELETE");
             Database.Instance.delete(cred);
             
         }

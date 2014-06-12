@@ -73,13 +73,15 @@ namespace Clinique.Store
                         string name = string.Empty == prop.Field ? p.Name : prop.Field;
                         object value = null;
                         value = p.GetGetMethod().Invoke(targetObject, null);
+
+                        parameters.Add(name, prop.Behaviour);
+                        param = cmd.CreateParameter();
+                        param.ParameterName = "@" + name;
+                        param.Value = value;
+                        cmd.Parameters.Add(param);
+
                         if (Persist.FieldBehaviour.autoincrement != (prop.Behaviour & Persist.FieldBehaviour.autoincrement))
                         {
-                            parameters.Add(name, prop.Behaviour);
-                            param = cmd.CreateParameter();
-                            param.ParameterName = "@" + name;
-                            param.Value = value;
-                            cmd.Parameters.Add(param);
                         }
                         else
                         {
@@ -136,14 +138,17 @@ namespace Clinique.Store
 
             foreach (KeyValuePair<string, Persist.FieldBehaviour> field in _buildParamaters(targetObject, cmd, out pID))
             {
-                fields += field.Key + ",";
-                values += "@" + field.Key + ",";
+                if ((Persist.FieldBehaviour.autoincrement & field.Value) != Persist.FieldBehaviour.autoincrement)
+                {
+                    fields += field.Key + ",";
+                    values += "@" + field.Key + ",";
+                }
             }
             string txtcmd = string.Format(command, fields.Substring(0, fields.Length - 1), values.Substring(0, values.Length - 1), null != pID ? "SELECT SCOPE_IDENTITY();" : "");
             
             return _executeCommand(cmd,txtcmd,pID,targetObject);
         }
-
+        
 
         public bool update<T>(T targetObject)
         {
@@ -164,7 +169,7 @@ namespace Clinique.Store
             {
                 string txtcmd = string.Format(command, updates.Substring(0, updates.Length - 1), where.Substring(0, where.Length - 5));
 
-                return _executeCommand(cmd, txtcmd, pID, targetObject);
+                return _executeCommand(cmd, txtcmd);
             }
             else
                 return false;
@@ -187,7 +192,7 @@ namespace Clinique.Store
             {
                 string txtcmd = string.Format(command, where.Substring(0, where.Length - 5));
 
-                return _executeCommand(cmd, txtcmd, pID, targetObject);
+                return _executeCommand(cmd, txtcmd);
             }
             else
                 return false;
