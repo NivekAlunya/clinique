@@ -19,9 +19,19 @@ namespace Clinique.Test
         static void Main(string[] args)
         {
             //run();
-            runConnection();
-            
+            //runConnection();
+            runCreation();
             Console.ReadKey();
+        }
+
+        private static void runCreation()
+        {
+            Connection cred = new Connection { Login = "MalalanichM", Password = "123" };
+            Database.Instance.insert(cred);
+            cred.Password = "1234";
+            Database.Instance.update(cred);
+            Database.Instance.delete(cred);
+            
         }
 
         private static void run()
@@ -42,7 +52,6 @@ namespace Clinique.Test
 
         private static void runConnection ()
         {
-
             if (ConnexionStore.VerifConnexion("BosapinE", "123") == true)
             { 
                 Console.WriteLine("Test OK : BosapinE, 123");

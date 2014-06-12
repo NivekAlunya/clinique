@@ -99,7 +99,7 @@ namespace Clinique.Store
                 _connection.Open();
                 if (null != pID)
                 {
-                    object[] returnedValue = { cmd.ExecuteScalar() };
+                    object[] returnedValue = { Convert.ToInt32( cmd.ExecuteScalar()) };
                     pID.GetSetMethod().Invoke(targetObject, returnedValue);
                 }
                 else
