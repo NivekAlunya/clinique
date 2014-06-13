@@ -9,18 +9,18 @@ namespace Clinique.Store
 {
     public static class AnimalStore
     {
-        public static Animal Ajouter(string nomAnimal, Clinique.Model.Animal.eSexe sexe, string couleur, Race race,
-             string tatouage, string antecedant, Boolean archive, Client client)
+        public static Animal Ajouter(string nomAnimal, Animal.eSexe sexe, string couleur, Race race,
+             string tatouage, string antecedant, bool archive, Client client)
         {
             Animal animal = new Animal(Guid.NewGuid(), nomAnimal, sexe, couleur, race, tatouage, antecedant, archive, client);
             Database.Instance.insert(animal);
             return animal;
         }
 
-        public static void Modifier(Animal animal, string nomAnimal, Clinique.Model.Animal.eSexe sexe, string couleur, Race race,
-             string tatouage, string antecedant, Boolean archive, Client client)
+        public static void Modifier(Animal animal, string nomAnimal, Animal.eSexe sexe, string couleur, Race race,
+             string tatouage, string antecedents, bool archive, Client client)
         {
-            animal.Antecedant = antecedant;
+            animal.Antecedents = antecedents;
             animal.Archive = archive;
             animal.Client = client;
             animal.Couleur = couleur;
@@ -29,7 +29,7 @@ namespace Clinique.Store
             animal.Tatouage = tatouage;
             animal.Race = race;
 
-            Database.Instance.insert(animal);
+            Database.Instance.update(animal);
         }
 
         public static bool Supprimer(Animal animal)

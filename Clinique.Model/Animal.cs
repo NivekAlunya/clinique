@@ -13,7 +13,7 @@ namespace Clinique.Model
     {
 
         public Animal(Guid codeAnimal, string nomAnimal, eSexe sexe, string couleur, Race race,
-             string tatouage, string antecedant, Boolean archive, Client client)
+             string tatouage, string antecedents, Boolean archive, Client client)
         {
         CodeAnimal = codeAnimal;
         NomAnimal = nomAnimal;
@@ -21,7 +21,7 @@ namespace Clinique.Model
         Couleur = couleur;
         Race = race;
         Tatouage = tatouage;
-        Antecedant = antecedant;
+        Antecedents = antecedents;
         Archive = archive;
         Client = client;
         }
@@ -44,7 +44,11 @@ namespace Clinique.Model
         }
 
         public enum eSexe
-	{M, F, H }
+	    {
+            M = 'M', 
+            F = 'F',
+            H = 'H'
+        }
 
         private eSexe _sexe;
         [Persist(SqlDbType.Char)]
@@ -65,7 +69,7 @@ namespace Clinique.Model
 
 
         private string _race_;
-        [Persist(SqlDbType.VarChar)]
+        [Persist(SqlDbType.VarChar,Persist.FieldBehaviour.common,"Race")]
         public string Race_
         {
             get { return _race_; }
@@ -80,9 +84,9 @@ namespace Clinique.Model
             set { _espece = value; }
         }
 
-        private ulong _codeClient;
+        private Guid _codeClient;
         [Persist(SqlDbType.UniqueIdentifier)]
-        public ulong CodeClient
+        public Guid CodeClient
         {
             get { return _codeClient; }
             set { _codeClient = value; }
@@ -96,12 +100,12 @@ namespace Clinique.Model
             set { _tatouage = value; }
         }
 
-        private string _antecedant;
+        private string _antecedents;
         [Persist(SqlDbType.VarChar)]
-        public string Antecedant
+        public string Antecedents
         {
-            get { return _antecedant; }
-            set { _antecedant = value; }
+            get { return _antecedents; }
+            set { _antecedents = value; }
         }
 
         private Boolean _archive;
@@ -117,7 +121,10 @@ namespace Clinique.Model
         public Client Client
         {
             get { return _client; }
-            set { _client = value; }
+            set { 
+                _client = value;
+                CodeClient = _client.CodeClient;
+            }
         }
 
 

@@ -69,15 +69,54 @@ namespace Clinique.Store
                         Persist prop = (Persist)att;
                         if (filter != Persist.FieldBehaviour.common && filter != (filter & prop.Behaviour))
                             continue;
-
+                        //Recuperer la valeur de la propriete
                         string name = string.Empty == prop.Field ? p.Name : prop.Field;
                         object value = null;
                         value = p.GetGetMethod().Invoke(targetObject, null);
-
+                        //Tester si enumeration et cast via le sqldbtype
+                        if (value.GetType().IsEnum)
+                        {
+                            switch (prop.DbType)
+                            {
+                                case SqlDbType.Bit:
+                                case SqlDbType.Int:
+                                case SqlDbType.TinyInt:
+                                case SqlDbType.Timestamp:
+                                case SqlDbType.SmallInt:
+                                case SqlDbType.BigInt:
+                                case SqlDbType.Binary:
+                                    break;
+                                case SqlDbType.Char:
+                                case SqlDbType.NChar:
+                                    value = (char)((int)value);
+                                    break;
+                                case SqlDbType.VarBinary:
+                                case SqlDbType.Decimal:
+                                case SqlDbType.Float:
+                                case SqlDbType.Money:
+                                case SqlDbType.Real:
+                                case SqlDbType.SmallMoney:
+                                case SqlDbType.Date:
+                                case SqlDbType.SmallDateTime:
+                                case SqlDbType.DateTime:
+                                case SqlDbType.DateTime2:
+                                case SqlDbType.DateTimeOffset:
+                                case SqlDbType.NText:
+                                case SqlDbType.NVarChar:
+                                case SqlDbType.VarChar:
+                                case SqlDbType.Text:
+                                case SqlDbType.Time:
+                                case SqlDbType.UniqueIdentifier:
+                                default:
+                                    throw new Exception("Can't convert enum value to database value");
+                            }
+                        }
+                        //Recuperer la valeur de la propriete
                         parameters.Add(name, prop.Behaviour);
                         param = cmd.CreateParameter();
                         param.ParameterName = "@" + name;
                         param.Value = value;
+                        //param.DbType = (DbType)prop.DbType;
                         cmd.Parameters.Add(param);
 
                         if (Persist.FieldBehaviour.autoincrement != (prop.Behaviour & Persist.FieldBehaviour.autoincrement))
@@ -92,7 +131,8 @@ namespace Clinique.Store
             }
             return parameters;
         }
-
+        
+        
         private bool _executeCommand(IDbCommand cmd, string commandText, PropertyInfo pID =  null, object targetObject = null)
         {
             try

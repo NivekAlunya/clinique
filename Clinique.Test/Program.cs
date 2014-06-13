@@ -22,17 +22,17 @@ namespace Clinique.Test
             //runConnection();
             //runCreation();
             //runCreationClient();
-            runCreationVeto();
-            //runCreationAnimal();
-            
+            //runCreationVeto();
+
+            runCreationAnimal();
+
             Console.ReadKey();
         }
 
         private static void runCreationAnimal()
         {
-            Race Labrador = new Race("Chien", "Labrador");
-            Client amede = new Client(Guid.NewGuid(), "Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
-            
+            Race Labrador = RaceStore.Ajouter("Chien", "Labrador");
+            Client amede = ClientStore.Ajouter("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
             Animal animal = AnimalStore.Ajouter("Bethoveen", Animal.eSexe.M, "Beige", Labrador, "007", "Joueur avec le facteur", false, amede);
             Console.WriteLine("INSERT");
             Console.ReadKey();
@@ -41,10 +41,7 @@ namespace Clinique.Test
             Console.ReadKey();
             Console.WriteLine("DELETE");
             AnimalStore.Supprimer(animal);
-           
         }
-
-
 
 
         private static void runCreationClient()
