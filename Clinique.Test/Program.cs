@@ -8,8 +8,8 @@ using System.Data.Common;
 using System.Data;
 using System.Configuration;
 using Clinique.Model;
-using Clinique.Store;
 using Clinique.Controller;
+using Clinique.Store;
 using System.Reflection;
 
 namespace Clinique.Test
@@ -22,7 +22,9 @@ namespace Clinique.Test
             //runConnection();
             //runCreation();
             //runCreationClient();
-            runCreationAnimal();
+            runCreationVeto();
+            //runCreationAnimal();
+            
             Console.ReadKey();
         }
 
@@ -57,21 +59,46 @@ namespace Clinique.Test
             Console.ReadKey();
             Console.WriteLine("DELETE");
             ClientControler.SupprimerClient(client);
-            
+           }
+
+        private static void runCreationVaccin()
+        {
+            Console.WriteLine("New Vaccin"); 
+            Vaccin vaccin = VaccinController.Instance.AjouterVaccin("VIH Vaccin", 50, 2, false);
+            Console.ReadKey();
+            Console.WriteLine("Update Vaccin"); 
+            VaccinController.Instance.ModifierVaccin(vaccin, "VIH Vaccin altere", 50, 2, true);
+            Console.ReadKey();
+            Console.WriteLine("Delete Vaccin"); 
+            VaccinController.Instance.SupprimerVaccin(vaccin);
+        }
+
+        private static void runCreationVeto()
+        {
+            Console.WriteLine("New Veterinaire");
+            Veterinaire veto = VeterinaireController.Instance.AjouterVeterinaire("TOTO", "password",false);
+            Console.ReadKey();
+            Console.WriteLine("Update Veterinaire");
+            VeterinaireController.Instance.ModifierVeterinaire(veto, "TITI", "******", true);
+            Console.ReadKey();
+            Console.WriteLine("Delete Veterinaire");
+            VeterinaireController.Instance.SupprimerVeterinaire(veto);
         }
 
         private static void runCreation()
         {
-            Connection cred = new Connection { Login = "MalalanichM", Password = "123" };
-            Console.WriteLine("INSERT");
-            Database.Instance.insert(cred);
-            Console.ReadKey();
-            Console.WriteLine("UPDATE");
-            cred.Password = "1234";
-            Database.Instance.update(cred);
-            Console.ReadKey();
-            Console.WriteLine("DELETE");
-            Database.Instance.delete(cred);
+            //Connection cred = new Connection { Login = "MalalanichM", Password = "123" };
+            //Console.WriteLine("INSERT");
+            //Database.Instance.insert(cred);
+            //Console.ReadKey();
+            //Console.WriteLine("UPDATE");
+            //cred.Password = "1234";
+            //Database.Instance.update(cred);
+            //Console.ReadKey();
+            //Console.WriteLine("DELETE");
+            //Database.Instance.delete(cred);
+
+
             
         }
 
@@ -82,32 +109,25 @@ namespace Clinique.Test
             //r.Race_ = "Berger";
             //Database.Instance.insert(r);
 
-            Vaccin v = new Vaccin (Guid.NewGuid(), "Ebola3", 50 ,6, false);
-            Database.Instance.insert(v);
-            v.QuantiteStock = 100;
-            Database.Instance.update(v);
-            Database.Instance.delete(v);
-
-            Console.WriteLine(v.CodeVaccin);
         }
 
         private static void runConnection ()
         {
-            if (ConnexionStore.VerifConnexion("BosapinE", "123") == true)
-            { 
-                Console.WriteLine("Test OK : BosapinE, 123");
-            }
-            else
-            {
-                Console.WriteLine("Probléme de déclaration de Verif Connexion");
-            }
+            //if (ConnexionStore.VerifConnexion("BosapinE", "123") == true)
+            //{ 
+            //    Console.WriteLine("Test OK : BosapinE, 123");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Probléme de déclaration de Verif Connexion");
+            //}
 
-            if (ConnexionStore.VerifConnexion("fdds", "123") == false)
-            { Console.WriteLine("Test OK"); }
-            else
-            {
-                Console.WriteLine("Probléme de déclaration de Verif Connexion");
-            }       
+            //if (ConnexionStore.VerifConnexion("fdds", "123") == false)
+            //{ Console.WriteLine("Test OK"); }
+            //else
+            //{
+            //    Console.WriteLine("Probléme de déclaration de Verif Connexion");
+            //}       
         }
 
 

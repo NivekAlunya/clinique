@@ -28,12 +28,12 @@ namespace Clinique.Model
             set { _nomVeto = value; }
         }
 
-        private string _motDePasse;
+        private string _motPasse;
         [Persist(System.Data.SqlDbType.VarChar)]
-        public string MotDePasse
+        public string MotPasse
         {
-            get { return _motDePasse; }
-            set { _motDePasse = value; }
+            get { return _motPasse; }
+            set { _motPasse = value; }
         }
 
         private bool _archive;
@@ -42,6 +42,14 @@ namespace Clinique.Model
         {
             get { return _archive; }
             set { _archive = value; }
+        }
+
+        public Veterinaire(Guid codeVeto, string nomVeto, string motDePasse, bool archive)
+        { 
+            CodeVeto =  codeVeto;
+            MotPasse = motDePasse;
+            NomVeto = nomVeto;
+            Archive = archive;
         }
 
     }

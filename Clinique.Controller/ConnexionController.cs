@@ -28,7 +28,7 @@ namespace Clinique.Controller
         
         public Boolean Connect (string login, string password)
         {
-           return ConnexionStore.VerifConnexion(login, password);
+           return ConnexionStore.ExistsConnexion(login, password);
 
         }
         

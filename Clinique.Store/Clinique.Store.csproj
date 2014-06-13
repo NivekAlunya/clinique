@@ -45,6 +45,9 @@
     <Compile Include="ConnexionStore.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RaceStore.cs" />
+    <Compile Include="VaccinStore.cs" />
+    <Compile Include="VeterinaireStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Clinique.Model\Clinique.Model.csproj">

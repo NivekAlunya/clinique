@@ -9,8 +9,8 @@ namespace Clinique.Store
 {
     public static class ConnexionStore
     {
-                
-        public static bool VerifConnexion(string login, string password)
+
+        public static bool ExistsConnexion(string login, string password)
         {
             Boolean autorisation = false;
             IDbConnection cnx = Database.Instance.getConnection();
@@ -40,9 +40,6 @@ namespace Clinique.Store
             int reponse = Convert.ToInt32(cmd.ExecuteScalar());
             cnx.Close();
             if (reponse == 1) autorisation = true;
-
-            
-
             return autorisation; 
         }
 
