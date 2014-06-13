@@ -8,7 +8,7 @@ using System.Data;
 using System.Configuration;
 using System.Data.Common;
 using System.Reflection;
-
+using Clinique.Tools;
 
 namespace Clinique.Store
 {
@@ -111,7 +111,6 @@ namespace Clinique.Store
             }
             catch (Exception e)
             {
-
                 throw e;
             }
             finally

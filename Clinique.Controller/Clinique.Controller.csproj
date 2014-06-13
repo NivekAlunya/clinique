@@ -39,11 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientControler.cs" />
     <Compile Include="ConnexionController.cs" />
     <Compile Include="RaceController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Clinique.Model\Clinique.Model.csproj">
+      <Project>{8dae0284-a0b4-4b56-a328-aa013c2c0459}</Project>
+      <Name>Clinique.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Clinique.Store\Clinique.Store.csproj">
       <Project>{13ec545b-0b69-4f63-9d91-9b95e0f70ea1}</Project>
       <Name>Clinique.Store</Name>

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5366265A-00F0-4B1A-A597-9F874308E8F6}</ProjectGuid>
+    <ProjectGuid>{237FE4E2-5DF8-4517-A307-3C8A5AC14E84}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Clinique.Tools</RootNamespace>

@@ -10,8 +10,8 @@ using System.Configuration;
 using Clinique.Model;
 using Clinique.Store;
 using Clinique.Controller;
-
 using System.Reflection;
+
 namespace Clinique.Test
 {
     class Program
@@ -21,23 +21,43 @@ namespace Clinique.Test
             //run();
             //runConnection();
             //runCreation();
-            runCreationClient();
+            //runCreationClient();
+            runCreationAnimal();
             Console.ReadKey();
         }
+
+        private static void runCreationAnimal()
+        {
+            Race Labrador = new Race("Chien", "Labrador");
+            Client amede = new Client(Guid.NewGuid(), "Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
+            
+            Animal animal = AnimalStore.Ajouter("Bethoveen", Animal.eSexe.M, "Beige", Labrador, "007", "Joueur avec le facteur", false, amede);
+            Console.WriteLine("INSERT");
+            Console.ReadKey();
+            Console.WriteLine("UPDATE");
+            AnimalStore.Modifier(animal, "Bethoveen", Animal.eSexe.F, "Marron", Labrador, "007", "Joueur avec le facteur et la police", false, amede);
+            Console.ReadKey();
+            Console.WriteLine("DELETE");
+            AnimalStore.Supprimer(animal);
+           
+        }
+
+
+
 
         private static void runCreationClient()
         {
             
-            Client cred = new Client(Guid.NewGuid(),"Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire" ,"0666785713", "Non" , "bens360@jjh.fr", "Pas de remarque" , false);
             Console.WriteLine("INSERT");
-            Database.Instance.insert(cred);
+            Client client = ClientControler.AjouterClient("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false); 
+
             Console.ReadKey();
             Console.WriteLine("UPDATE");
-            cred.Adresse1 = "1234";
-            Database.Instance.update(cred);
+            ClientControler.ModifierClient(client, "Bug", "Ade", "3 rue", "", "44950", "Flurre", "0666785713", "AGPM", "bens360@jjh.fr", "Pas de remarque", false);  
             Console.ReadKey();
             Console.WriteLine("DELETE");
-            Database.Instance.delete(cred);
+            ClientControler.SupprimerClient(client);
+            
         }
 
         private static void runCreation()
@@ -89,6 +109,8 @@ namespace Clinique.Test
                 Console.WriteLine("Probléme de déclaration de Verif Connexion");
             }       
         }
+
+
 
     }
 }
