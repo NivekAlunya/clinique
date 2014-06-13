@@ -28,11 +28,6 @@ namespace Clinique.Controller
             return RaceStore.Ajouter(race,espece);
         }
 
-        public void ModifierRace(Race race, string race_, string espece)
-        {
-            RaceStore.Modifier(race, race_, espece);
-        }
-
         public bool SupprimerRace(Race race)
         {
             return RaceStore.Supprimer(race);

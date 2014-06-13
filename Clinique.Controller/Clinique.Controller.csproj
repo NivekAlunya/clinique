@@ -44,6 +44,8 @@
     <Compile Include="ConnexionController.cs" />
     <Compile Include="FactureController.cs" />
     <Compile Include="LigneFactureController.cs" />
+    <Compile Include="AgendaController.cs" />
+    <Compile Include="ConsultationController.cs" />
     <Compile Include="RaceController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VaccinController.cs" />

@@ -17,13 +17,6 @@ namespace Clinique.Store
             return race;
         }
 
-        public static void Modifier(Race race, string race_, string espece)
-        {
-            race.Race_ = race_;
-            race.Espece= espece;
-            Database.Instance.update(race);
-        }
-
         public static bool Supprimer(Race race)
         {
             return Database.Instance.delete(race);

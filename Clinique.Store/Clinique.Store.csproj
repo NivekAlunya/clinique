@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgendaStore.cs" />
     <Compile Include="AnimalStore.cs" />
     <Compile Include="BaremeStore.cs" />
     <Compile Include="ClientStore.cs" />
     <Compile Include="ConnexionStore.cs" />
+    <Compile Include="ConsultationStore.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="FactureStore.cs" />
     <Compile Include="LigneFactureStore.cs" />

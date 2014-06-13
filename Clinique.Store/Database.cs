@@ -73,42 +73,47 @@ namespace Clinique.Store
                         string name = string.Empty == prop.Field ? p.Name : prop.Field;
                         object value = null;
                         value = p.GetGetMethod().Invoke(targetObject, null);
-                        //Tester si enumeration et cast via le sqldbtype
-                        if (value.GetType().IsEnum)
+                        if (SqlDbType.UniqueIdentifier == prop.DbType && (Guid)value == Guid.Empty)
+                            value = DBNull.Value ;
+                        else
                         {
-                            switch (prop.DbType)
+                            //Tester si enumeration et cast via le sqldbtype
+                            if (value.GetType().IsEnum)
                             {
-                                case SqlDbType.Bit:
-                                case SqlDbType.Int:
-                                case SqlDbType.TinyInt:
-                                case SqlDbType.Timestamp:
-                                case SqlDbType.SmallInt:
-                                case SqlDbType.BigInt:
-                                case SqlDbType.Binary:
-                                    break;
-                                case SqlDbType.Char:
-                                case SqlDbType.NChar:
-                                    value = (char)((int)value);
-                                    break;
-                                case SqlDbType.VarBinary:
-                                case SqlDbType.Decimal:
-                                case SqlDbType.Float:
-                                case SqlDbType.Money:
-                                case SqlDbType.Real:
-                                case SqlDbType.SmallMoney:
-                                case SqlDbType.Date:
-                                case SqlDbType.SmallDateTime:
-                                case SqlDbType.DateTime:
-                                case SqlDbType.DateTime2:
-                                case SqlDbType.DateTimeOffset:
-                                case SqlDbType.NText:
-                                case SqlDbType.NVarChar:
-                                case SqlDbType.VarChar:
-                                case SqlDbType.Text:
-                                case SqlDbType.Time:
-                                case SqlDbType.UniqueIdentifier:
-                                default:
-                                    throw new Exception("Can't convert enum value to database value");
+                                switch (prop.DbType)
+                                {
+                                    case SqlDbType.Bit:
+                                    case SqlDbType.Int:
+                                    case SqlDbType.TinyInt:
+                                    case SqlDbType.Timestamp:
+                                    case SqlDbType.SmallInt:
+                                    case SqlDbType.BigInt:
+                                    case SqlDbType.Binary:
+                                        break;
+                                    case SqlDbType.Char:
+                                    case SqlDbType.NChar:
+                                        value = (char)((int)value);
+                                        break;
+                                    case SqlDbType.VarBinary:
+                                    case SqlDbType.Decimal:
+                                    case SqlDbType.Float:
+                                    case SqlDbType.Money:
+                                    case SqlDbType.Real:
+                                    case SqlDbType.SmallMoney:
+                                    case SqlDbType.Date:
+                                    case SqlDbType.SmallDateTime:
+                                    case SqlDbType.DateTime:
+                                    case SqlDbType.DateTime2:
+                                    case SqlDbType.DateTimeOffset:
+                                    case SqlDbType.NText:
+                                    case SqlDbType.NVarChar:
+                                    case SqlDbType.VarChar:
+                                    case SqlDbType.Text:
+                                    case SqlDbType.Time:
+                                    case SqlDbType.UniqueIdentifier:
+                                    default:
+                                        throw new Exception("Can't convert enum value to database value");
+                                }
                             }
                         }
                         //Recuperer la valeur de la propriete

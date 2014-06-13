@@ -17,7 +17,7 @@ namespace Clinique.Model
         public string Race_
         {
             get { return _race; }
-            set { _race = value; }
+            private set { _race = value; }
         }
 
         private string _espece;
@@ -26,7 +26,7 @@ namespace Clinique.Model
         public string Espece
         {
             get { return _espece; }
-            set { _espece = value; }
+            private set { _espece = value; }
         }
 
         public Race(string race,string espece)

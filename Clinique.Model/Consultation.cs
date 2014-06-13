@@ -93,17 +93,19 @@ namespace Clinique.Model
         }
 
         private Facture _facture;
-
         public Facture Facture
         {
             get { return _facture; }
-            set { _facture = value; }
+            set { 
+                _facture = value;
+                NumFacture = (null == _facture) ? Guid.Empty : _facture.NumFacture;
+            }
         }
 
-        private int _numFacture;
+        private Guid _numFacture;
 
         [Persist(SqlDbType.UniqueIdentifier)]
-        public int NumFacture
+        public Guid NumFacture
         {
             get { return _numFacture; }
             private set { 
@@ -120,15 +122,16 @@ namespace Clinique.Model
             set { _archive = value; }
         }
 
-
-        public Consultation(Guid codeConsultation,Facture facture, Veterinaire veto,DateTime dateConsultation, eConsultationEtat etat, string commentaire,bool archive)
+        public Consultation(Guid codeConsultation,Facture facture, Veterinaire veto, Animal animal,DateTime dateConsultation, eConsultationEtat etat, string commentaire,bool archive)
         {
+            CodeConsultation = codeConsultation;
             Archive =  archive;
             Commentaire = commentaire;
             DateConsultation = dateConsultation;
             Etat = etat;
             Facture = facture;
             Veto = veto;
+            Animal = animal;
         }
 
     }

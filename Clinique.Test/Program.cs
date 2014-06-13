@@ -26,7 +26,10 @@ namespace Clinique.Test
             //runCreationAnimal();
             //runCreationBareme();
             //runCreationFacture();
-            runCreationLignesFacture();
+            //runCreationLignesFacture();
+            //runCreationRace();
+            //runCreationAgenda();
+            runCreationConsultationFull();
 
             Console.ReadKey();
         }
@@ -71,6 +74,85 @@ namespace Clinique.Test
             Console.ReadKey();
             Console.WriteLine("DELETE");
             BaremeStore.Supprimer(bareme);
+        }
+		private static void runCreationConsultationFull()
+        {
+            Veterinaire veto = VeterinaireController.Instance.AjouterVeterinaire("toto", "*****", false);
+            Race Labrador = RaceStore.Ajouter("Chien", "Labrador");
+            Client amede = ClientStore.Ajouter("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
+            Animal animal = AnimalStore.Ajouter("Bethoveen", Animal.eSexe.M, "Beige", Labrador, "007", "Joueur avec le facteur", false, amede);
+            Console.WriteLine("INSERT");
+            Consultation consultation = ConsultationController.Instance.AjouterConsultation(null, veto,animal, DateTime.Now, Consultation.eConsultationEtat.en_cours_de_saisie, "", false);
+            Console.ReadKey();
+            Console.WriteLine("UPDATE");
+            ConsultationController.Instance.ModifierConsultation(consultation, null, veto, DateTime.Now.AddMonths(-1), Consultation.eConsultationEtat.saisie_veterinaire_terminee_facturation_possible,"comment ..............." , false);
+            Console.ReadKey();
+            Console.WriteLine("DELETE");
+            ConsultationController.Instance.Supprimerconsultation(consultation);
+
+            AnimalStore.Supprimer(animal);
+            ClientStore.Supprimer(amede);
+            RaceStore.Supprimer(Labrador);
+            VeterinaireStore.Supprimer(veto);
+
+        }
+
+        private static void runCreationAgenda()
+        {
+            Veterinaire veto = VeterinaireController.Instance.AjouterVeterinaire("toto", "*****", false);
+            Race Labrador = RaceStore.Ajouter("Chien", "Labrador");
+            Client amede = ClientStore.Ajouter("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
+            Animal animal = AnimalStore.Ajouter("Bethoveen", Animal.eSexe.M, "Beige", Labrador, "007", "Joueur avec le facteur", false, amede);
+            
+            
+            Console.WriteLine("INSERT");
+            Agenda agenda = AgendaController.Instance.AjouterAgenda(veto, animal, DateTime.Now);
+            Console.ReadKey();
+            Console.WriteLine("DELETE");
+            
+            //AgendaController.Instance.SupprimerAgenda(agenda);
+
+            IDbConnection cn = Database.Instance.getConnection();
+
+            IDbCommand cmd = cn.CreateCommand();
+
+            IDataParameter param;
+            param = cmd.CreateParameter();
+            param.Value = agenda.CodeVeto;
+            param.ParameterName = "@CodeVeto";
+            cmd.Parameters.Add(param);
+
+            param = cmd.CreateParameter();
+            param.Value = agenda.CodeAnimal;
+            param.ParameterName = "@CodeAnimal";
+            cmd.Parameters.Add(param);
+
+            param = cmd.CreateParameter();
+            param.Value = agenda.DateRdv;
+            param.ParameterName = "@DateRdv";
+            cmd.Parameters.Add(param);
+
+            cmd.CommandType = CommandType.Text;
+
+            cmd.CommandText = "delete from Agendas where CodeVeto=@CodeVeto and Codeanimal=@CodeAnimal and DateRdv=@DateRdv";
+            cn.Open();
+            Console.WriteLine(cmd.ExecuteNonQuery());
+            cn.Close();
+
+            AnimalStore.Supprimer(animal);
+            ClientStore.Supprimer(amede);
+            RaceStore.Supprimer(Labrador);
+            VeterinaireStore.Supprimer(veto);
+
+        }
+
+        private static void runCreationRace()
+        {
+            Console.WriteLine("INSERT");
+            Race r = RaceController.Instance.AjouterRace("Chien", "Labrador");
+            Console.ReadKey();
+            Console.WriteLine("DELETE");
+            RaceController.Instance.SupprimerRace(r);
         }
 
         private static void runCreationAnimal()
@@ -170,8 +252,6 @@ namespace Clinique.Test
             //    Console.WriteLine("Probléme de déclaration de Verif Connexion");
             //}       
         }
-
-
 
     }
 }

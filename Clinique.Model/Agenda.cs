@@ -8,6 +8,7 @@ using System.Data;
 
 namespace Clinique.Model
 {
+    [Persist("Agendas")]
     public class Agenda
     {
         private Veterinaire _veto;
