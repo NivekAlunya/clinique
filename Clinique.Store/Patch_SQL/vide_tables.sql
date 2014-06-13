@@ -1,0 +1,11 @@
+delete from LignesFactures
+delete from LignesConsultations
+delete from Consultations
+delete from Factures
+delete from Agendas
+delete from Veterinaires
+delete from Animaux
+delete from Clients
+delete from Races
+delete from Baremes
+delete from Vaccins
