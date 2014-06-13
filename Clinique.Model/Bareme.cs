@@ -8,11 +8,11 @@ using Clinique.Tools;
 
 namespace Clinique.Model
 {
-    [Persist("Connexions")]
+    [Persist("Baremes")]
     public class Bareme
     {
-        public Bareme(string codeGroupement, string dateVigueur, eTypeActe typeActe, string libelle,
-            decimal tarifFixe, decimal tarifMini, decimal tarifMaxi, Vaccin vaccin)
+        public Bareme(string codeGroupement, string dateVigueur, string typeActe, string libelle,
+            decimal tarifFixe, decimal tarifMini, decimal tarifMaxi, Vaccin vaccin, bool archive)
         {
         CodeGroupement = codeGroupement;
         DateVigueur = dateVigueur;
@@ -22,6 +22,7 @@ namespace Clinique.Model
         TarifMaxi = tarifMaxi;
         TarifMini = tarifMini;
         Vaccin = vaccin;
+        Archive = archive;
         }
 
         private string _codeGroupement;
@@ -40,15 +41,31 @@ namespace Clinique.Model
             private set { _dateVigueur = value; }
         }
 
-        public enum eTypeActe
-        {CONS, VACC, GYCA, CHIR, TATO, DIVE}
+        private string[] tablenumBareme = { "CONS", "VACC", "GYCA", "CHIR", "TATO", "DIVE" };
 
-        private eTypeActe _typeActe;
+        //@todo using enum for array retrieving
+        //public enum eTypeActe
+        //    {CONS, VACC , GYCA , CHIR , TATO, DIVE}
+
+        //private eTypeActe _typeActeTypeActeEnumValue;
+        //[Persist(SqlDbType.VarChar)]
+        //public eTypeActe TypeActeEnumValue
+        //{
+        //    get { return _typeActe; }
+        //    set { 
+        //        _typeActe = value; 
+        //    }
+        //}
+
+        private string _typeActe;
         [Persist(SqlDbType.VarChar)]
-        public eTypeActe TypeActe
+        public string TypeActe
         {
             get { return _typeActe; }
-            set { _typeActe = value; }
+            set {
+                if (!tablenumBareme.Contains(value)) throw new Exception("Valeur acceptée: " + tablenumBareme.ToString());
+                _typeActe = value; 
+            }
         }
 
         private string _libelle;
@@ -59,12 +76,12 @@ namespace Clinique.Model
             set { _libelle = value; }
         }
 
-        private int _codeVaccin;
+        private Guid _codeVaccin;
         [Persist(SqlDbType.BigInt)]
-        public int CodeVaccin
+        public Guid CodeVaccin
         {
             get { return _codeVaccin; }
-            set { _codeVaccin = value; }
+            private set { _codeVaccin = value; }
         }
 
         private Vaccin _vaccin;
@@ -72,7 +89,10 @@ namespace Clinique.Model
         public Vaccin Vaccin
         {
             get { return _vaccin; }
-            set { _vaccin = value; }
+            set { 
+                _vaccin = value;
+                CodeVaccin = _vaccin.CodeVaccin;
+            }
         }
 
         private decimal _tarifFixe;
@@ -98,5 +118,14 @@ namespace Clinique.Model
             get { return _tarifMaxi; }
             set { _tarifMaxi = value; }
         }
+
+        private bool _archive;
+        [Persist(SqlDbType.Bit)]
+        public bool Archive
+        {
+            get { return _archive; }
+            set { _archive = value; }
+        }
+        
     }
 }

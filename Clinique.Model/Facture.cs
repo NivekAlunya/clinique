@@ -11,6 +11,13 @@ namespace Clinique.Model
     [Persist("Factures")]
     public class Facture
     {
+
+        public Facture()
+        {
+        
+        }
+
+       
         private Guid _numFacture;
         [Persist(SqlDbType.UniqueIdentifier,Persist.FieldBehaviour.pk)]
         public Guid NumFacture
@@ -50,12 +57,12 @@ namespace Clinique.Model
         }
 
 
-        private decimal _totaFacture;
+        private decimal _totalFacture;
         [Persist(SqlDbType.Money)]
-        public decimal TotaFacture
+        public decimal TotalFacture
         {
-            get { return _totaFacture; }
-            set { _totaFacture = value; }
+            get { return _totalFacture; }
+            set { _totalFacture = value; }
         }
 
         private bool _archive;
@@ -82,22 +89,22 @@ namespace Clinique.Model
             set { _etat = value; }
         }
 
-        private bool _rappelEnvoye;
+        private DateTime _rappelEnvoye;
 
-        [Persist(SqlDbType.Bit)]
-        public bool RappelEnvoye
+        [Persist(SqlDbType.DateTime)]
+        public DateTime RappelEnvoye
         {
             get { return _rappelEnvoye; }
             set { _rappelEnvoye = value; }
         }
 
-        public Facture(Guid numFacture,Client client,DateTime dateFacture,eFactureEtats etat, decimal totaFacture,bool rappelEnvoye,bool archive)
+        public Facture(Guid numFacture,Client client,DateTime dateFacture,eFactureEtats etat, decimal totalFacture,DateTime rappelEnvoye,bool archive)
         {
             NumFacture =  numFacture;
             Client = client;
             DateFacture = dateFacture;
             Etat = etat;
-            TotaFacture = totaFacture;
+            TotalFacture = totalFacture;
             RappelEnvoye = rappelEnvoye;
             Archive = archive;
         }

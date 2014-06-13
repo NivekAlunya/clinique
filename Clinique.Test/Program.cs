@@ -23,10 +23,54 @@ namespace Clinique.Test
             //runCreation();
             //runCreationClient();
             //runCreationVeto();
-
-            runCreationAnimal();
+            //runCreationAnimal();
+            //runCreationBareme();
+            //runCreationFacture();
+            runCreationLignesFacture();
 
             Console.ReadKey();
+        }
+
+        private static void runCreationLignesFacture()
+        {
+            Client client = ClientControler.AjouterClient("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
+            Facture facture = FactureStore.Ajouter(client, DateTime.Now.ToUniversalTime(), Facture.eFactureEtats.a_imprimer, 135, DateTime.Now.ToUniversalTime(), false);
+            Vaccin vaccin = VaccinController.Instance.AjouterVaccin("VIH Vaccin", 50, 2, false);
+            Bareme bareme = BaremeStore.Ajouter("103", "30/07/07", "VACC", "Vaccination DT", 11, 10, 14, vaccin, false);
+            LigneFacture ligneFacture = LigneFactureStore.Ajouter(facture, bareme, 135, false);
+            Console.WriteLine("INSERT");
+            Console.ReadKey();
+            Console.WriteLine("UPDATE");
+            LigneFactureStore.Modifier(ligneFacture, facture, bareme, 1350, true);
+            Console.ReadKey();
+            Console.WriteLine("DELETE");
+            LigneFactureStore.Supprimer(ligneFacture);
+        }
+
+        private static void runCreationFacture()
+        {
+            Client client = ClientControler.AjouterClient("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
+            Facture facture = FactureStore.Ajouter(client, DateTime.Now.ToUniversalTime(), Facture.eFactureEtats.a_imprimer, 135, DateTime.Now.ToUniversalTime(), false);
+            Console.WriteLine("INSERT");
+            Console.ReadKey();
+            Console.WriteLine("UPDATE");
+            FactureStore.Modifier(facture, client, DateTime.Now.ToUniversalTime(), Facture.eFactureEtats.payee, 2500, DateTime.Now.ToUniversalTime(), false);
+            Console.ReadKey();
+            Console.WriteLine("DELETE");
+            FactureStore.Supprimer(facture);
+        }
+
+        private static void runCreationBareme()
+        {
+            Vaccin vaccin = VaccinController.Instance.AjouterVaccin("VIH Vaccin", 50, 2, false);
+            Bareme bareme = BaremeStore.Ajouter("103", "30/07/07", "VACC", "Vaccination DT", 11, 10, 14, vaccin, false);
+            Console.WriteLine("INSERT");
+            Console.ReadKey();
+            Console.WriteLine("UPDATE");
+            BaremeStore.Modifier(bareme, "VACC", "Vaccination DT americanos", 110, 100, 140, vaccin);
+            Console.ReadKey();
+            Console.WriteLine("DELETE");
+            BaremeStore.Supprimer(bareme);
         }
 
         private static void runCreationAnimal()

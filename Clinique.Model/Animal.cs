@@ -121,6 +121,7 @@ namespace Clinique.Model
         public Client Client
         {
             get { return _client; }
+
             set { 
                 _client = value;
                 CodeClient = _client.CodeClient;
