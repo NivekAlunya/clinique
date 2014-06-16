@@ -11,8 +11,14 @@ namespace Clinique.Model
     [Persist("Veterinaires")]
     public class Veterinaire
     {
+        #region attributes 
         private Guid _codeVeto;
+        private string _nomVeto;
+        private string _motPasse;
+        private bool _archive;
+        #endregion
 
+        #region properties
         [Persist(System.Data.SqlDbType.UniqueIdentifier, Persist.FieldBehaviour.pk)]
         public Guid CodeVeto
         {
@@ -20,37 +26,69 @@ namespace Clinique.Model
             set { _codeVeto = value; }
         }
 
-        private string  _nomVeto;
+        /// <summary>
+        /// Propriete NomVeto
+        /// </summary>
+        /// <exception cref="[Exception] Le mot de passe ne peut être nul ou contenir que des espaces"></exception>
         [Persist(System.Data.SqlDbType.VarChar)]
         public string  NomVeto
         {
             get { return _nomVeto; }
-            set { _nomVeto = value; }
+            set {
+                if (string.IsNullOrWhiteSpace(value)) throw new Exception("Nom ne peut être nul ou contenir que des espaces");
+                _nomVeto = value; 
+            }
         }
 
-        private string _motPasse;
-        [Persist(System.Data.SqlDbType.VarChar)]
-        public string MotPasse
+        /// <summary>
+        /// Propriete MotDePasse
+        /// </summary>
+        /// <exception cref="[Exception] Le mot de passe ne peut être nul ou contenir que des espaces"></exception>
+        [Persist(System.Data.SqlDbType.VarChar,Persist.FieldBehaviour.common,"MotPasse")]
+        public string MotDePasse
         {
             get { return _motPasse; }
-            set { _motPasse = value; }
+            set {
+                if (string.IsNullOrWhiteSpace(value)) throw new Exception("Le mot de passe ne peut être nul ou contenir que des espaces");
+                _motPasse = value; 
+            }
         }
 
-        private bool _archive;
+        /// <summary>
+        /// Propriete Archive
+        /// </summary>
+        /// <exception cref="[Exception] Le mot de passe ne peut être nul ou contenir que des espaces"></exception>
         [Persist(System.Data.SqlDbType.Bit)]
         public bool Archive
         {
             get { return _archive; }
             set { _archive = value; }
         }
-
-        public Veterinaire(Guid codeVeto, string nomVeto, string motDePasse, bool archive)
+        #endregion
+        #region constructors
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="codeVeto"></param>
+        /// <param name="nomVeto"></param>
+        /// <param name="motDePasse"></param>
+        /// <param name="archive"></param>
+        /// <exception cref="[Exception] probleme sur affectation de valeur sur les proprietes"
+        public Veterinaire(Guid codeVeto, string nomVeto, string motDePasse, bool archive = false)
         { 
             CodeVeto =  codeVeto;
-            MotPasse = motDePasse;
-            NomVeto = nomVeto;
-            Archive = archive;
+            try
+            {
+                MotDePasse = motDePasse;
+                NomVeto = nomVeto;
+                Archive = archive;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Un veterinaire ne peut être cree avec ces valeurs", e);
+            }
         }
+        #endregion
 
     }
 }

@@ -33,7 +33,7 @@ namespace Clinique.Model
 
         private DateTime _dateRdv;
 
-        [Persist(SqlDbType.DateTime, Persist.FieldBehaviour.pk)]
+        [Persist(SqlDbType.SmallDateTime, Persist.FieldBehaviour.pk)]
         public DateTime DateRdv
         {
             get { return _dateRdv; }

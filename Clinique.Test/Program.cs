@@ -28,8 +28,8 @@ namespace Clinique.Test
             //runCreationFacture();
             //runCreationLignesFacture();
             //runCreationRace();
-            //runCreationAgenda();
-            runCreationConsultationFull();
+            runCreationAgenda();
+            //runCreationConsultationFull();
 
             Console.ReadKey();
         }
@@ -109,36 +109,7 @@ namespace Clinique.Test
             Agenda agenda = AgendaController.Instance.AjouterAgenda(veto, animal, DateTime.Now);
             Console.ReadKey();
             Console.WriteLine("DELETE");
-            
-            //AgendaController.Instance.SupprimerAgenda(agenda);
-
-            IDbConnection cn = Database.Instance.getConnection();
-
-            IDbCommand cmd = cn.CreateCommand();
-
-            IDataParameter param;
-            param = cmd.CreateParameter();
-            param.Value = agenda.CodeVeto;
-            param.ParameterName = "@CodeVeto";
-            cmd.Parameters.Add(param);
-
-            param = cmd.CreateParameter();
-            param.Value = agenda.CodeAnimal;
-            param.ParameterName = "@CodeAnimal";
-            cmd.Parameters.Add(param);
-
-            param = cmd.CreateParameter();
-            param.Value = agenda.DateRdv;
-            param.ParameterName = "@DateRdv";
-            cmd.Parameters.Add(param);
-
-            cmd.CommandType = CommandType.Text;
-
-            cmd.CommandText = "delete from Agendas where CodeVeto=@CodeVeto and Codeanimal=@CodeAnimal and DateRdv=@DateRdv";
-            cn.Open();
-            Console.WriteLine(cmd.ExecuteNonQuery());
-            cn.Close();
-
+            AgendaController.Instance.SupprimerAgenda(agenda);
             AnimalStore.Supprimer(animal);
             ClientStore.Supprimer(amede);
             RaceStore.Supprimer(Labrador);

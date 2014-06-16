@@ -32,6 +32,14 @@ namespace Clinique.Store
         }
         #endregion
 
+        public static T read<T>(IDataReader reader,string field)
+        {
+            return (T)reader.GetValue(reader.GetOrdinal(field));
+        }
+
+        public static void close(IDbConnection cn) {
+            if(cn.State == ConnectionState.Open) cn.Close();
+        }
         public IDbConnection getConnection()
         { 
             return _connection;
@@ -121,6 +129,8 @@ namespace Clinique.Store
                         param = cmd.CreateParameter();
                         param.ParameterName = "@" + name;
                         param.Value = value;
+                        //Patch for non generic  sql type
+                        if (SqlDbType.SmallDateTime == prop.DbType) param.DbType = DbType.String;
                         //param.DbType = (DbType)prop.DbType;
                         cmd.Parameters.Add(param);
 
