@@ -44,8 +44,62 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgendaView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgendaView.Designer.cs">
+      <DependentUpon>AgendaView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnimalView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnimalView.Designer.cs">
+      <DependentUpon>AnimalView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientView.Designer.cs">
+      <DependentUpon>ClientView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConnexionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnexionView.Designer.cs">
+      <DependentUpon>ConnexionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultationView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultationView.Designer.cs">
+      <DependentUpon>ConsultationView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DossierMedicalView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DossierMedicalView.Designer.cs">
+      <DependentUpon>DossierMedicalView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AgendaView.resx">
+      <DependentUpon>AgendaView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnimalView.resx">
+      <DependentUpon>AnimalView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientView.resx">
+      <DependentUpon>ClientView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnexionView.resx">
+      <DependentUpon>ConnexionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultationView.resx">
+      <DependentUpon>ConsultationView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DossierMedicalView.resx">
+      <DependentUpon>DossierMedicalView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -54,6 +108,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -67,6 +122,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clinique.Controller\Clinique.Controller.csproj">
+      <Project>{e1a1e04e-dd60-43be-b3a9-4a7264ef08d5}</Project>
+      <Name>Clinique.Controller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clinique.Model\Clinique.Model.csproj">
+      <Project>{8dae0284-a0b4-4b56-a328-aa013c2c0459}</Project>
+      <Name>Clinique.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clinique.Store\Clinique.Store.csproj">
+      <Project>{13ec545b-0b69-4f63-9d91-9b95e0f70ea1}</Project>
+      <Name>Clinique.Store</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

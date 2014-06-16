@@ -136,5 +136,25 @@ namespace Clinique.Model
             set { _archive = value; }
         }
 
+        /// <summary>
+        /// Tri par défaut
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
+        public int CompareTo(Client client)
+        {
+            return CompareParNom(this, client);
+        }
+
+        public static int CompareParNom(Client client1, Client client2)
+        {
+            int functionReturnValue = 0;
+            functionReturnValue = client1.NomClient.CompareTo(client2.NomClient);
+
+            return functionReturnValue;
+
+        }
+
+
     }
 }
