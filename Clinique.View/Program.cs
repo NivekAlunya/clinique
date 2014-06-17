@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-<<<<<<< Updated upstream
 using Clinique.Model;
 using Clinique.Store;
 
-=======
-using Clinique.View;
->>>>>>> Stashed changes
 namespace Clinique.View
 {
     static class Program

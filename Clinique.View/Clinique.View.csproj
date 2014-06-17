@@ -122,6 +122,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="VeterinaireFormulaireView.resx">
+      <DependentUpon>VeterinaireFormulaireView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VeterinaireView.resx">
+      <DependentUpon>VeterinaireView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -147,6 +153,10 @@
     <ProjectReference Include="..\Clinique.Store\Clinique.Store.csproj">
       <Project>{13ec545b-0b69-4f63-9d91-9b95e0f70ea1}</Project>
       <Name>Clinique.Store</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clinique.Tools\Clinique.Tools.csproj">
+      <Project>{237fe4e2-5df8-4517-a307-3c8a5ac14e84}</Project>
+      <Name>Clinique.Tools</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
