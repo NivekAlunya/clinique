@@ -95,7 +95,8 @@ namespace Clinique.Store
                         else
                         {
                             //Tester si enumeration et cast via le sqldbtype
-                            if (value.GetType().IsEnum)
+
+                            if ( null != value && value.GetType().IsEnum)
                             {
                                 switch (prop.DbType)
                                 {
@@ -137,7 +138,7 @@ namespace Clinique.Store
                         parameters.Add(name, prop.Behaviour);
                         param = cmd.CreateParameter();
                         param.ParameterName = "@" + name;
-                        param.Value = value;
+                        param.Value = null == value ? DBNull.Value : value;
                         //Patch for non generic  sql type
                         if (SqlDbType.SmallDateTime == prop.DbType) param.DbType = DbType.String;
                         //param.DbType = (DbType)prop.DbType;

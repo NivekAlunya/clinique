@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaremeController.cs" />
-    <Compile Include="ClientControler.cs" />
+    <Compile Include="ClientController.cs" />
     <Compile Include="ConnexionController.cs" />
     <Compile Include="FactureController.cs" />
     <Compile Include="LigneFactureController.cs" />

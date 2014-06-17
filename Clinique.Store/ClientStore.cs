@@ -73,37 +73,93 @@ namespace Clinique.Store
                 Database.close(cn);
             }
         }
-
+        /// <summary>
+        /// Ajouter un client dans le store et persiste dans la base
+        /// </summary>
+        /// <param name="nomClient"></param>
+        /// <param name="prenomClient"></param>
+        /// <param name="adresse1"></param>
+        /// <param name="adresse2"></param>
+        /// <param name="codePostal"></param>
+        /// <param name="ville"></param>
+        /// <param name="numTel"></param>
+        /// <param name="assurance"></param>
+        /// <param name="email"></param>
+        /// <param name="remarque"></param>
+        /// <param name="archive"></param>
+        /// <returns>Null si l'insertion n'a pas ete effectuee</returns>
+        /// <exception cref="Exception:  erreur sur insertion en DB"></exception>
         public static Client Ajouter ( string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
             string ville, string numTel, string assurance, string email, string remarque, Boolean archive)
         {
             Client client = new Client(Guid.NewGuid(), nomClient, prenomClient, adresse1, adresse2, codePostal,
              ville, numTel, assurance, email, remarque, archive);
-            Database.Instance.insert(client);
-            
-            return client;
+            try
+            {
+                if (Database.Instance.insert(client))
+                {
+                    _clients.Add(client);
+                    return client;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erreur sur modification et persistance du client en base de données", e);
+            }
+            return null;
         }
-    
+        /// <summary>
+        /// Modifie un client dans le store et persiste dans la base
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="nomClient"></param>
+        /// <param name="prenomClient"></param>
+        /// <param name="adresse1"></param>
+        /// <param name="adresse2"></param>
+        /// <param name="codePostal"></param>
+        /// <param name="ville"></param>
+        /// <param name="numTel"></param>
+        /// <param name="assurance"></param>
+        /// <param name="email"></param>
+        /// <param name="remarque"></param>
+        /// <param name="archive"></param>
+        /// <exception cref="Exception:  erreur sur insertion en DB"></exception>
         public static void Modifier(Client client, string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
             string ville, string numTel, string assurance, string email, string remarque, Boolean archive)
         {
-             client.NomClient = nomClient;
-             client.PrenomClient = prenomClient;
-             client.Adresse1 = adresse1;
-             client.Adresse2 = adresse2;
-             client.Archive = archive;
-             client.Assurance = assurance;
-             client.CodePostal = codePostal;
-             client.Email = email;
-             client.NumTel = numTel;
-             client.Remarque = remarque;
-             client.Ville = ville;
-             Database.Instance.update(client);
+            client.NomClient = nomClient;
+            client.PrenomClient = prenomClient;
+            client.Adresse1 = adresse1;
+            client.Adresse2 = adresse2;
+            client.Archive = archive;
+            client.Assurance = assurance;
+            client.CodePostal = codePostal;
+            client.Email = email;
+            client.NumTel = numTel;
+            client.Remarque = remarque;
+            client.Ville = ville;
+            try
+            {
+                Database.Instance.update(client);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erreur sur modification et persistance du client en base de données",e);
+            }
+            
         }
-
+        /// <summary>
+        /// archive le client
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
         public static bool Supprimer(Client client)
         {
-            return Database.Instance.delete(client);
+            //@todo get facture.
+            //@todo archiver animaux du client
+            client.Archive = true;
+            Database.Instance.update(client);
+            return true;
         }
         #endregion
     }

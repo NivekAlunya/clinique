@@ -9,7 +9,7 @@ using Clinique.Store;
 using Clinique.Model;
 namespace Clinique.Controller
 {
-    public class ClientControler
+    public class ClientController
     {
         #region attributes
         private BindingList<Client> _clients;
@@ -28,13 +28,13 @@ namespace Clinique.Controller
         }
         #endregion
         #region Singleton Pattern
-        private static ClientControler _instance = null;
-	    public static ClientControler  Instance
+        private static ClientController _instance = null;
+	    public static ClientController  Instance
 	    {
-		    get { return _instance == null ? _instance = new ClientControler() : _instance;}
+		    get { return _instance == null ? _instance = new ClientController() : _instance;}
 	    }
 
-        private ClientControler()
+        private ClientController()
         {
             Clients = new BindingList<Client>(
                 ClientStore.Clients.FindAll((Client c) => c.Archive == false)
@@ -46,8 +46,10 @@ namespace Clinique.Controller
         public Client AjouterClient (string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
             string ville, string numTel, string assurance, string email, string remarque, Boolean archive)
         {
-            return ClientStore.Ajouter (nomClient, prenomClient, adresse1, adresse2, codePostal,
+            Client c = ClientStore.Ajouter(nomClient, prenomClient, adresse1, adresse2, codePostal,
              ville, numTel, assurance, email, remarque, archive);
+            this.Clients.Add(c);
+            return c;
         }
 
         public void ModifierClient(Client client, string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,

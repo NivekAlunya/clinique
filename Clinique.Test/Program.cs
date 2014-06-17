@@ -36,7 +36,7 @@ namespace Clinique.Test
 
         private static void runCreationLignesFacture()
         {
-            Client client = ClientControler.AjouterClient("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
+            Client client = ClientController.Instance.AjouterClient("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
             Facture facture = FactureStore.Ajouter(client, DateTime.Now.ToUniversalTime(), Facture.eFactureEtats.a_imprimer, 135, DateTime.Now.ToUniversalTime(), false);
             Vaccin vaccin = VaccinController.Instance.AjouterVaccin("VIH Vaccin", 50, 2, false);
             Bareme bareme = BaremeStore.Ajouter("103", "30/07/07", "VACC", "Vaccination DT", 11, 10, 14, vaccin, false);
@@ -52,7 +52,7 @@ namespace Clinique.Test
 
         private static void runCreationFacture()
         {
-            Client client = ClientControler.AjouterClient("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
+            Client client = ClientController.Instance.AjouterClient("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
             Facture facture = FactureStore.Ajouter(client, DateTime.Now.ToUniversalTime(), Facture.eFactureEtats.a_imprimer, 135, DateTime.Now.ToUniversalTime(), false);
             Console.WriteLine("INSERT");
             Console.ReadKey();
@@ -145,14 +145,14 @@ namespace Clinique.Test
         {
             
             Console.WriteLine("INSERT");
-            Client client = ClientControler.AjouterClient("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false); 
+            Client client = ClientController.Instance.AjouterClient("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false); 
 
             Console.ReadKey();
             Console.WriteLine("UPDATE");
-            ClientControler.ModifierClient(client, "Bug", "Ade", "3 rue", "", "44950", "Flurre", "0666785713", "AGPM", "bens360@jjh.fr", "Pas de remarque", false);  
+            ClientController.Instance.ModifierClient(client, "Bug", "Ade", "3 rue", "", "44950", "Flurre", "0666785713", "AGPM", "bens360@jjh.fr", "Pas de remarque", false);  
             Console.ReadKey();
             Console.WriteLine("DELETE");
-            ClientControler.SupprimerClient(client);
+            ClientController.Instance.SupprimerClient(client);
            }
 
         private static void runCreationVaccin()
@@ -191,8 +191,6 @@ namespace Clinique.Test
             //Console.ReadKey();
             //Console.WriteLine("DELETE");
             //Database.Instance.delete(cred);
-
-
             
         }
 

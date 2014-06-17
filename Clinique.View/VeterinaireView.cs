@@ -22,7 +22,7 @@ namespace Clinique.View
         #endregion
         #region attributes
         State _state = State.Stateless;
-        List<System.Windows.Forms.Control> stateControl = new List<System.Windows.Forms.Control>();
+        List<System.Windows.Forms.Control> stateControls = new List<System.Windows.Forms.Control>();
         #endregion
         #region constructors
         /// <summary>
@@ -34,10 +34,10 @@ namespace Clinique.View
             this.btnInit.Tag = this.btnSupprimer.Tag = this.lstVeterinaires.Tag = State.Selection;
             this.btnAjouter.Tag = State.Selection | State.Stateless;
 
-            this.stateControl.Add(this.btnInit);
-            this.stateControl.Add(this.btnSupprimer);
-            this.stateControl.Add(this.btnAjouter);
-            this.stateControl.Add(this.lstVeterinaires);
+            this.stateControls.Add(this.btnInit);
+            this.stateControls.Add(this.btnSupprimer);
+            this.stateControls.Add(this.btnAjouter);
+            this.stateControls.Add(this.lstVeterinaires);
 
 
             this.lstVeterinaires.DisplayMember = "NomVeto";
@@ -119,7 +119,7 @@ namespace Clinique.View
         private void _setState(State state)
         {
             _state = state;
-            foreach (Control ctrl in stateControl)
+            foreach (Control ctrl in stateControls)
                 ctrl.Enabled = _state == ((State)ctrl.Tag & _state);
         }
         #endregion

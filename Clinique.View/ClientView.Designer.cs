@@ -31,8 +31,8 @@
             this.gpbClient = new System.Windows.Forms.GroupBox();
             this.txtRechercherClient = new System.Windows.Forms.TextBox();
             this.btnRechercher = new System.Windows.Forms.Button();
-            this.btnSupprimerClient1 = new System.Windows.Forms.Button();
-            this.btnAjouterClient1 = new System.Windows.Forms.Button();
+            this.btnSupprimerClient = new System.Windows.Forms.Button();
+            this.btnAjouterClient = new System.Windows.Forms.Button();
             this.btnDernier = new System.Windows.Forms.Button();
             this.btnSuivant = new System.Windows.Forms.Button();
             this.btnPrecedent = new System.Windows.Forms.Button();
@@ -45,9 +45,9 @@
             this.txtCodePostal = new System.Windows.Forms.TextBox();
             this.txtVille = new System.Windows.Forms.TextBox();
             this.dgvAnimaux = new System.Windows.Forms.DataGridView();
-            this.btnAjouterClient2 = new System.Windows.Forms.Button();
-            this.btnSupprimerClient2 = new System.Windows.Forms.Button();
-            this.btnEditerEditer = new System.Windows.Forms.Button();
+            this.btnAjouterAnimal = new System.Windows.Forms.Button();
+            this.btnSupprimerAnimal = new System.Windows.Forms.Button();
+            this.btnEditerAnimal = new System.Windows.Forms.Button();
             this.lblCode = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,8 +64,8 @@
             // 
             this.gpbClient.Controls.Add(this.txtRechercherClient);
             this.gpbClient.Controls.Add(this.btnRechercher);
-            this.gpbClient.Controls.Add(this.btnSupprimerClient1);
-            this.gpbClient.Controls.Add(this.btnAjouterClient1);
+            this.gpbClient.Controls.Add(this.btnSupprimerClient);
+            this.gpbClient.Controls.Add(this.btnAjouterClient);
             this.gpbClient.Controls.Add(this.btnDernier);
             this.gpbClient.Controls.Add(this.btnSuivant);
             this.gpbClient.Controls.Add(this.btnPrecedent);
@@ -78,42 +78,40 @@
             // 
             // txtRechercherClient
             // 
-            this.txtRechercherClient.Location = new System.Drawing.Point(579, 39);
+            this.txtRechercherClient.Location = new System.Drawing.Point(537, 39);
             this.txtRechercherClient.Name = "txtRechercherClient";
-            this.txtRechercherClient.Size = new System.Drawing.Size(100, 20);
+            this.txtRechercherClient.Size = new System.Drawing.Size(181, 20);
             this.txtRechercherClient.TabIndex = 6;
             // 
             // btnRechercher
             // 
-            this.btnRechercher.Location = new System.Drawing.Point(735, 12);
+            this.btnRechercher.Location = new System.Drawing.Point(729, 12);
             this.btnRechercher.Name = "btnRechercher";
             this.btnRechercher.Size = new System.Drawing.Size(75, 71);
             this.btnRechercher.TabIndex = 7;
             this.btnRechercher.Text = "&Rechercher";
             this.btnRechercher.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRechercher.UseVisualStyleBackColor = true;
-            this.btnRechercher.Click += new System.EventHandler(this.btnRechercher_Click);
             // 
-            // btnSupprimerClient1
+            // btnSupprimerClient
             // 
-            this.btnSupprimerClient1.Location = new System.Drawing.Point(456, 12);
-            this.btnSupprimerClient1.Name = "btnSupprimerClient1";
-            this.btnSupprimerClient1.Size = new System.Drawing.Size(75, 71);
-            this.btnSupprimerClient1.TabIndex = 5;
-            this.btnSupprimerClient1.Text = "&Supprimer";
-            this.btnSupprimerClient1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSupprimerClient1.UseVisualStyleBackColor = true;
+            this.btnSupprimerClient.Location = new System.Drawing.Point(456, 12);
+            this.btnSupprimerClient.Name = "btnSupprimerClient";
+            this.btnSupprimerClient.Size = new System.Drawing.Size(75, 71);
+            this.btnSupprimerClient.TabIndex = 5;
+            this.btnSupprimerClient.Text = "&Supprimer";
+            this.btnSupprimerClient.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSupprimerClient.UseVisualStyleBackColor = true;
             // 
-            // btnAjouterClient1
+            // btnAjouterClient
             // 
-            this.btnAjouterClient1.Location = new System.Drawing.Point(375, 12);
-            this.btnAjouterClient1.Name = "btnAjouterClient1";
-            this.btnAjouterClient1.Size = new System.Drawing.Size(75, 71);
-            this.btnAjouterClient1.TabIndex = 4;
-            this.btnAjouterClient1.Text = "&Ajouter";
-            this.btnAjouterClient1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAjouterClient1.UseVisualStyleBackColor = true;
-            this.btnAjouterClient1.Click += new System.EventHandler(this.btnAjouterClient1_Click);
+            this.btnAjouterClient.Location = new System.Drawing.Point(375, 12);
+            this.btnAjouterClient.Name = "btnAjouterClient";
+            this.btnAjouterClient.Size = new System.Drawing.Size(75, 71);
+            this.btnAjouterClient.TabIndex = 4;
+            this.btnAjouterClient.Text = "&Ajouter";
+            this.btnAjouterClient.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAjouterClient.UseVisualStyleBackColor = true;
             // 
             // btnDernier
             // 
@@ -157,8 +155,10 @@
             // 
             // txtCode
             // 
+            this.txtCode.Enabled = false;
             this.txtCode.Location = new System.Drawing.Point(93, 107);
             this.txtCode.Name = "txtCode";
+            this.txtCode.ReadOnly = true;
             this.txtCode.Size = new System.Drawing.Size(156, 20);
             this.txtCode.TabIndex = 7;
             // 
@@ -212,36 +212,35 @@
             this.dgvAnimaux.Size = new System.Drawing.Size(561, 176);
             this.dgvAnimaux.TabIndex = 14;
             // 
-            // btnAjouterClient2
+            // btnAjouterAnimal
             // 
-            this.btnAjouterClient2.Location = new System.Drawing.Point(523, 310);
-            this.btnAjouterClient2.Name = "btnAjouterClient2";
-            this.btnAjouterClient2.Size = new System.Drawing.Size(75, 71);
-            this.btnAjouterClient2.TabIndex = 15;
-            this.btnAjouterClient2.Text = "&Ajouter";
-            this.btnAjouterClient2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAjouterClient2.UseVisualStyleBackColor = true;
-            this.btnAjouterClient2.Click += new System.EventHandler(this.btnAjouterClient2_Click);
+            this.btnAjouterAnimal.Location = new System.Drawing.Point(579, 289);
+            this.btnAjouterAnimal.Name = "btnAjouterAnimal";
+            this.btnAjouterAnimal.Size = new System.Drawing.Size(75, 71);
+            this.btnAjouterAnimal.TabIndex = 15;
+            this.btnAjouterAnimal.Text = "&Ajouter";
+            this.btnAjouterAnimal.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAjouterAnimal.UseVisualStyleBackColor = true;
             // 
-            // btnSupprimerClient2
+            // btnSupprimerAnimal
             // 
-            this.btnSupprimerClient2.Location = new System.Drawing.Point(604, 310);
-            this.btnSupprimerClient2.Name = "btnSupprimerClient2";
-            this.btnSupprimerClient2.Size = new System.Drawing.Size(75, 71);
-            this.btnSupprimerClient2.TabIndex = 16;
-            this.btnSupprimerClient2.Text = "&Supprimer";
-            this.btnSupprimerClient2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSupprimerClient2.UseVisualStyleBackColor = true;
+            this.btnSupprimerAnimal.Location = new System.Drawing.Point(660, 289);
+            this.btnSupprimerAnimal.Name = "btnSupprimerAnimal";
+            this.btnSupprimerAnimal.Size = new System.Drawing.Size(75, 71);
+            this.btnSupprimerAnimal.TabIndex = 16;
+            this.btnSupprimerAnimal.Text = "&Supprimer";
+            this.btnSupprimerAnimal.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSupprimerAnimal.UseVisualStyleBackColor = true;
             // 
-            // btnEditerEditer
+            // btnEditerAnimal
             // 
-            this.btnEditerEditer.Location = new System.Drawing.Point(685, 310);
-            this.btnEditerEditer.Name = "btnEditerEditer";
-            this.btnEditerEditer.Size = new System.Drawing.Size(75, 71);
-            this.btnEditerEditer.TabIndex = 17;
-            this.btnEditerEditer.Text = "&Editer";
-            this.btnEditerEditer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEditerEditer.UseVisualStyleBackColor = true;
+            this.btnEditerAnimal.Location = new System.Drawing.Point(741, 289);
+            this.btnEditerAnimal.Name = "btnEditerAnimal";
+            this.btnEditerAnimal.Size = new System.Drawing.Size(75, 71);
+            this.btnEditerAnimal.TabIndex = 17;
+            this.btnEditerAnimal.Text = "&Editer";
+            this.btnEditerAnimal.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEditerAnimal.UseVisualStyleBackColor = true;
             // 
             // lblCode
             // 
@@ -299,18 +298,17 @@
             // 
             // btnValider
             // 
-            this.btnValider.Location = new System.Drawing.Point(523, 387);
+            this.btnValider.Location = new System.Drawing.Point(93, 289);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(75, 71);
             this.btnValider.TabIndex = 24;
             this.btnValider.Text = "&Valider";
             this.btnValider.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnValider.UseVisualStyleBackColor = true;
-            this.btnValider.Visible = false;
             // 
             // btnAnnuler
             // 
-            this.btnAnnuler.Location = new System.Drawing.Point(604, 387);
+            this.btnAnnuler.Location = new System.Drawing.Point(174, 289);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(75, 71);
             this.btnAnnuler.TabIndex = 25;
@@ -322,7 +320,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 462);
+            this.ClientSize = new System.Drawing.Size(816, 462);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.label5);
@@ -331,9 +329,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblCode);
-            this.Controls.Add(this.btnEditerEditer);
-            this.Controls.Add(this.btnSupprimerClient2);
-            this.Controls.Add(this.btnAjouterClient2);
+            this.Controls.Add(this.btnEditerAnimal);
+            this.Controls.Add(this.btnSupprimerAnimal);
+            this.Controls.Add(this.btnAjouterAnimal);
             this.Controls.Add(this.dgvAnimaux);
             this.Controls.Add(this.txtVille);
             this.Controls.Add(this.txtCodePostal);
@@ -360,8 +358,8 @@
         private System.Windows.Forms.Button btnPrecedent;
         private System.Windows.Forms.TextBox txtRechercherClient;
         private System.Windows.Forms.Button btnRechercher;
-        private System.Windows.Forms.Button btnSupprimerClient1;
-        private System.Windows.Forms.Button btnAjouterClient1;
+        private System.Windows.Forms.Button btnSupprimerClient;
+        private System.Windows.Forms.Button btnAjouterClient;
         private System.Windows.Forms.Button btnDernier;
         private System.Windows.Forms.Button btnSuivant;
         private System.Windows.Forms.TextBox txtCode;
@@ -372,9 +370,9 @@
         private System.Windows.Forms.TextBox txtCodePostal;
         private System.Windows.Forms.TextBox txtVille;
         private System.Windows.Forms.DataGridView dgvAnimaux;
-        private System.Windows.Forms.Button btnAjouterClient2;
-        private System.Windows.Forms.Button btnSupprimerClient2;
-        private System.Windows.Forms.Button btnEditerEditer;
+        private System.Windows.Forms.Button btnAjouterAnimal;
+        private System.Windows.Forms.Button btnSupprimerAnimal;
+        private System.Windows.Forms.Button btnEditerAnimal;
         private System.Windows.Forms.Label lblCode;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
