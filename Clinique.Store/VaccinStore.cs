@@ -7,9 +7,23 @@ using Clinique.Model;
 
 namespace Clinique.Store
 {
-    public static class VaccinStore
+    public class VaccinStore
     {
-        public static Vaccin Ajouter(string nomVaccin, int quantiteStock, byte periodeValidite, bool archive)
+        #region Singleton pattern
+        private static VaccinStore _instance = null;
+        
+        public static VaccinStore Instance { 
+            get {
+                return null == _instance ? _instance = new VaccinStore() : _instance;
+            }
+        }
+
+        private VaccinStore()
+        {
+
+        }
+        #endregion
+        public Vaccin Ajouter(string nomVaccin, int quantiteStock, byte periodeValidite, bool archive)
         {
             Vaccin vaccin = new Vaccin(Guid.NewGuid(), nomVaccin, quantiteStock, periodeValidite, archive);
             Database.Instance.insert(vaccin);
@@ -17,7 +31,7 @@ namespace Clinique.Store
             return vaccin;
         }
 
-        public static void Modifier(Vaccin vaccin, string nomVaccin, int quantiteStock, byte periodeValidite, bool archive)
+        public void Modifier(Vaccin vaccin, string nomVaccin, int quantiteStock, byte periodeValidite, bool archive)
         {
             vaccin.NomVaccin = nomVaccin;
             vaccin.QuantiteStock = quantiteStock;
@@ -26,7 +40,7 @@ namespace Clinique.Store
             Database.Instance.update(vaccin);
         }
 
-        public static bool Supprimer(Vaccin vaccin)
+        public bool Supprimer(Vaccin vaccin)
         {
             return Database.Instance.delete(vaccin);
         }

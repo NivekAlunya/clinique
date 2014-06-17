@@ -6,9 +6,25 @@ using System.Threading.Tasks;
 using Clinique.Model;
 namespace Clinique.Store
 {
-    public static class AgendaStore
+    public class AgendaStore
     {
-        public static Agenda Ajouter(Veterinaire veto, Animal animal, DateTime dateRdv)
+        #region Singleton pattern
+        private static AgendaStore _instance = null;
+        
+        public static AgendaStore Instance { 
+            get {
+                return null == _instance ? _instance = new AgendaStore() : _instance;
+            }
+        }
+
+        private AgendaStore()
+        {
+
+        }
+        #endregion
+        #region attributes
+
+        public Agenda Ajouter(Veterinaire veto, Animal animal, DateTime dateRdv)
         {
             Agenda agenda = new Agenda(veto, animal, dateRdv);
             Database.Instance.insert(agenda);
@@ -16,7 +32,7 @@ namespace Clinique.Store
             return agenda;
         }
 
-        public static void Modifier(Agenda agenda, Veterinaire veto, Animal animal, DateTime dateRdv)
+        public void Modifier(Agenda agenda, Veterinaire veto, Animal animal, DateTime dateRdv)
         {
             agenda.Veto = veto;
             agenda.DateRdv = dateRdv;
@@ -24,9 +40,10 @@ namespace Clinique.Store
             Database.Instance.update(agenda);
         }
 
-        public static bool Supprimer(Agenda agenda)
+        public bool Supprimer(Agenda agenda)
         {
             return Database.Instance.delete(agenda);
         }
+        #endregion
     }
 }

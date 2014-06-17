@@ -42,7 +42,7 @@ namespace Clinique.Controller
         private AnimalController()
         {
             Animaux = new BindingList<Animal>(
-                AnimalStore.Animaux.FindAll((Animal a) => a.Archive == false)
+                AnimalStore.Instance.Animaux.FindAll((Animal a) => a.Archive == false)
                 );
         }
         #endregion
@@ -61,7 +61,7 @@ namespace Clinique.Controller
         public Animal AjouterAnimal(string nomAnimal, Animal.eSexe sexe, string couleur, Race race,
              string tatouage, string antecedant, bool archive, Client client)
         {
-            Animal a = AnimalStore.Ajouter(nomAnimal, sexe, couleur, race,
+            Animal a = AnimalStore.Instance.Ajouter(nomAnimal, sexe, couleur, race,
              tatouage, antecedant, archive, client);
             this.Animaux.Add(a);
             return a;
@@ -70,16 +70,15 @@ namespace Clinique.Controller
         public void ModifierAnimal(Animal animal, string nomAnimal, Animal.eSexe sexe, string couleur, Race race,
              string tatouage, string antecedents, Client client, bool archive = false)
         {
-            AnimalStore.Modifier(animal, nomAnimal, sexe, couleur, race,
+            AnimalStore.Instance.Modifier(animal, nomAnimal, sexe, couleur, race,
              tatouage, antecedents, archive, client);
         }
 
         public bool SupprimerAnimal(Animal animal)
         {
             this.Animaux.Remove(animal);
-            return AnimalStore.Supprimer(animal);
+            return AnimalStore.Instance.Supprimer(animal);
         }
 
-    
     }
 }

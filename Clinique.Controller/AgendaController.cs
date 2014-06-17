@@ -11,25 +11,27 @@ namespace Clinique.Controller
     {
          #region Singleton pattern
         private static AgendaController _instance = null;
+        
         public static AgendaController Instance { 
             get {
                 return null == _instance ? _instance = new AgendaController() : _instance;
             }
         }
+
         private AgendaController()
         {
-                
+
         }
         #endregion
 
         public Agenda AjouterAgenda(Veterinaire veto, Animal animal, DateTime dateRdv)
         {
-            return AgendaStore.Ajouter(veto, animal, dateRdv);
+            return AgendaStore.Instance.Ajouter(veto, animal, dateRdv);
         }
 
         public bool SupprimerAgenda(Agenda agenda)
         {
-            return AgendaStore.Supprimer(agenda);
+            return AgendaStore.Instance.Supprimer(agenda);
         }
     }
 }

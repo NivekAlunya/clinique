@@ -25,17 +25,17 @@ namespace Clinique.Controller
 
         public Consultation AjouterConsultation(Facture facture, Veterinaire veto, Animal animal, DateTime dateConsultation, Consultation.eConsultationEtat etat, string commentaire, bool archive)
         {
-            return ConsultationStore.Ajouter(facture, veto, animal, dateConsultation, etat, commentaire, archive);
+            return ConsultationStore.Instance.Ajouter(facture, veto, animal, dateConsultation, etat, commentaire, archive);
         }
 
         public void ModifierConsultation(Consultation consultation,Facture facture, Veterinaire veto,DateTime dateConsultation, Consultation.eConsultationEtat etat, string commentaire,bool archive)
         {
-            ConsultationStore.Modifier(consultation, facture, veto, dateConsultation, etat, commentaire, archive);
+            ConsultationStore.Instance.Modifier(consultation, facture, veto, dateConsultation, etat, commentaire, archive);
         }
 
         public bool Supprimerconsultation(Consultation consultation)
         {
-            return ConsultationStore.Supprimer(consultation);
+            return ConsultationStore.Instance.Supprimer(consultation);
         }
     }
 }

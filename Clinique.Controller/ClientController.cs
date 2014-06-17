@@ -37,7 +37,7 @@ namespace Clinique.Controller
         private ClientController()
         {
             Clients = new BindingList<Client>(
-                ClientStore.Clients.FindAll((Client c) => c.Archive == false)
+                ClientStore.Instance.Clients.FindAll((Client c) => c.Archive == false)
             );
         }
         #endregion
@@ -46,7 +46,7 @@ namespace Clinique.Controller
         public Client AjouterClient (string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
             string ville, string numTel, string assurance, string email, string remarque, Boolean archive)
         {
-            Client c = ClientStore.Ajouter(nomClient, prenomClient, adresse1, adresse2, codePostal,
+            Client c = ClientStore.Instance.Ajouter(nomClient, prenomClient, adresse1, adresse2, codePostal,
              ville, numTel, assurance, email, remarque, archive);
             this.Clients.Add(c);
             return c;
@@ -55,13 +55,13 @@ namespace Clinique.Controller
         public void ModifierClient(Client client, string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
             string ville, string numTel, string assurance, string email, string remarque, Boolean archive)
         {
-             ClientStore.Modifier(client, nomClient, prenomClient, adresse1, adresse2, codePostal,
+            ClientStore.Instance.Modifier(client, nomClient, prenomClient, adresse1, adresse2, codePostal,
              ville, numTel, assurance, email, remarque, archive);
         }
 
         public bool SupprimerClient(Client client)
         {
-            if (ClientStore.Supprimer(client))
+            if (ClientStore.Instance.Supprimer(client))
             {
                 this.Clients.Remove(client);
                 return true;

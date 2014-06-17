@@ -24,17 +24,17 @@ namespace Clinique.Controller
         
         public Vaccin AjouterVaccin(string nomVaccin, int quantiteStock, byte periodeValidite, bool archive)
         {
-            return VaccinStore.Ajouter(nomVaccin, quantiteStock, periodeValidite, archive);
+            return VaccinStore.Instance.Ajouter(nomVaccin, quantiteStock, periodeValidite, archive);
         }
 
         public void ModifierVaccin(Vaccin vaccin, string nomVaccin, int quantiteStock, byte periodeValidite, bool archive)
         {
-            VaccinStore.Modifier(vaccin, nomVaccin, quantiteStock, periodeValidite, archive);
+            VaccinStore.Instance.Modifier(vaccin, nomVaccin, quantiteStock, periodeValidite, archive);
         }
 
         public bool SupprimerVaccin(Vaccin vaccin)
         {
-            return VaccinStore.Supprimer(vaccin);
+            return VaccinStore.Instance.Supprimer(vaccin);
         }
     }
 }

@@ -7,9 +7,25 @@ using Clinique.Model;
 
 namespace Clinique.Store
 {
-    public static class BaremeStore
-    {
-        public static Bareme Ajouter(string codeGroupement, string dateVigueur, string typeActe, string libelle,
+    public class BaremeStore
+    {        
+        #region Singleton pattern
+        private static BaremeStore _instance = null;
+        
+        public static BaremeStore Instance { 
+            get {
+                return null == _instance ? _instance = new BaremeStore() : _instance;
+            }
+        }
+
+        private BaremeStore()
+        {
+
+        }
+        #endregion
+        #region attributes
+
+        public Bareme Ajouter(string codeGroupement, string dateVigueur, string typeActe, string libelle,
             decimal tarifFixe, decimal tarifMini, decimal tarifMaxi, Vaccin vaccin, bool archive)
         {
             Bareme bareme = new Bareme(codeGroupement, dateVigueur, typeActe, libelle,
@@ -19,7 +35,7 @@ namespace Clinique.Store
                 return bareme;
         }
 
-        public static void Modifier(Bareme bareme, string typeActe, string libelle,
+        public void Modifier(Bareme bareme, string typeActe, string libelle,
             decimal tarifFixe, decimal tarifMini, decimal tarifMaxi, Vaccin vaccin)
         {
         
@@ -33,9 +49,10 @@ namespace Clinique.Store
             
         }
 
-        public static bool Supprimer(Bareme bareme)
+        public bool Supprimer(Bareme bareme)
         {
             return Database.Instance.delete(bareme);
         }
+        #endregion
     }
 }

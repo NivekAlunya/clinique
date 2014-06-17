@@ -30,19 +30,19 @@ namespace Clinique.Controller
         public static Bareme AjouterBareme(string codeGroupement, string dateVigueur, string typeActe, string libelle,
             decimal tarifFixe, decimal tarifMini, decimal tarifMaxi, Vaccin vaccin, bool archive)
         {
-            return BaremeStore.Ajouter(codeGroupement, dateVigueur, typeActe, libelle,
+            return BaremeStore.Instance.Ajouter(codeGroupement, dateVigueur, typeActe, libelle,
              tarifFixe, tarifMini, tarifMaxi, vaccin, archive) ;
         }
 
         public static void ModifierBareme (Bareme bareme, string typeActe, string libelle,
             decimal tarifFixe, decimal tarifMini, decimal tarifMaxi, Vaccin vaccin)
         {
-        BaremeStore.Modifier(bareme, typeActe, libelle, tarifFixe, tarifMini, tarifMaxi, vaccin);
+            BaremeStore.Instance.Modifier(bareme, typeActe, libelle, tarifFixe, tarifMini, tarifMaxi, vaccin);
         }
 
         public static void SupprimerBareme(Bareme bareme)
         {
-            BaremeStore.Supprimer(bareme);
+            BaremeStore.Instance.Supprimer(bareme);
         }
     }
 }

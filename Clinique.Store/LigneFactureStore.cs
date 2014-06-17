@@ -9,7 +9,21 @@ namespace Clinique.Store
 {
     public class LigneFactureStore
     {
-        public static LigneFacture Ajouter(Facture facture, Bareme bareme, decimal prix, bool archive)
+        #region Singleton pattern
+        private static LigneFactureStore _instance = null;
+        
+        public static LigneFactureStore Instance { 
+            get {
+                return null == _instance ? _instance = new LigneFactureStore() : _instance;
+            }
+        }
+
+        private LigneFactureStore()
+        {
+
+        }
+        #endregion
+        public LigneFacture Ajouter(Facture facture, Bareme bareme, decimal prix, bool archive)
         {
             LigneFacture ligneFacture = new LigneFacture(Guid.NewGuid(), facture, bareme, prix, archive);
             Database.Instance.insert(ligneFacture);
@@ -17,7 +31,7 @@ namespace Clinique.Store
             return ligneFacture;
         }
 
-        public static void Modifier(LigneFacture ligneFacture, Facture facture, Bareme bareme, decimal prix, bool archive)
+        public void Modifier(LigneFacture ligneFacture, Facture facture, Bareme bareme, decimal prix, bool archive)
         {
             ligneFacture.Archive = archive;
             ligneFacture.Bareme = bareme;
@@ -27,7 +41,7 @@ namespace Clinique.Store
             Database.Instance.update(ligneFacture);
         }
 
-        public static bool Supprimer(LigneFacture ligneFacture)
+        public bool Supprimer(LigneFacture ligneFacture)
         {
             return Database.Instance.delete(ligneFacture);
         }

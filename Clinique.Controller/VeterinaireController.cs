@@ -40,9 +40,7 @@ namespace Clinique.Controller
         }
         private VeterinaireController()
         {
-            Veterinaires = new BindingList<Veterinaire>(
-                VeterinaireStore.Veterinaires.FindAll((Veterinaire v) => v.Archive == false)
-            );
+            Veterinaires = new BindingList<Veterinaire>(VeterinaireStore.Instance.getAll());
         }
         #endregion
         /// <summary>
@@ -54,7 +52,7 @@ namespace Clinique.Controller
         /// <returns>un object veterinaire</returns>
         public Veterinaire AjouterVeterinaire(string nomVeto, string motDePasse, bool archive = false)
         {
-            Veterinaire v = VeterinaireStore.Ajouter(nomVeto, motDePasse, archive);
+            Veterinaire v = VeterinaireStore.Instance.Ajouter(nomVeto, motDePasse, archive);
             this.Veterinaires.Add(v);
 
             return v;
@@ -62,12 +60,13 @@ namespace Clinique.Controller
 
         public void ModifierVeterinaire(Veterinaire veterinaire, string nomVeto, string motDePasse, bool archive = false)
         {
-            VeterinaireStore.Modifier(veterinaire,nomVeto, motDePasse, archive);
+            VeterinaireStore.Instance.Modifier(veterinaire, nomVeto, motDePasse, archive);
         }
 
         public bool SupprimerVeterinaire(Veterinaire veterinaire)
         {
-            if (VeterinaireStore.Supprimer(veterinaire)) {
+            if (VeterinaireStore.Instance.Supprimer(veterinaire))
+            {
                 this.Veterinaires.Remove(veterinaire);
                 return true;
             }

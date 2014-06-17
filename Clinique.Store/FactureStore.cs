@@ -9,15 +9,28 @@ namespace Clinique.Store
 {
     public class FactureStore
     {
-        public static Facture Ajouter(Client client, DateTime dateFacture, Facture.eFactureEtats etat, decimal totalFacture, DateTime rappelEnvoye, bool archive)
+        #region Singleton pattern
+        private static FactureStore _instance = null;
+        
+        public static FactureStore Instance { 
+            get {
+                return null == _instance ? _instance = new FactureStore() : _instance;
+            }
+        }
+
+        private FactureStore()
+        {
+
+        }
+        #endregion
+        public Facture Ajouter(Client client, DateTime dateFacture, Facture.eFactureEtats etat, decimal totalFacture, DateTime rappelEnvoye, bool archive)
         {
             Facture facture = new Facture(Guid.NewGuid(), client, dateFacture, etat, totalFacture, rappelEnvoye, archive);
             Database.Instance.insert(facture);
-
             return facture;
        }
 
-        public static void Modifier(Facture facture ,Client client, DateTime dateFacture, Facture.eFactureEtats etat, decimal totalFacture, DateTime rappelEnvoye, bool archive)
+        public void Modifier(Facture facture ,Client client, DateTime dateFacture, Facture.eFactureEtats etat, decimal totalFacture, DateTime rappelEnvoye, bool archive)
         {
             facture.Archive = archive;
             facture.Client = client;
@@ -29,7 +42,7 @@ namespace Clinique.Store
             Database.Instance.update(facture);
         }
 
-        public static bool Supprimer(Facture facture)
+        public bool Supprimer(Facture facture)
         {
             return Database.Instance.delete(facture);
         }

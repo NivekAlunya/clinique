@@ -10,28 +10,43 @@ namespace Clinique.Store
     /// <summary>
     /// Data Access Layer pour la classe Veterinaire
     /// </summary>
-    public static class VeterinaireStore
+    public class VeterinaireStore
     {
         #region attributes
-        static private List<Veterinaire> _veterinaires;
+        private List<Veterinaire> _veterinaires;
         #endregion
         #region properties
         /// <summary>
         /// Recupere les données en base à chaque consultation de cette propriete
         /// </summary>
-        static public List<Veterinaire> Veterinaires
+        public List<Veterinaire> Veterinaires
         {
             get {
-                _loadVeterinaires();
+                
                 return _veterinaires; 
             }
             set { _veterinaires = value; }
         }
         #endregion
-        #region methods
-        private static void _loadVeterinaires()
+        #region Singleton pattern
+        private static  VeterinaireStore _instance = null;
+        
+        public static VeterinaireStore Instance { 
+            get {
+                return null == _instance ? _instance = new VeterinaireStore() : _instance;
+            }
+        }
+
+        private VeterinaireStore()
         {
-            _veterinaires = new List<Veterinaire>();
+            Veterinaires = new List<Veterinaire>();
+            _loadVeterinaires();
+        }
+        #endregion
+        #region methods
+        private void _loadVeterinaires()
+        {
+            
             string sql = "select * from Veterinaires";
             IDbConnection cn = Database.Instance.getConnection();
             IDbCommand cmd = cn.CreateCommand();
@@ -43,7 +58,7 @@ namespace Clinique.Store
                 IDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    _veterinaires.Add(new Veterinaire(
+                    this.Veterinaires.Add(new Veterinaire(
                         Database.read<Guid>(reader, "CodeVeto"),
                         Database.read<string>(reader, "NomVeto"),
                         Database.read<string>(reader, "MotPasse"),
@@ -60,16 +75,22 @@ namespace Clinique.Store
                 Database.close(cn);
             }
         }
+
+        public List<Veterinaire> getAll()
+        {
+            return this.Veterinaires.FindAll((Veterinaire v) => v.Archive == false);
+        }
         
-        public static Veterinaire Ajouter(string nomVeto, string motDePasse, bool archive)
+
+        public Veterinaire Ajouter(string nomVeto, string motDePasse, bool archive)
         {
             Veterinaire veto = new Veterinaire(Guid.NewGuid(), nomVeto, motDePasse, archive);
             Database.Instance.insert(veto);
-            Veterinaires.Add(veto);
+            this.Veterinaires.Add(veto);
             return veto;
         }
 
-        public static void Modifier(Veterinaire veterinaire, string nomVeto, string motDePasse, bool archive)
+        public void Modifier(Veterinaire veterinaire, string nomVeto, string motDePasse, bool archive)
         {
             veterinaire.MotDePasse = motDePasse;
             veterinaire.NomVeto = nomVeto;
@@ -77,7 +98,7 @@ namespace Clinique.Store
             Database.Instance.update(veterinaire);
         }
 
-        public static bool Supprimer(Veterinaire veterinaire)
+        public bool Supprimer(Veterinaire veterinaire)
         {
             //@todo get consultation.
             veterinaire.Archive = true;

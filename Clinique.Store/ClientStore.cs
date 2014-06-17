@@ -8,26 +8,42 @@ using System.Data;
 
 namespace Clinique.Store
 {
-    public static class ClientStore
+    public class ClientStore
     {
         #region attributes
-        static private List<Client> _clients = null;
+        private List<Client> _clients = null;
         #endregion
         #region properties
-        static public List<Client> Clients
+        public List<Client> Clients
         {
             get
             {
-                _loadClients();
                 return _clients;
             }
             set { _clients = value; }
         }
         #endregion
-        #region methods
-        private static void _loadClients()
+        #region Singleton pattern
+        private static ClientStore _instance = null;
+
+        public static ClientStore Instance
         {
-            _clients = new List<Client>();
+            get
+            {
+                return null == _instance ? _instance = new ClientStore() : _instance;
+            }
+        }
+
+        private ClientStore()
+        {
+            Clients = new List<Client>();
+            _loadClients();
+        }
+        #endregion
+
+        #region methods
+        private void _loadClients()
+        {
             string sql = "select * from Clients";
             IDbConnection cn = Database.Instance.getConnection();
             IDbCommand cmd = cn.CreateCommand();
@@ -48,7 +64,7 @@ namespace Clinique.Store
                     ass = Database.read(reader, "Assurance");
                     email = Database.read(reader, "Email");
                     rem = Database.read(reader, "Remarque");
-                    _clients.Add(new Client(
+                    this.Clients.Add(new Client(
                         Database.read<Guid>(reader, "CodeClient"),
                         Database.read<string>(reader, "NomClient"),
                         Database.read<string>(reader, "PrenomClient"),
@@ -89,7 +105,7 @@ namespace Clinique.Store
         /// <param name="archive"></param>
         /// <returns>Null si l'insertion n'a pas ete effectuee</returns>
         /// <exception cref="Exception:  erreur sur insertion en DB"></exception>
-        public static Client Ajouter ( string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
+        public Client Ajouter ( string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
             string ville, string numTel, string assurance, string email, string remarque, Boolean archive)
         {
             Client client = new Client(Guid.NewGuid(), nomClient, prenomClient, adresse1, adresse2, codePostal,
@@ -98,7 +114,7 @@ namespace Clinique.Store
             {
                 if (Database.Instance.insert(client))
                 {
-                    _clients.Add(client);
+                    this.Clients.Add(client);
                     return client;
                 }
             }
@@ -124,7 +140,7 @@ namespace Clinique.Store
         /// <param name="remarque"></param>
         /// <param name="archive"></param>
         /// <exception cref="Exception:  erreur sur insertion en DB"></exception>
-        public static void Modifier(Client client, string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
+        public void Modifier(Client client, string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
             string ville, string numTel, string assurance, string email, string remarque, Boolean archive)
         {
             client.NomClient = nomClient;
@@ -153,7 +169,7 @@ namespace Clinique.Store
         /// </summary>
         /// <param name="client"></param>
         /// <returns></returns>
-        public static bool Supprimer(Client client)
+        public bool Supprimer(Client client)
         {
             //@todo get facture.
             //@todo archiver animaux du client
@@ -162,15 +178,18 @@ namespace Clinique.Store
             return true;
         }
 
-        public static Client RecupererClient(Guid codeClient)
+        public Client RecupererClient(Guid codeClient)
         {
-            if (null == _clients) _loadClients();
-            return _clients.Find((Client c) =>
+            return this.Clients.Find((Client c) =>
             {
                 return c.CodeClient == codeClient;
             });
         }
-             
+
+        public List<Client> getAll()
+        {
+            return this.Clients.FindAll((Client c) => c.Archive == false);
+        }
 
         #endregion
     }

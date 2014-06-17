@@ -25,12 +25,12 @@ namespace Clinique.Controller
 
         public Race AjouterRace(string race, string espece)
         {
-            return RaceStore.Ajouter(race,espece);
+            return RaceStore.Instance.Ajouter(race, espece);
         }
 
         public bool SupprimerRace(Race race)
         {
-            return RaceStore.Supprimer(race);
+            return RaceStore.Instance.Supprimer(race);
         }
 
     }

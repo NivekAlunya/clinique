@@ -12,28 +12,43 @@ namespace Clinique.Store
     /// <summary>
     /// Data Access Layer pour la classe Animal
     /// </summary>
-    public static class AnimalStore
-    { 
+    public class AnimalStore
+    {
         #region attributes
-        static private List<Animal> _animaux;
+        private List<Animal> _animaux;
         #endregion
         #region properties
         /// <summary>
         /// Recupere les données en base à chaque consultation de cette propriete
         /// </summary>
-        static public List<Animal> Animaux
+        public List<Animal> Animaux
         {
-            get {
-                _loadAnimaux();
+            get
+            {
                 return _animaux;
             }
             set { _animaux = value; }
         }
         #endregion
-        #region methods
-        private static void _loadAnimaux()
+
+        #region Singleton pattern
+        private static AnimalStore _instance = null;
+        
+        public static AnimalStore Instance { 
+            get {
+                return null == _instance ? _instance = new AnimalStore() : _instance;
+            }
+        }
+
+        private AnimalStore()
         {
-            _animaux = new List<Animal>();
+            Animaux = new List<Animal>();
+            _loadAnimaux();
+        }
+        #endregion
+        #region methods
+        private void _loadAnimaux()
+        {
             string sql = "select * from Animaux";
             IDbConnection cn = Database.Instance.getConnection();
             IDbCommand cmd = cn.CreateCommand();
@@ -49,10 +64,10 @@ namespace Clinique.Store
                     tatouage = Database.read(reader, "Tatouage");
                     couleur = Database.read(reader, "Couleur");
                     antecedent = Database.read(reader, "Antecedents");
-                    Client client = ClientStore.RecupererClient(Database.read<Guid>(reader, "CodeClient"));
-                    Race race = RaceStore.RecupererRace(Database.read<string>(reader, "Race"), Database.read<string>(reader, "Espece"));
+                    Client client = ClientStore.Instance.RecupererClient(Database.read<Guid>(reader, "CodeClient"));
+                    Race race = RaceStore.Instance.RecupererRace(Database.read<string>(reader, "Race"), Database.read<string>(reader, "Espece"));
                     Animal.eSexe sexe = (Animal.eSexe)(Database.read<string>(reader, "Sexe")[0]);
-                    _animaux.Add(new Animal(
+                    this.Animaux.Add(new Animal(
                         Database.read<Guid>(reader,"CodeAnimal"),
                         Database.read<string>(reader,"NomAnimal"),
                         sexe,
@@ -77,17 +92,16 @@ namespace Clinique.Store
             }
         }
 
-
-
-        public static Animal Ajouter(string nomAnimal, Animal.eSexe sexe, string couleur, Race race,
+        public Animal Ajouter(string nomAnimal, Animal.eSexe sexe, string couleur, Race race,
              string tatouage, string antecedant, bool archive, Client client)
         {
             Animal animal = new Animal(Guid.NewGuid(), nomAnimal, sexe, couleur, race, tatouage, antecedant, archive, client);
             Database.Instance.insert(animal);
+
             return animal;
         }
 
-        public static void Modifier(Animal animal, string nomAnimal, Animal.eSexe sexe, string couleur, Race race,
+        public void Modifier(Animal animal, string nomAnimal, Animal.eSexe sexe, string couleur, Race race,
              string tatouage, string antecedents, bool archive, Client client)
         {
             animal.Antecedents = antecedents;
@@ -102,7 +116,7 @@ namespace Clinique.Store
             Database.Instance.update(animal);
         }
 
-        public static bool Supprimer(Animal animal)
+        public bool Supprimer(Animal animal)
         {
             return Database.Instance.delete(animal);
         }
