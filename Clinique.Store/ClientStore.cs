@@ -11,7 +11,7 @@ namespace Clinique.Store
     public static class ClientStore
     {
         #region attributes
-        static private List<Client> _clients;
+        static private List<Client> _clients = null;
         #endregion
         #region properties
         static public List<Client> Clients
@@ -161,6 +161,17 @@ namespace Clinique.Store
             Database.Instance.update(client);
             return true;
         }
+
+        public static Client RecupererClient(Guid codeClient)
+        {
+            if (null == _clients) _loadClients();
+            return _clients.Find((Client c) =>
+            {
+                return c.CodeClient == codeClient;
+            });
+        }
+             
+
         #endregion
     }
 }

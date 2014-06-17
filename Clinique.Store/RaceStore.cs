@@ -60,6 +60,7 @@ namespace Clinique.Store
 
         public static Race RecupererRace(string race_, string espece)
         {
+            if (null == _races) _loadRaces();
             return _races.Find( r => r.Race_ == race_ & r.Espece == espece);
         }
 

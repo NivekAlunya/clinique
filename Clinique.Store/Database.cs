@@ -26,9 +26,7 @@ namespace Clinique.Store
         private Database()
             :base()
         {
-            ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["SqlServer"];
-            _connection = DbProviderFactories.GetFactory(settings.ProviderName).CreateConnection();
-            _connection.ConnectionString = settings.ConnectionString;
+
         }
         #endregion
 
@@ -50,8 +48,12 @@ namespace Clinique.Store
             if(cn.State == ConnectionState.Open) cn.Close();
         }
         public IDbConnection getConnection()
-        { 
-            return _connection;
+        {
+            ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["SqlServer"];
+            IDbConnection connection = DbProviderFactories.GetFactory(settings.ProviderName).CreateConnection();
+            connection.ConnectionString = settings.ConnectionString;
+
+            return connection;
         }
 
         private string _getTable(object targetObject)

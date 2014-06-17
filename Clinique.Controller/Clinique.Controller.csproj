@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimalController.cs" />
     <Compile Include="BaremeController.cs" />
     <Compile Include="ClientController.cs" />
     <Compile Include="ConnexionController.cs" />
