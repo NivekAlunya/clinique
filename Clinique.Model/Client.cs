@@ -17,7 +17,7 @@ namespace Clinique.Model
         }
 
 
-        public Client( Guid codeClient, string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
+        public Client(Guid codeClient, string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
             string ville, string numTel, string assurance, string email, string remarque, Boolean archive)
         {
 

@@ -42,7 +42,7 @@ namespace Clinique.Controller
         {
             Veterinaires = new BindingList<Veterinaire>(
                 VeterinaireStore.Veterinaires.FindAll((Veterinaire v) => v.Archive == false)
-                );
+            );
         }
         #endregion
         /// <summary>
@@ -56,6 +56,7 @@ namespace Clinique.Controller
         {
             Veterinaire v = VeterinaireStore.Ajouter(nomVeto, motDePasse, archive);
             this.Veterinaires.Add(v);
+
             return v;
         }
 
@@ -66,8 +67,12 @@ namespace Clinique.Controller
 
         public bool SupprimerVeterinaire(Veterinaire veterinaire)
         {
-            this.Veterinaires.Remove(veterinaire);
-            return VeterinaireStore.Supprimer(veterinaire);
+            if (VeterinaireStore.Supprimer(veterinaire)) {
+                this.Veterinaires.Remove(veterinaire);
+                return true;
+            }
+
+            return false;
         }
 
     }

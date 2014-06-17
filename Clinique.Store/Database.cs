@@ -37,6 +37,15 @@ namespace Clinique.Store
             return (T)reader.GetValue(reader.GetOrdinal(field));
         }
 
+        public static object read(IDataReader reader, string field)
+        {
+            object col = reader.GetValue(reader.GetOrdinal(field));
+
+            return col is DBNull ? null : col;
+        }
+
+
+
         public static void close(IDbConnection cn) {
             if(cn.State == ConnectionState.Open) cn.Close();
         }
