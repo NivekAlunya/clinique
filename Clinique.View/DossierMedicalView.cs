@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Clinique.Model;
 
 namespace Clinique.View
 {
     public partial class DossierMedicalForm : Form
     {
-        public DossierMedicalForm()
+        public DossierMedicalForm(Animal animal)
         {
             InitializeComponent();
         }

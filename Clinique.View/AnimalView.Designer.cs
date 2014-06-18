@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.gpbHaut = new System.Windows.Forms.GroupBox();
-            this.btnDossierMedical = new System.Windows.Forms.Button();
-            this.btnValider = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
+            this.btnValider = new System.Windows.Forms.Button();
+            this.btnDossierMedical = new System.Windows.Forms.Button();
             this.gpbClient = new System.Windows.Forms.GroupBox();
+            this.cbbClient = new System.Windows.Forms.ComboBox();
             this.lblCode = new System.Windows.Forms.Label();
             this.lblNom = new System.Windows.Forms.Label();
             this.lblCouleur = new System.Windows.Forms.Label();
             this.lblEspèce = new System.Windows.Forms.Label();
             this.lblTatouage = new System.Windows.Forms.Label();
             this.txtCode = new System.Windows.Forms.TextBox();
-            this.cbbClient = new System.Windows.Forms.ComboBox();
             this.txtNom = new System.Windows.Forms.TextBox();
             this.txtCouleur = new System.Windows.Forms.TextBox();
-            this.txtEspece = new System.Windows.Forms.TextBox();
             this.txtTatouage = new System.Windows.Forms.TextBox();
             this.cbbSexe = new System.Windows.Forms.ComboBox();
+            this.cbbEspece = new System.Windows.Forms.ComboBox();
             this.gpbHaut.SuspendLayout();
             this.gpbClient.SuspendLayout();
             this.SuspendLayout();
@@ -60,15 +60,15 @@
             this.gpbHaut.TabIndex = 0;
             this.gpbHaut.TabStop = false;
             // 
-            // btnDossierMedical
+            // btnAnnuler
             // 
-            this.btnDossierMedical.Location = new System.Drawing.Point(12, 19);
-            this.btnDossierMedical.Name = "btnDossierMedical";
-            this.btnDossierMedical.Size = new System.Drawing.Size(75, 70);
-            this.btnDossierMedical.TabIndex = 0;
-            this.btnDossierMedical.Text = "&Dossier médical";
-            this.btnDossierMedical.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDossierMedical.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Location = new System.Drawing.Point(298, 19);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(75, 70);
+            this.btnAnnuler.TabIndex = 2;
+            this.btnAnnuler.Text = "&Annuler";
+            this.btnAnnuler.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAnnuler.UseVisualStyleBackColor = true;
             // 
             // btnValider
             // 
@@ -80,15 +80,15 @@
             this.btnValider.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnValider.UseVisualStyleBackColor = true;
             // 
-            // btnAnnuler
+            // btnDossierMedical
             // 
-            this.btnAnnuler.Location = new System.Drawing.Point(298, 19);
-            this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(75, 70);
-            this.btnAnnuler.TabIndex = 2;
-            this.btnAnnuler.Text = "&Annuler";
-            this.btnAnnuler.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnDossierMedical.Location = new System.Drawing.Point(12, 19);
+            this.btnDossierMedical.Name = "btnDossierMedical";
+            this.btnDossierMedical.Size = new System.Drawing.Size(75, 70);
+            this.btnDossierMedical.TabIndex = 0;
+            this.btnDossierMedical.Text = "&Dossier médical";
+            this.btnDossierMedical.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDossierMedical.UseVisualStyleBackColor = true;
             // 
             // gpbClient
             // 
@@ -99,6 +99,14 @@
             this.gpbClient.TabIndex = 3;
             this.gpbClient.TabStop = false;
             this.gpbClient.Text = "Client :";
+            // 
+            // cbbClient
+            // 
+            this.cbbClient.FormattingEnabled = true;
+            this.cbbClient.Location = new System.Drawing.Point(12, 19);
+            this.cbbClient.Name = "cbbClient";
+            this.cbbClient.Size = new System.Drawing.Size(372, 21);
+            this.cbbClient.TabIndex = 0;
             // 
             // lblCode
             // 
@@ -132,9 +140,9 @@
             this.lblEspèce.AutoSize = true;
             this.lblEspèce.Location = new System.Drawing.Point(3, 248);
             this.lblEspèce.Name = "lblEspèce";
-            this.lblEspèce.Size = new System.Drawing.Size(43, 13);
+            this.lblEspèce.Size = new System.Drawing.Size(74, 13);
             this.lblEspèce.TabIndex = 7;
-            this.lblEspèce.Text = "Espèce";
+            this.lblEspèce.Text = "Race/Espèce";
             // 
             // lblTatouage
             // 
@@ -152,14 +160,6 @@
             this.txtCode.Size = new System.Drawing.Size(129, 20);
             this.txtCode.TabIndex = 9;
             // 
-            // cbbClient
-            // 
-            this.cbbClient.FormattingEnabled = true;
-            this.cbbClient.Location = new System.Drawing.Point(12, 19);
-            this.cbbClient.Name = "cbbClient";
-            this.cbbClient.Size = new System.Drawing.Size(372, 21);
-            this.cbbClient.TabIndex = 0;
-            // 
             // txtNom
             // 
             this.txtNom.Location = new System.Drawing.Point(63, 193);
@@ -174,13 +174,6 @@
             this.txtCouleur.Size = new System.Drawing.Size(129, 20);
             this.txtCouleur.TabIndex = 2;
             // 
-            // txtEspece
-            // 
-            this.txtEspece.Location = new System.Drawing.Point(63, 244);
-            this.txtEspece.Name = "txtEspece";
-            this.txtEspece.Size = new System.Drawing.Size(129, 20);
-            this.txtEspece.TabIndex = 3;
-            // 
             // txtTatouage
             // 
             this.txtTatouage.Location = new System.Drawing.Point(62, 270);
@@ -191,19 +184,27 @@
             // cbbSexe
             // 
             this.cbbSexe.FormattingEnabled = true;
-            this.cbbSexe.Location = new System.Drawing.Point(217, 193);
+            this.cbbSexe.Location = new System.Drawing.Point(227, 193);
             this.cbbSexe.Name = "cbbSexe";
             this.cbbSexe.Size = new System.Drawing.Size(121, 21);
             this.cbbSexe.TabIndex = 5;
+            // 
+            // cbbEspece
+            // 
+            this.cbbEspece.FormattingEnabled = true;
+            this.cbbEspece.Location = new System.Drawing.Point(67, 243);
+            this.cbbEspece.Name = "cbbEspece";
+            this.cbbEspece.Size = new System.Drawing.Size(125, 21);
+            this.cbbEspece.TabIndex = 12;
             // 
             // AnimalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 319);
+            this.Controls.Add(this.cbbEspece);
             this.Controls.Add(this.cbbSexe);
             this.Controls.Add(this.txtTatouage);
-            this.Controls.Add(this.txtEspece);
             this.Controls.Add(this.txtCouleur);
             this.Controls.Add(this.txtNom);
             this.Controls.Add(this.txtCode);
@@ -239,8 +240,8 @@
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.TextBox txtCouleur;
-        private System.Windows.Forms.TextBox txtEspece;
         private System.Windows.Forms.TextBox txtTatouage;
         private System.Windows.Forms.ComboBox cbbSexe;
+        private System.Windows.Forms.ComboBox cbbEspece;
     }
 }

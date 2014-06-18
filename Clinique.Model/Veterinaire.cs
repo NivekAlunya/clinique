@@ -35,7 +35,7 @@ namespace Clinique.Model
         {
             get { return _nomVeto; }
             set {
-                if (string.IsNullOrWhiteSpace(value)) throw new Exception("Nom ne peut être nul ou contenir que des espaces");
+                if (null != value && value.Trim().isEmptyOrGreaterThan(30)) throw new Exception("Le nom du veterinaire ne peut être vide ou ne contenir que des espace et ne doit pas depasser 30 caracteres.");
                 _nomVeto = value; 
             }
         }
@@ -49,7 +49,7 @@ namespace Clinique.Model
         {
             get { return _motPasse; }
             set {
-                if (string.IsNullOrWhiteSpace(value)) throw new Exception("Le mot de passe ne peut être nul ou contenir que des espaces");
+                if (null != value && value.Trim().isEmptyOrGreaterThan(10)) throw new Exception("Le mot de passe ne peut être vide ou ne contenir que des espace et ne doit pas depasser 10 caracteres.");
                 _motPasse = value; 
             }
         }
@@ -67,7 +67,7 @@ namespace Clinique.Model
         #endregion
         #region constructors
         /// <summary>
-        /// 
+        /// Constructeur Veterinaire
         /// </summary>
         /// <param name="codeVeto"></param>
         /// <param name="nomVeto"></param>

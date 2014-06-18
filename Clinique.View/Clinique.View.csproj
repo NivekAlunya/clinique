@@ -158,6 +158,10 @@
       <Project>{237fe4e2-5df8-4517-a307-3c8a5ac14e84}</Project>
       <Name>Clinique.Tools</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Clinique.Tools\Clinique.Tools.csproj">
+      <Project>{237fe4e2-5df8-4517-a307-3c8a5ac14e84}</Project>
+      <Name>Clinique.Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

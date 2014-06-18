@@ -12,20 +12,40 @@ namespace Clinique.Model
     public class Animal
     {
 
+        /// <summary>
+        /// Construteur Animal
+        /// </summary>
+        /// <param name="codeAnimal"></param>
+        /// <param name="nomAnimal"></param>
+        /// <param name="sexe"></param>
+        /// <param name="couleur"></param>
+        /// <param name="race"></param>
+        /// <param name="tatouage"></param>
+        /// <param name="antecedents"></param>
+        /// <param name="archive"></param>
+        /// <param name="client"></param>
         public Animal(Guid codeAnimal, string nomAnimal, eSexe sexe, string couleur, Race race,
              string tatouage, string antecedents, Boolean archive, Client client)
         {
-        CodeAnimal = codeAnimal;
-        NomAnimal = nomAnimal;
-        Sexe = sexe;
-        Couleur = couleur;
-        Race = race;
-        Tatouage = tatouage;
-        Antecedents = antecedents;
-        Archive = archive;
-        Client = client;
+
+            try
+            {
+                CodeAnimal = codeAnimal;
+                NomAnimal = nomAnimal;
+                Sexe = sexe;
+                Couleur = couleur;
+                Race = race;
+                Tatouage = tatouage;
+                Antecedents = antecedents;
+                Archive = archive;
+                Client = client;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Cet animal ne peut être cree avec ces valeurs\n" + e.Message, e);
+            }
+
         }
-        
         
         private Guid _codeAnimal;
         [Persist(System.Data.SqlDbType.UniqueIdentifier, Persist.FieldBehaviour.pk)]
@@ -40,7 +60,10 @@ namespace Clinique.Model
         public string NomAnimal
         {
             get { return _nomAnimal; }
-            set { _nomAnimal = value; }
+            set {
+                if (null != value && value.Trim().isEmptyOrGreaterThan(30)) throw new Exception("Le nom de l'animal ne peut être vide ou ne contenir que des espace et ne doit pas depasser 30 caracteres.");
+                _nomAnimal = value;
+            }
         }
 
         public enum eSexe
@@ -55,7 +78,10 @@ namespace Clinique.Model
         public eSexe Sexe
         {
             get { return _sexe; }
-            set { _sexe = value; }
+            set {
+                if(value != eSexe.F && value != eSexe.H && value != eSexe.M) throw new Exception("Le sexe de l'animal ne peut être différent de 'H' ou 'F' ou 'M'");    
+                _sexe = value;
+            }
         }
 
         private string _couleur;
@@ -63,7 +89,9 @@ namespace Clinique.Model
         public string Couleur
         {
             get { return _couleur; }
-            set { _couleur = value; }
+            set {
+                if (null != value && value.Trim().isGreaterThan(20)) throw new Exception("La couleur de l'animal ne doit pas depasser 20 caracteres.");
+                _couleur = value; }
         }
         
 
@@ -73,7 +101,10 @@ namespace Clinique.Model
         public string Race_
         {
             get { return _race_; }
-            private set { _race_ = value; }
+            private set {
+                if (null != value && value.Trim().isEmptyOrGreaterThan(20)) throw new Exception("La race de l'animal ne peut être vide ou ne contenir que des espace et ne doit pas depasser 20 caracteres.");
+                _race_ = value;
+            }
         }
 
         private string _espece;
@@ -81,7 +112,10 @@ namespace Clinique.Model
         public string Espece
         {
             get { return _espece; }
-            set { _espece = value; }
+            set {
+                if (null != value && value.Trim().isEmptyOrGreaterThan(30)) throw new Exception("L'espèce de l'animal ne peut être vide ou ne contenir que des espace et ne doit pas depasser 20 caracteres.");
+                _espece = value;
+            }
         }
 
         private Guid _codeClient;
@@ -89,7 +123,9 @@ namespace Clinique.Model
         public Guid CodeClient
         {
             get { return _codeClient; }
-            set { _codeClient = value; }
+            set {
+                
+                _codeClient = value; }
         }
 
         private string _tatouage;
@@ -97,7 +133,9 @@ namespace Clinique.Model
         public string Tatouage
         {
             get { return _tatouage; }
-            set { _tatouage = value; }
+            set {
+                if (null != value && value.Trim().isGreaterThan(10)) throw new Exception("Le tatouage ne doit pas depasser 10 caracteres.");   
+                _tatouage = value; }
         }
 
         private string _antecedents;
@@ -105,7 +143,10 @@ namespace Clinique.Model
         public string Antecedents
         {
             get { return _antecedents; }
-            set { _antecedents = value; }
+            set
+            {
+                if (null != value && value.Trim().isGreaterThan(8000)) throw new Exception("Les antecedents ne peuvent depasser 8000 caracteres.");
+                _antecedents = value; }
         }
 
         private Boolean _archive;
