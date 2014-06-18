@@ -76,6 +76,11 @@ namespace Clinique.Store
             }
         }
 
+        public List<Race> getAll()
+        {
+            return this.Races;
+        }
+
         public Race RecupererRace(string race_, string espece)
         {
             if (null == _races) _loadRaces();

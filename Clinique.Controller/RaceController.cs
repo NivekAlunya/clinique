@@ -5,11 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 using Clinique.Model;
 using Clinique.Store;
-
+using System.ComponentModel;
 namespace Clinique.Controller
 {
     public class RaceController
     {
+                #region attributes
+        private BindingList<Race> _races;
+        #endregion
+        #region properties
+        public BindingList<Race> Races
+        {
+            get
+            {
+                return _races;
+            }
+            private set
+            {
+                _races = value;
+            }
+        }
+        #endregion
         #region Singleton pattern
         private static RaceController _instance = null;
         public static RaceController Instance { 
@@ -19,7 +35,7 @@ namespace Clinique.Controller
         }
         private RaceController()
         {
-                
+            Races = new BindingList<Race>(RaceStore.Instance.getAll());
         }
         #endregion
 
