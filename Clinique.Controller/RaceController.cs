@@ -10,7 +10,7 @@ namespace Clinique.Controller
 {
     public class RaceController
     {
-                #region attributes
+        #region attributes
         private BindingList<Race> _races;
         #endregion
         #region properties

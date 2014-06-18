@@ -34,14 +34,14 @@ namespace Clinique.View
                 this.txtNom.Enabled = this.lblNom.Enabled = false;
                 this.btnValider.Click += (object sender, EventArgs e) =>
                 {
-                    valider(veterinaire);
+                    _valider(veterinaire);
                 };
             }
             else
             {
                 this.btnValider.Click += (object sender, EventArgs e) =>
                 {
-                    valider();
+                    _valider();
                 };
             }
 
@@ -57,27 +57,28 @@ namespace Clinique.View
         /// Valide et ajoute un veterinaire
         /// Declenche l'evenement de validation
         /// </summary>
-        private void valider()
+        private void _valider()
         {
             try
             {
                 if (!_testMotDePasse()) return;
 
                 Veterinaire veto = VeterinaireController.Instance.AjouterVeterinaire(this.txtNom.Text, this.txtPassword.Text);
-                evtValider.Invoke(veto);
+                if (null != evtValider) evtValider.Invoke(veto);
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message + (null != e.InnerException ? e.InnerException.Message + "\n" : ""), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void valider(Veterinaire veto)
+
+        private void _valider(Veterinaire veto)
         {
             try
             {
                 if (!_testMotDePasse()) return;
                 VeterinaireController.Instance.ModifierVeterinaire(veto, veto.NomVeto, this.txtPassword.Text);
-                evtValider.Invoke(veto);
+                if(null != evtValider) evtValider.Invoke(veto);
                 this.Close();
             }
             catch (Exception e)

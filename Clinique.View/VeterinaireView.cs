@@ -71,7 +71,7 @@ namespace Clinique.View
         private void _ajouterVeterinaire()
         {
             VeterinaireFormulaireView form = new VeterinaireFormulaireView();
-            form.evtValider += (Model.Veterinaire obj) =>
+            form.evtValider += (Veterinaire obj) =>
             {
                 _setState(State.Selection);
             };
@@ -85,7 +85,7 @@ namespace Clinique.View
             if (null != this.lstVeterinaires.SelectedItem)
             {
                 VeterinaireFormulaireView form = new VeterinaireFormulaireView((Veterinaire)this.lstVeterinaires.SelectedItem);
-                form.evtValider += (Model.Veterinaire obj) =>
+                form.evtValider += (Veterinaire obj) =>
                 {
                     _setState(State.Selection);
                 };

@@ -26,7 +26,7 @@ namespace Clinique.Store
         private Database()
             :base()
         {
-
+            _connection = getConnection();
         }
         #endregion
 

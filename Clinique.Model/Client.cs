@@ -16,24 +16,44 @@ namespace Clinique.Model
         
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="codeClient"></param>
+        /// <param name="nomClient"></param>
+        /// <param name="prenomClient"></param>
+        /// <param name="adresse1"></param>
+        /// <param name="adresse2"></param>
+        /// <param name="codePostal"></param>
+        /// <param name="ville"></param>
+        /// <param name="numTel"></param>
+        /// <param name="assurance"></param>
+        /// <param name="email"></param>
+        /// <param name="remarque"></param>
+        /// <param name="archive"></param>
+        /// <exception cref="Exception raise exception on exception properties"></exception>
         public Client(Guid codeClient, string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
             string ville, string numTel, string assurance, string email, string remarque, Boolean archive)
         {
-
-           CodeClient = codeClient;
-           NomClient = nomClient;
-           PrenomClient=prenomClient;
-           Adresse1 = adresse1;
-           Adresse2=adresse2;
-           CodePostal=codePostal;
-           Ville = ville;
-           NumTel = numTel;
-           Assurance = assurance;
-           Email = email;
-           Remarque = remarque;
-            Archive = archive;
-            
+            try
+            {
+                CodeClient = codeClient;
+                NomClient = nomClient;
+                PrenomClient = prenomClient;
+                Adresse1 = adresse1;
+                Adresse2 = adresse2;
+                CodePostal = codePostal;
+                Ville = ville;
+                NumTel = numTel;
+                Assurance = assurance;
+                Email = email;
+                Remarque = remarque;
+                Archive = archive;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Ce client ne peut être cree avec cette valeur\n" + e.Message,e);
+            }
         }
         
 
@@ -42,90 +62,158 @@ namespace Clinique.Model
         public Guid CodeClient
         {
             get { return _codeClient; }
-            private set {_codeClient = value; }
+            private set { _codeClient = value; }
         }
 
-       
-
         private string _nomClient;
+        /// <summary>
+        /// Property NomClient
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         [Persist(SqlDbType.VarChar)]
         public string NomClient
         {
             get { return _nomClient; }
-            set { _nomClient = value; }
+            set {
+                if (null != value && value.isEmptyOrGreaterThan(20)) throw new Exception("Le nom du client ne peut être vide ou ne contenir que des espace et ne doit pas depasser 20 caracteres.");
+                _nomClient = value.Trim(); 
+            }
         }
 
         private string _prenomClient;
+        /// <summary>
+        /// Property PrenomClient
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         [Persist(SqlDbType.VarChar)]
         public string PrenomClient
         {
             get { return _prenomClient; }
-            set { _prenomClient = value; }
+            set {
+                if (null != value && value.isEmptyOrGreaterThan(20)) throw new Exception("Le prenom du client ne peut être vide ou ne contenir que des espace et ne doit pas depasser 20 caracteres.");
+                _prenomClient = value; 
+            }
         }
 
         private string _adresse1;
+        /// <summary>
+        /// Property Adresse1
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         [Persist(SqlDbType.VarChar)]
         public string Adresse1
         {
             get { return _adresse1; }
-            set { _adresse1 = value; }
+            set {
+                if (null != value && value.Trim().Length > 30) throw new Exception("L'adresse du client ne peut avoir plus de 30 caracteres");
+                _adresse1 = value.Trim() ; 
+            }
         }
 
         private string _adresse2;
+        /// <summary>
+        /// Property Adresse2
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         [Persist(SqlDbType.VarChar)]
         public string Adresse2
         {
             get { return _adresse2; }
-            set { _adresse2 = value; }
+            set {
+                if (null != value && value.Trim().Length > 30) throw new Exception("L'adresse du client ne peut avoir plus de 30 caracteres");
+                _adresse2 = value;
+            }
         }
 
         private string _codePostal;
+        /// <summary>
+        /// Property CodePostal
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         [Persist(SqlDbType.VarChar)]
         public string CodePostal
         {
             get { return _codePostal; }
-            set { _codePostal = value; }
+            set {
+                if (null != value && value.Trim().Length > 6) throw new Exception("Le code postal du client ne peut avoir plus de 6 caracteres");
+                _codePostal = value.Trim(); 
+            }
         }
 
         private string _ville;
+        /// <summary>
+        /// Property Ville
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         [Persist(SqlDbType.VarChar)]
         public string Ville
         {
             get { return _ville; }
-            set { _ville = value; }
+            set {
+                if (null != value && value.Trim().Length > 25) throw new Exception("La ville du client ne peut avoir plus de 25 caracteres");
+                _ville = value;
+                
+            }
         }
 
-        
         private string _numTel;
+        /// <summary>
+        /// Property NumTel
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         [Persist(SqlDbType.VarChar)]
         public string NumTel
         {
             get { return _numTel; }
-            set { _numTel = value; }
+            set {
+                if (null != value && value.Trim().Length > 15) throw new Exception("Le numero de telephone  du client ne peut avoir plus de 30 caracteres");
+                _numTel = value; 
+            }
         }
 
         private string _assurance;
+        /// <summary>
+        /// Property Assurance
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         [Persist(SqlDbType.VarChar)]
         public string Assurance
         {
             get { return _assurance; }
-            set { _assurance = value; }
+            set {
+                if (null != value && value.Trim().Length > 30) throw new Exception("L'assurance du client ne peut avoir plus de 30 caracteres");
+                _assurance = value; 
+            }
         }
 
         private string _email;
+        /// <summary>
+        /// Property Email
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         [Persist(SqlDbType.VarChar)]
         public string Email
         {
             get { return _email; }
-            set { _email = value; }
+            set {
+                if (null != value && value.Trim().Length > 30) throw new Exception("L'assurance du client ne peut avoir plus de 30 caracteres");
+                _email = value; 
+            }
         }
 
         private string _remarque;
+        /// <summary>
+        /// Property Remarque
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         [Persist(SqlDbType.VarChar)]
         public string Remarque
         {
             get { return _remarque; }
-            set { _remarque = value; }
+            set {
+                if (null != value && value.Trim().Length > 8000) throw new Exception("Les remarques du client ne peut avoir plus de 8000 caracteres");
+                _remarque = value; 
+            }
         }
 
         private Boolean _archive;
@@ -135,26 +223,5 @@ namespace Clinique.Model
             get { return _archive; }
             set { _archive = value; }
         }
-
-        /// <summary>
-        /// Tri par défaut
-        /// </summary>
-        /// <param name="client"></param>
-        /// <returns></returns>
-        public int CompareTo(Client client)
-        {
-            return CompareParNom(this, client);
-        }
-
-        public static int CompareParNom(Client client1, Client client2)
-        {
-            int functionReturnValue = 0;
-            functionReturnValue = client1.NomClient.CompareTo(client2.NomClient);
-
-            return functionReturnValue;
-
-        }
-
-
     }
 }
