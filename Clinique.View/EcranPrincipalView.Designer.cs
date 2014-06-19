@@ -58,7 +58,7 @@
             this.parametrageToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(834, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1018, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -116,11 +116,11 @@
             // 
             // agendaToolStripMenuItem
             // 
-            this.agendaToolStripMenuItem.Enabled = false;
             this.agendaToolStripMenuItem.Name = "agendaToolStripMenuItem";
             this.agendaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.agendaToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.agendaToolStripMenuItem.Text = "&Agenda";
+            this.agendaToolStripMenuItem.Click += new System.EventHandler(this.agendaToolStripMenuItem_Click);
             // 
             // dosssierMedicauxToolStripMenuItem
             // 
@@ -165,9 +165,9 @@
             this.gpbEcranPrincipal.Controls.Add(this.btnRelance);
             this.gpbEcranPrincipal.Controls.Add(this.btnClientAnimal);
             this.gpbEcranPrincipal.Controls.Add(this.btnRendezVous);
-            this.gpbEcranPrincipal.Location = new System.Drawing.Point(732, 27);
+            this.gpbEcranPrincipal.Location = new System.Drawing.Point(916, 27);
             this.gpbEcranPrincipal.Name = "gpbEcranPrincipal";
-            this.gpbEcranPrincipal.Size = new System.Drawing.Size(102, 538);
+            this.gpbEcranPrincipal.Size = new System.Drawing.Size(102, 906);
             this.gpbEcranPrincipal.TabIndex = 1;
             this.gpbEcranPrincipal.TabStop = false;
             // 
@@ -230,13 +230,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 566);
+            this.ClientSize = new System.Drawing.Size(1018, 935);
             this.Controls.Add(this.gpbEcranPrincipal);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "EcranPrincipalView";
             this.Text = "EcranPrincipalView";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.gpbEcranPrincipal.ResumeLayout(false);

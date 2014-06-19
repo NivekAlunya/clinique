@@ -15,6 +15,7 @@ namespace Clinique.View
         public EcranPrincipalView()
         {
             InitializeComponent();
+
         }
 
         private void btnRendezVous_Click(object sender, EventArgs e)
@@ -29,9 +30,7 @@ namespace Clinique.View
 
         private void _showFormClientAnimal()
         {
-            ClientForm clientForm = new ClientForm();
-            clientForm.MdiParent = this;
-            clientForm.Show();
+            _show(new ClientForm());
         }
 
         private void priseDeRendezvousToolStripMenuItem_Click(object sender, EventArgs e)
@@ -41,9 +40,7 @@ namespace Clinique.View
 
         private void _showRendezVous()
         {
-            RendezVousForm rdv = new RendezVousForm();
-            rdv.MdiParent = this;
-            rdv.Show();
+            _show(new RendezVousForm());
         }
 
         private void veterinairesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,19 +50,43 @@ namespace Clinique.View
 
         private void _showVeterinaire()
         {
-            VeterinaireView veterinaire = new VeterinaireView();
-            veterinaire.MdiParent = this;
-            veterinaire.Show();
+            _show(new VeterinaireForm());
         }
 
-        private void btnAgenda_Click(object sender, EventArgs e)
+        private void _show(Form f)
         {
+            fermerLesFenetres();
+            f.MdiParent = this;
+            f.Show();
             
         }
+        private void btnAgenda_Click(object sender, EventArgs e)
+        {
+            _showAgenda();
+        }
+
+        private void _showAgenda()
+        {
+            _show(new AgendaForm());
+        }
+
 
         private void dossierClientAnimauxToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _showFormClientAnimal();
+        }
+
+        private void fermerLesFenetres()
+        {
+            foreach (Form fenetre in this.MdiChildren)
+            {
+                fenetre.Close();
+            }
+        }
+
+        private void agendaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _showAgenda();
         }
 
     }

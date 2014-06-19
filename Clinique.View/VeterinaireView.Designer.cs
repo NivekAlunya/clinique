@@ -1,6 +1,6 @@
 ﻿namespace Clinique.View
 {
-    partial class VeterinaireView
+    partial class VeterinaireForm
     {
         /// <summary>
         /// Required designer variable.

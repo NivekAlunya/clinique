@@ -323,7 +323,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 462);
+            this.ClientSize = new System.Drawing.Size(819, 372);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.label5);
@@ -344,6 +344,7 @@
             this.Controls.Add(this.txtNom);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.gpbClient);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ClientForm";
             this.Text = "Clients";
             this.gpbClient.ResumeLayout(false);

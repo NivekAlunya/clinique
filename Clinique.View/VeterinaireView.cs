@@ -11,7 +11,7 @@ using Clinique.Controller;
 using Clinique.Model;
 namespace Clinique.View
 {
-    public partial class VeterinaireView : Form
+    public partial class VeterinaireForm : Form
     {
         #region enum
         private enum State
@@ -28,7 +28,7 @@ namespace Clinique.View
         /// <summary>
         /// Construit un Formulaire de consultation des veterinaires
         /// </summary>
-        public VeterinaireView()
+        public VeterinaireForm()
         {
             InitializeComponent();
             this.btnInit.Tag = this.btnSupprimer.Tag = this.lstVeterinaires.Tag = State.Selection;
