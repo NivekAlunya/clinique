@@ -9,6 +9,18 @@ namespace Clinique.Store
 {
     public class FactureStore
     {
+        private List<Facture> _factures;
+        
+        public List<Facture> Factures
+        {
+            get
+            {
+
+                return _factures;
+            }
+            set { _factures = value; }
+        }
+
         #region Singleton pattern
         private static FactureStore _instance = null;
         
@@ -47,6 +59,10 @@ namespace Clinique.Store
             return Database.Instance.delete(facture);
         }
 
-        
+        public Facture RecupererFacture(Guid numFacture)
+        {
+            return this.Factures.Find(f => f.NumFacture == numFacture);
+        }
+       
     }
 }

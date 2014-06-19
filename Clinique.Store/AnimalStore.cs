@@ -121,6 +121,11 @@ namespace Clinique.Store
             return Database.Instance.delete(animal);
         }
 
+        public Animal RecupererAnimal(Guid codeAnimal)
+        {
+            return this.Animaux.Find(a => a.CodeAnimal == codeAnimal);
+        }
+
         #endregion
     }
 }

@@ -106,6 +106,13 @@ namespace Clinique.Store
             //Veterinaires.Remove(veterinaire);
             return true;
         }
+
+        public Veterinaire RecupererVeterinaire(Guid codeVeto)
+        {
+            return this.Veterinaires.Find(v => v.CodeVeto == codeVeto);
+        }
+
+
         #endregion
     }
 }

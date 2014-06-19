@@ -85,7 +85,7 @@ namespace Clinique.Model
 
         private eConsultationEtat _etat;
         
-        [Persist(SqlDbType.Int)]
+        [Persist(SqlDbType.TinyInt)]
         public eConsultationEtat Etat
         {
             get { return _etat; }

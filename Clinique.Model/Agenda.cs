@@ -16,7 +16,8 @@ namespace Clinique.Model
         public Veterinaire Veto
         {
             get { return _veto; }
-            set { 
+            set {
+                if (null == value) throw new Exception("Le veterinaire doit être renseigné pour définir un rendez-vous");
                 _veto = value;
                 CodeVeto = _veto.CodeVeto;
             }
@@ -37,7 +38,9 @@ namespace Clinique.Model
         public DateTime DateRdv
         {
             get { return _dateRdv; }
-            set { _dateRdv = value; }
+            set {
+                if (null == value || DateTime.Now.ToUniversalTime() >= value) throw new Exception("La date de rendez-vous doit-être renseignée et ne peut être définie dans le passée");  
+                _dateRdv = value; }
         }
 
         private Animal _animal;
@@ -45,7 +48,8 @@ namespace Clinique.Model
         public Animal Animal
         {
             get { return _animal; }
-            set { 
+            set {
+                if (null == value) throw new Exception("Un animal doit être renseigné pour définir un rendez-vous");
                 _animal = value;
                 CodeAnimal = _animal.CodeAnimal;
             }
