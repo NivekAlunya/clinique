@@ -24,6 +24,9 @@ namespace Clinique.Controller
         {
             get
             {
+                _animaux = Animaux = new BindingList<Animal>(
+                    AnimalStore.Instance.Animaux.FindAll((Animal a) => a.Archive == false)
+                );
                 return _animaux;
             }
             private set
@@ -41,9 +44,7 @@ namespace Clinique.Controller
         }
         private AnimalController()
         {
-            Animaux = new BindingList<Animal>(
-                AnimalStore.Instance.Animaux.FindAll((Animal a) => a.Archive == false)
-            );
+
         }
         #endregion
         #region methods
@@ -66,7 +67,7 @@ namespace Clinique.Controller
             try
             {
                 Animal a = AnimalStore.Instance.Ajouter(nomAnimal, sexe, couleur, race, tatouage, antecedant, archive, client);
-                this.Animaux.Add(a);
+                _animaux.Add(a);
                 return a;
             }
             catch (Exception e)
@@ -112,7 +113,7 @@ namespace Clinique.Controller
 	        {
                 if (AnimalStore.Instance.Supprimer(animal))
                 {
-                    this.Animaux.Remove(animal);
+                    _animaux.Remove(animal);
                     return true;
                 }
             }
@@ -122,6 +123,7 @@ namespace Clinique.Controller
 	        }
             return false;
         }
+
         public BindingList<Animal> getAnimalPourClient(Client client)
         {
             return new BindingList<Animal>(AnimalController.Instance.Animaux.ToList<Animal>().FindAll(

@@ -184,7 +184,10 @@
             // 
             this.dgvAgenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAgenda.Location = new System.Drawing.Point(1, 107);
+            this.dgvAgenda.MultiSelect = false;
             this.dgvAgenda.Name = "dgvAgenda";
+            this.dgvAgenda.ReadOnly = true;
+            this.dgvAgenda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAgenda.Size = new System.Drawing.Size(612, 231);
             this.dgvAgenda.TabIndex = 5;
             // 

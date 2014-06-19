@@ -177,6 +177,10 @@ namespace Clinique.Store
             try
             {
                 Database.Instance.update(client);
+                foreach(Animal animal in AnimalStore.Instance.Animaux.FindAll(a => a.Client.Equals(client)))
+                {
+                    AnimalStore.Instance.Supprimer(animal);
+                }
             }
             catch (Exception)
             {

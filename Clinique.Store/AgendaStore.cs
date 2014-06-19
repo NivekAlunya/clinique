@@ -40,6 +40,7 @@ namespace Clinique.Store
         /// <exception cref="Exception"></exception>
         private AgendaStore()
         {
+            Agendas = new List<Agenda>();
             try
             {
                 _loadAgendas();
@@ -67,9 +68,9 @@ namespace Clinique.Store
                 IDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    //Veterinaire veto = VeterinaireStore.Instance.RecupererVeterinaire(Database.read<Guid>(reader, "CodeVeto"));
-                    //Animal animal = AnimalStore.Instance.RecupererAnimal(Database.read<Guid>(reader, "Animal"), Database.read<string>(reader, "Espece"));
-                    this.Agendas.Add(new Agenda(null, null, Database.read<DateTime>(reader, "DateRdv")));
+                    Veterinaire veto = VeterinaireStore.Instance.RecupererVeterinaire(Database.read<Guid>(reader, "CodeVeto"));
+                    Animal animal = AnimalStore.Instance.RecupererAnimal(Database.read<Guid>(reader, "CodeAnimal"));
+                    this.Agendas.Add(new Agenda(veto, animal, Database.read<DateTime>(reader, "DateRdv")));
                 }
 
             }
@@ -83,26 +84,72 @@ namespace Clinique.Store
             }
         }
 
-
+        /// <summary>
+        /// Ajoute un rendez vous
+        /// </summary>
+        /// <param name="veto"></param>
+        /// <param name="animal"></param>
+        /// <param name="dateRdv"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public Agenda Ajouter(Veterinaire veto, Animal animal, DateTime dateRdv)
         {
-            Agenda agenda = new Agenda(veto, animal, dateRdv);
-            Database.Instance.insert(agenda);
-
-            return agenda;
+            try
+            {
+                if( default(Agenda) != Agendas.Find( ag => ag.DateRdv == dateRdv && ag.Veto == veto))
+                    throw new Exception("Ce veterinaire a deja un rendez vous a cette date!!!");
+                if (default(Agenda) != Agendas.Find(ag => ag.DateRdv == dateRdv && ag.Animal == animal))
+                    throw new Exception("Cet animal a deja un rendez vous a cette date!!!");
+                Agenda agenda = new Agenda(veto, animal, dateRdv);
+                Database.Instance.insert(agenda);
+                this.Agendas.Add(agenda);
+                return agenda;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
-
+        /// <summary>
+        /// modifie un rendez vous
+        /// </summary>
+        /// <param name="agenda"></param>
+        /// <param name="veto"></param>
+        /// <param name="animal"></param>
+        /// <param name="dateRdv"></param>
+        /// <exception cref="Exception"></exception>
         public void Modifier(Agenda agenda, Veterinaire veto, Animal animal, DateTime dateRdv)
         {
-            agenda.Veto = veto;
-            agenda.DateRdv = dateRdv;
-            agenda.Animal = animal;
-            Database.Instance.update(agenda);
+            try
+            {
+                agenda.Veto = veto;
+                agenda.DateRdv = dateRdv;
+                agenda.Animal = animal;
+                Database.Instance.update(agenda);
+            }
+            catch (Exception e)
+            {
+                
+                throw e;
+            }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="agenda"></param>
+        /// <returns></returns>
         public bool Supprimer(Agenda agenda)
         {
-            return Database.Instance.delete(agenda);
+            try
+            {
+                Database.Instance.delete(agenda);
+                this.Agendas.Remove(agenda);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erreur sur Suppression de l'agenda.\n" + e.Message, e);
+            }
+            return true;
         }
         #endregion
     }

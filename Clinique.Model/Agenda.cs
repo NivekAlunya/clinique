@@ -41,7 +41,7 @@ namespace Clinique.Model
         {
             get { return _dateRdv; }
             set {
-                if (null == value || DateTime.Now.ToUniversalTime() >= value) throw new Exception("La date de rendez-vous doit-être renseignée et ne peut être définie dans le passée");  
+                if (null == value) throw new Exception("La date de rendez-vous doit-être renseignée et ne peut être définie dans le passée");  
                 _dateRdv = value; }
         }
 

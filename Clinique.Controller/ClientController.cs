@@ -19,6 +19,9 @@ namespace Clinique.Controller
         {
             get
             {
+                _clients = new BindingList<Client>(
+                    ClientStore.Instance.Clients.FindAll((Client c) => c.Archive == false)
+                );
                 return _clients;
             }
             private set
@@ -36,9 +39,7 @@ namespace Clinique.Controller
 
         private ClientController()
         {
-            Clients = new BindingList<Client>(
-                ClientStore.Instance.Clients.FindAll((Client c) => c.Archive == false)
-            );
+
         }
         #endregion
 
@@ -48,7 +49,7 @@ namespace Clinique.Controller
         {
             Client c = ClientStore.Instance.Ajouter(nomClient, prenomClient, adresse1, adresse2, codePostal,
              ville, numTel, assurance, email, remarque, archive);
-            this.Clients.Add(c);
+            _clients.Add(c);
             return c;
         }
 
@@ -63,7 +64,7 @@ namespace Clinique.Controller
         {
             if (ClientStore.Instance.Supprimer(client))
             {
-                this.Clients.Remove(client);
+                _clients.Remove(client);
                 return true;
             }
             return false;

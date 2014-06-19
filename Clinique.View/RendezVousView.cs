@@ -17,6 +17,33 @@ namespace Clinique.View
         public RendezVousForm()
         {
             InitializeComponent();
+            dgvAgenda.AutoGenerateColumns = false;
+            DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
+            col.DataPropertyName = "ag";
+            col.HeaderText = "object";
+            col.Width = 50;
+            col.Visible = false;
+            dgvAgenda.Columns.Add(col);
+            col = new DataGridViewTextBoxColumn();
+            col.DataPropertyName = "hour";
+            col.HeaderText = "Heure";
+            col.Width = 50;
+            dgvAgenda.Columns.Add(col);
+            col = new DataGridViewTextBoxColumn();
+            col.DataPropertyName = "Nom";
+            col.HeaderText = "Client";
+            col.Width = 140;
+            dgvAgenda.Columns.Add(col);
+            col = new DataGridViewTextBoxColumn();
+            col.DataPropertyName = "animal";
+            col.HeaderText = "Animal";
+            col.Width = 140;
+            dgvAgenda.Columns.Add(col);
+            col = new DataGridViewTextBoxColumn();
+            col.DataPropertyName = "race";
+            col.HeaderText = "Race";
+            col.Width = 80;
+            dgvAgenda.Columns.Add(col);
             _initHeure();
             cmbClient.DisplayMember = "NomClient";
             cmbClient.DataSource = ClientController.Instance.Clients;
@@ -29,22 +56,87 @@ namespace Clinique.View
             cmbVeto.DataSource = VeterinaireController.Instance.Veterinaires;
             cmbVeto.SelectedIndexChanged += (object sender, EventArgs e) =>
             {
-                _changeVeto();
+                _refreshAgenda();
             };
+
+            dtpRendezVous.ValueChanged += (object sender, EventArgs e) =>
+            {
+                _refreshAgenda();
+            };
+            btnSupprimer.Click += (object sender, EventArgs e) =>
+            {
+                _supprimerRendezVous();
+            };
+            btnValider.Click += (object sender, EventArgs e) =>
+            {
+                _valider();
+            };
+            _refreshAgenda();
         }
+
         #endregion
         #region properties
         public BindingList<Animal> ListAnimaux { get; set; }
         #endregion
         #region methods
-        private void _changeVeto()
+        private void _valider()
         {
-            _refreshAgenda((Veterinaire)this.cmbVeto.SelectedItem,this.dtpRendezVous.Value);
+            if(null == this.cmbVeto.SelectedItem)
+            {
+                Alert.Show("Selectionner un veterinaire");
+                return;
+            }
+            
+            if(null == this.cmbAnimal.SelectedItem)
+            {
+                Alert.Show("Selectionner un animal");
+                return;
+            }
+
+            if(null == this.cmbHeure.SelectedItem)
+            {
+                Alert.Show("Selectionner une heure");
+                return;
+            }
+            
+            
+            Animal animal = (Animal)this.cmbAnimal.SelectedItem;
+            Veterinaire veto = (Veterinaire)this.cmbVeto.SelectedItem;
+            string heure = (string)this.cmbHeure.SelectedItem;
+
+            DateTime dt;
+            if (!DateTime.TryParse(this.dtpRendezVous.Value.ToShortDateString() + " " + heure, out dt))
+            {
+                Alert.Show("heure non valide.");
+            }
+            try
+            {
+                AgendaController.Instance.AjouterAgenda(veto, animal, dt);
+                _refreshAgenda();
+            }
+            catch (Exception e)
+            {
+                Alert.Show(e.Message);
+            }
+            
         }
 
-        private void _refreshAgenda(Veterinaire veto,DateTime dt)
+        private void _supprimerRendezVous()
         {
-            this.dgvAgenda.DataSource = AgendaController.Instance.getAgendasDuJourPourVeto(veto,dt);
+            if (this.dgvAgenda.SelectedRows.Count > 0)
+            {
+                AgendaController.Instance.SupprimerAgenda((Agenda)this.dgvAgenda.SelectedRows[0].Cells[0].Value);
+                _refreshAgenda();
+            }
+        }
+
+        private void _refreshAgenda()
+        {
+
+            if (null == this.cmbVeto.SelectedItem) return;
+            
+            Veterinaire veto = (Veterinaire)this.cmbVeto.SelectedItem;
+            this.dgvAgenda.DataSource = AgendaController.Instance.getAgendasDuJourPourVeto(veto,dtpRendezVous.Value);
         }
 
         private void _changeClient()
@@ -82,5 +174,6 @@ namespace Clinique.View
             }
         }
         #endregion
+
     }
 }

@@ -77,7 +77,7 @@ namespace Clinique.Store
                 object nf, etat, commentaire;
                 while (reader.Read())
                 {
-                    //nf = Database.read(reader, "NumFacture");
+                    nf = Database.read(reader, "NumFacture");
                     //Facture facture = nf == null ? null : FactureStore.Instance.RecupererFacture((Guid)nf);
                     Facture facture = null;
                     Veterinaire veto = VeterinaireStore.Instance.RecupererVeterinaire(Database.read<Guid>(reader, "CodeVeto"));
