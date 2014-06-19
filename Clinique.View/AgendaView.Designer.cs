@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgendaForm));
             this.gpbAgenda = new System.Windows.Forms.GroupBox();
             this.dtpRendezVous = new System.Windows.Forms.DateTimePicker();
             this.lblDate = new System.Windows.Forms.Label();
@@ -100,11 +101,14 @@
             // 
             // btnDossierMedical
             // 
+            this.btnDossierMedical.Image = ((System.Drawing.Image)(resources.GetObject("btnDossierMedical.Image")));
+            this.btnDossierMedical.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDossierMedical.Location = new System.Drawing.Point(370, 389);
             this.btnDossierMedical.Name = "btnDossierMedical";
-            this.btnDossierMedical.Size = new System.Drawing.Size(104, 65);
+            this.btnDossierMedical.Size = new System.Drawing.Size(104, 77);
             this.btnDossierMedical.TabIndex = 5;
             this.btnDossierMedical.Text = "&Dossier médical";
+            this.btnDossierMedical.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnDossierMedical.UseVisualStyleBackColor = true;
             // 
             // vsbAgenda

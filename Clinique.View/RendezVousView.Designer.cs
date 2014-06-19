@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RendezVousForm));
             this.grpClient = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -188,41 +189,50 @@
             this.dgvAgenda.Name = "dgvAgenda";
             this.dgvAgenda.ReadOnly = true;
             this.dgvAgenda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAgenda.Size = new System.Drawing.Size(612, 231);
+            this.dgvAgenda.Size = new System.Drawing.Size(612, 206);
             this.dgvAgenda.TabIndex = 5;
             // 
             // btnAnnuler
             // 
-            this.btnAnnuler.Location = new System.Drawing.Point(538, 344);
+            this.btnAnnuler.Image = ((System.Drawing.Image)(resources.GetObject("btnAnnuler.Image")));
+            this.btnAnnuler.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAnnuler.Location = new System.Drawing.Point(538, 319);
             this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(75, 23);
+            this.btnAnnuler.Size = new System.Drawing.Size(75, 61);
             this.btnAnnuler.TabIndex = 6;
-            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.Text = "&Annuler";
+            this.btnAnnuler.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAnnuler.UseVisualStyleBackColor = true;
             // 
             // btnValider
             // 
-            this.btnValider.Location = new System.Drawing.Point(457, 344);
+            this.btnValider.Image = ((System.Drawing.Image)(resources.GetObject("btnValider.Image")));
+            this.btnValider.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnValider.Location = new System.Drawing.Point(457, 319);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(75, 23);
+            this.btnValider.Size = new System.Drawing.Size(75, 61);
             this.btnValider.TabIndex = 7;
-            this.btnValider.Text = "Valider";
+            this.btnValider.Text = "&Valider";
+            this.btnValider.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnValider.UseVisualStyleBackColor = true;
             // 
             // btnSupprimer
             // 
-            this.btnSupprimer.Location = new System.Drawing.Point(376, 344);
+            this.btnSupprimer.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimer.Image")));
+            this.btnSupprimer.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSupprimer.Location = new System.Drawing.Point(376, 319);
             this.btnSupprimer.Name = "btnSupprimer";
-            this.btnSupprimer.Size = new System.Drawing.Size(75, 23);
+            this.btnSupprimer.Size = new System.Drawing.Size(75, 61);
             this.btnSupprimer.TabIndex = 8;
-            this.btnSupprimer.Text = "Supprimer";
+            this.btnSupprimer.Text = "&Supprimer";
+            this.btnSupprimer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSupprimer.UseVisualStyleBackColor = true;
             // 
             // RendezVousForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 372);
+            this.ClientSize = new System.Drawing.Size(616, 381);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.btnAnnuler);
@@ -231,6 +241,7 @@
             this.Controls.Add(this.grpVeto);
             this.Controls.Add(this.grpClient);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RendezVousForm";
             this.Text = "Prise de Rendez Vous";
             this.grpClient.ResumeLayout(false);

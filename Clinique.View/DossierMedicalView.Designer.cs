@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DossierMedicalForm));
             this.lblNomAnimal = new System.Windows.Forms.Label();
             this.lblProprietaire = new System.Windows.Forms.Label();
             this.txtAnimal = new System.Windows.Forms.TextBox();
@@ -90,6 +91,7 @@
             this.Controls.Add(this.txtAnimal);
             this.Controls.Add(this.lblProprietaire);
             this.Controls.Add(this.lblNomAnimal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DossierMedicalForm";
             this.Text = "Dossier Medical";
             this.ResumeLayout(false);

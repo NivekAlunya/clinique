@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnimalForm));
             this.gpbHaut = new System.Windows.Forms.GroupBox();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
@@ -56,15 +57,17 @@
             this.gpbHaut.Controls.Add(this.btnDossierMedical);
             this.gpbHaut.Location = new System.Drawing.Point(0, 0);
             this.gpbHaut.Name = "gpbHaut";
-            this.gpbHaut.Size = new System.Drawing.Size(391, 95);
+            this.gpbHaut.Size = new System.Drawing.Size(391, 109);
             this.gpbHaut.TabIndex = 0;
             this.gpbHaut.TabStop = false;
             // 
             // btnAnnuler
             // 
-            this.btnAnnuler.Location = new System.Drawing.Point(298, 19);
+            this.btnAnnuler.Image = ((System.Drawing.Image)(resources.GetObject("btnAnnuler.Image")));
+            this.btnAnnuler.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAnnuler.Location = new System.Drawing.Point(298, 12);
             this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(75, 70);
+            this.btnAnnuler.Size = new System.Drawing.Size(77, 91);
             this.btnAnnuler.TabIndex = 2;
             this.btnAnnuler.Text = "&Annuler";
             this.btnAnnuler.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -72,9 +75,11 @@
             // 
             // btnValider
             // 
-            this.btnValider.Location = new System.Drawing.Point(217, 19);
+            this.btnValider.Image = ((System.Drawing.Image)(resources.GetObject("btnValider.Image")));
+            this.btnValider.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnValider.Location = new System.Drawing.Point(201, 12);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(75, 70);
+            this.btnValider.Size = new System.Drawing.Size(77, 91);
             this.btnValider.TabIndex = 1;
             this.btnValider.Text = "&Valider";
             this.btnValider.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -82,9 +87,11 @@
             // 
             // btnDossierMedical
             // 
-            this.btnDossierMedical.Location = new System.Drawing.Point(12, 19);
+            this.btnDossierMedical.Image = ((System.Drawing.Image)(resources.GetObject("btnDossierMedical.Image")));
+            this.btnDossierMedical.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDossierMedical.Location = new System.Drawing.Point(12, 12);
             this.btnDossierMedical.Name = "btnDossierMedical";
-            this.btnDossierMedical.Size = new System.Drawing.Size(75, 70);
+            this.btnDossierMedical.Size = new System.Drawing.Size(94, 91);
             this.btnDossierMedical.TabIndex = 0;
             this.btnDossierMedical.Text = "&Dossier médical";
             this.btnDossierMedical.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -93,7 +100,7 @@
             // gpbClient
             // 
             this.gpbClient.Controls.Add(this.cbbClient);
-            this.gpbClient.Location = new System.Drawing.Point(0, 101);
+            this.gpbClient.Location = new System.Drawing.Point(0, 115);
             this.gpbClient.Name = "gpbClient";
             this.gpbClient.Size = new System.Drawing.Size(391, 57);
             this.gpbClient.TabIndex = 3;
@@ -111,7 +118,7 @@
             // lblCode
             // 
             this.lblCode.AutoSize = true;
-            this.lblCode.Location = new System.Drawing.Point(3, 169);
+            this.lblCode.Location = new System.Drawing.Point(3, 183);
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(32, 13);
             this.lblCode.TabIndex = 4;
@@ -120,7 +127,7 @@
             // lblNom
             // 
             this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(3, 197);
+            this.lblNom.Location = new System.Drawing.Point(3, 211);
             this.lblNom.Name = "lblNom";
             this.lblNom.Size = new System.Drawing.Size(29, 13);
             this.lblNom.TabIndex = 5;
@@ -129,7 +136,7 @@
             // lblCouleur
             // 
             this.lblCouleur.AutoSize = true;
-            this.lblCouleur.Location = new System.Drawing.Point(3, 223);
+            this.lblCouleur.Location = new System.Drawing.Point(3, 237);
             this.lblCouleur.Name = "lblCouleur";
             this.lblCouleur.Size = new System.Drawing.Size(43, 13);
             this.lblCouleur.TabIndex = 6;
@@ -138,7 +145,7 @@
             // lblEspèce
             // 
             this.lblEspèce.AutoSize = true;
-            this.lblEspèce.Location = new System.Drawing.Point(3, 248);
+            this.lblEspèce.Location = new System.Drawing.Point(3, 262);
             this.lblEspèce.Name = "lblEspèce";
             this.lblEspèce.Size = new System.Drawing.Size(74, 13);
             this.lblEspèce.TabIndex = 7;
@@ -147,7 +154,7 @@
             // lblTatouage
             // 
             this.lblTatouage.AutoSize = true;
-            this.lblTatouage.Location = new System.Drawing.Point(3, 273);
+            this.lblTatouage.Location = new System.Drawing.Point(3, 287);
             this.lblTatouage.Name = "lblTatouage";
             this.lblTatouage.Size = new System.Drawing.Size(53, 13);
             this.lblTatouage.TabIndex = 8;
@@ -156,28 +163,28 @@
             // txtCode
             // 
             this.txtCode.Enabled = false;
-            this.txtCode.Location = new System.Drawing.Point(63, 165);
+            this.txtCode.Location = new System.Drawing.Point(63, 179);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(129, 20);
             this.txtCode.TabIndex = 9;
             // 
             // txtNom
             // 
-            this.txtNom.Location = new System.Drawing.Point(63, 193);
+            this.txtNom.Location = new System.Drawing.Point(63, 207);
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(129, 20);
             this.txtNom.TabIndex = 1;
             // 
             // txtCouleur
             // 
-            this.txtCouleur.Location = new System.Drawing.Point(63, 219);
+            this.txtCouleur.Location = new System.Drawing.Point(63, 233);
             this.txtCouleur.Name = "txtCouleur";
             this.txtCouleur.Size = new System.Drawing.Size(129, 20);
             this.txtCouleur.TabIndex = 2;
             // 
             // txtTatouage
             // 
-            this.txtTatouage.Location = new System.Drawing.Point(62, 270);
+            this.txtTatouage.Location = new System.Drawing.Point(62, 284);
             this.txtTatouage.Name = "txtTatouage";
             this.txtTatouage.Size = new System.Drawing.Size(129, 20);
             this.txtTatouage.TabIndex = 4;
@@ -185,7 +192,7 @@
             // cbbSexe
             // 
             this.cbbSexe.FormattingEnabled = true;
-            this.cbbSexe.Location = new System.Drawing.Point(227, 193);
+            this.cbbSexe.Location = new System.Drawing.Point(227, 207);
             this.cbbSexe.Name = "cbbSexe";
             this.cbbSexe.Size = new System.Drawing.Size(121, 21);
             this.cbbSexe.TabIndex = 5;
@@ -193,7 +200,7 @@
             // cbbEspece
             // 
             this.cbbEspece.FormattingEnabled = true;
-            this.cbbEspece.Location = new System.Drawing.Point(83, 243);
+            this.cbbEspece.Location = new System.Drawing.Point(83, 257);
             this.cbbEspece.Name = "cbbEspece";
             this.cbbEspece.Size = new System.Drawing.Size(125, 21);
             this.cbbEspece.TabIndex = 12;
@@ -202,7 +209,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 319);
+            this.ClientSize = new System.Drawing.Size(401, 365);
             this.Controls.Add(this.cbbEspece);
             this.Controls.Add(this.cbbSexe);
             this.Controls.Add(this.txtTatouage);

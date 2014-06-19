@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EcranPrincipalView));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.secretariatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.priseDeRendezvousToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -234,6 +235,7 @@
             this.Controls.Add(this.gpbEcranPrincipal);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "EcranPrincipalView";

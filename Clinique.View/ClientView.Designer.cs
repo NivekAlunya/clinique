@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientForm));
             this.gpbClient = new System.Windows.Forms.GroupBox();
             this.txtRechercherClient = new System.Windows.Forms.TextBox();
             this.btnRechercher = new System.Windows.Forms.Button();
@@ -85,6 +86,7 @@
             // 
             // btnRechercher
             // 
+            this.btnRechercher.Image = ((System.Drawing.Image)(resources.GetObject("btnRechercher.Image")));
             this.btnRechercher.Location = new System.Drawing.Point(729, 12);
             this.btnRechercher.Name = "btnRechercher";
             this.btnRechercher.Size = new System.Drawing.Size(75, 71);
@@ -95,6 +97,7 @@
             // 
             // btnSupprimerClient
             // 
+            this.btnSupprimerClient.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimerClient.Image")));
             this.btnSupprimerClient.Location = new System.Drawing.Point(456, 12);
             this.btnSupprimerClient.Name = "btnSupprimerClient";
             this.btnSupprimerClient.Size = new System.Drawing.Size(75, 71);
@@ -105,6 +108,7 @@
             // 
             // btnAjouterClient
             // 
+            this.btnAjouterClient.Image = ((System.Drawing.Image)(resources.GetObject("btnAjouterClient.Image")));
             this.btnAjouterClient.Location = new System.Drawing.Point(375, 12);
             this.btnAjouterClient.Name = "btnAjouterClient";
             this.btnAjouterClient.Size = new System.Drawing.Size(75, 71);
@@ -115,6 +119,7 @@
             // 
             // btnDernier
             // 
+            this.btnDernier.Image = ((System.Drawing.Image)(resources.GetObject("btnDernier.Image")));
             this.btnDernier.Location = new System.Drawing.Point(255, 12);
             this.btnDernier.Name = "btnDernier";
             this.btnDernier.Size = new System.Drawing.Size(75, 71);
@@ -125,6 +130,7 @@
             // 
             // btnSuivant
             // 
+            this.btnSuivant.Image = ((System.Drawing.Image)(resources.GetObject("btnSuivant.Image")));
             this.btnSuivant.Location = new System.Drawing.Point(174, 12);
             this.btnSuivant.Name = "btnSuivant";
             this.btnSuivant.Size = new System.Drawing.Size(75, 71);
@@ -135,6 +141,7 @@
             // 
             // btnPrecedent
             // 
+            this.btnPrecedent.Image = ((System.Drawing.Image)(resources.GetObject("btnPrecedent.Image")));
             this.btnPrecedent.Location = new System.Drawing.Point(93, 12);
             this.btnPrecedent.Name = "btnPrecedent";
             this.btnPrecedent.Size = new System.Drawing.Size(75, 71);
@@ -145,6 +152,7 @@
             // 
             // btnPremier
             // 
+            this.btnPremier.Image = ((System.Drawing.Image)(resources.GetObject("btnPremier.Image")));
             this.btnPremier.Location = new System.Drawing.Point(12, 12);
             this.btnPremier.Name = "btnPremier";
             this.btnPremier.Size = new System.Drawing.Size(75, 71);
@@ -217,6 +225,7 @@
             // 
             // btnAjouterAnimal
             // 
+            this.btnAjouterAnimal.Image = ((System.Drawing.Image)(resources.GetObject("btnAjouterAnimal.Image")));
             this.btnAjouterAnimal.Location = new System.Drawing.Point(579, 289);
             this.btnAjouterAnimal.Name = "btnAjouterAnimal";
             this.btnAjouterAnimal.Size = new System.Drawing.Size(75, 71);
@@ -227,6 +236,7 @@
             // 
             // btnSupprimerAnimal
             // 
+            this.btnSupprimerAnimal.Image = ((System.Drawing.Image)(resources.GetObject("btnSupprimerAnimal.Image")));
             this.btnSupprimerAnimal.Location = new System.Drawing.Point(660, 289);
             this.btnSupprimerAnimal.Name = "btnSupprimerAnimal";
             this.btnSupprimerAnimal.Size = new System.Drawing.Size(75, 71);
@@ -237,6 +247,7 @@
             // 
             // btnEditerAnimal
             // 
+            this.btnEditerAnimal.Image = ((System.Drawing.Image)(resources.GetObject("btnEditerAnimal.Image")));
             this.btnEditerAnimal.Location = new System.Drawing.Point(741, 289);
             this.btnEditerAnimal.Name = "btnEditerAnimal";
             this.btnEditerAnimal.Size = new System.Drawing.Size(75, 71);
@@ -301,6 +312,7 @@
             // 
             // btnValider
             // 
+            this.btnValider.Image = ((System.Drawing.Image)(resources.GetObject("btnValider.Image")));
             this.btnValider.Location = new System.Drawing.Point(93, 289);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(75, 71);
@@ -311,6 +323,7 @@
             // 
             // btnAnnuler
             // 
+            this.btnAnnuler.Image = ((System.Drawing.Image)(resources.GetObject("btnAnnuler.Image")));
             this.btnAnnuler.Location = new System.Drawing.Point(174, 289);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(75, 71);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VeterinaireFormulaireView));
             this.txtNom = new System.Windows.Forms.TextBox();
             this.lblNom = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -106,7 +107,7 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Re saisir";
             // 
-            // VeterinaireAjouterView
+            // VeterinaireFormulaireView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -120,7 +121,8 @@
             this.Controls.Add(this.lblNom);
             this.Controls.Add(this.txtNom);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "VeterinaireAjouterView";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "VeterinaireFormulaireView";
             this.Text = "Ajouter Veterinaire";
             this.ResumeLayout(false);
             this.PerformLayout();
