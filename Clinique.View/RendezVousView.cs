@@ -32,7 +32,6 @@ namespace Clinique.View
             {
                 _refreshAgenda();
             };
-
             dtpRendezVous.ValueChanged += (object sender, EventArgs e) =>
             {
                 _refreshAgenda();
@@ -73,12 +72,11 @@ namespace Clinique.View
                 return;
             }
             
-            
             Animal animal = (Animal)this.cmbAnimal.SelectedItem;
             Veterinaire veto = (Veterinaire)this.cmbVeto.SelectedItem;
             string heure = (string)this.cmbHeure.SelectedItem;
-
             DateTime dt;
+
             if (!DateTime.TryParse(this.dtpRendezVous.Value.ToShortDateString() + " " + heure, out dt))
             {
                 Alert.Show("heure non valide.");
@@ -92,7 +90,6 @@ namespace Clinique.View
             {
                 Alert.Show(e.Message);
             }
-            
         }
 
         private void _supprimerRendezVous()
@@ -106,9 +103,7 @@ namespace Clinique.View
 
         private void _refreshAgenda()
         {
-
             if (null == this.cmbVeto.SelectedItem) return;
-            
             Veterinaire veto = (Veterinaire)this.cmbVeto.SelectedItem;
             this.dgvAgenda.DataSource = AgendaController.Instance.getAgendasDuJourPourVeto(veto,dtpRendezVous.Value);
         }

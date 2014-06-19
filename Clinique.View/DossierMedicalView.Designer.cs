@@ -92,7 +92,6 @@
             this.Controls.Add(this.lblNomAnimal);
             this.Name = "DossierMedicalForm";
             this.Text = "Dossier Medical";
-            this.Load += new System.EventHandler(this.DossierMedicalForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

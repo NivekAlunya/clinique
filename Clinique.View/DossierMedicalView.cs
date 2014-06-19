@@ -18,7 +18,7 @@ namespace Clinique.View
     {
         
         
-#region constructor
+        #region constructor
         public DossierMedicalForm(Animal animal = null)
         {
             InitializeComponent();
@@ -29,21 +29,7 @@ namespace Clinique.View
                 this.txtProprietaire.Text = animal.Client.NomClient;
                 this.txtEcran.Text = animal.Antecedents;
             }
-            //SaisieClientView saisieclient = SaisieClientView.ActiveForm();
-            //if (null != saisieclient)
-            //{
-            //    this.txtAnimal.Text = saisieclient.NomAnimal;
-            //    this.txtProprietaire.Text = saisieclient.NomClient;
-            //}
         }
-
-
-#endregion
-
-
-        private void DossierMedicalForm_Load(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

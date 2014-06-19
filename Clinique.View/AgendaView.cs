@@ -28,14 +28,26 @@ namespace Clinique.View
             {
                 _refreshAgenda();
             };
-
             dtpRendezVous.ValueChanged += (object sender, EventArgs e) =>
             {
                 _refreshAgenda();
             };
+            btnDossierMedical.Click += (object sender, EventArgs e) =>
+            {
+                _showDossier();
+            };
         }
         #endregion
         #region methods
+        private void _showDossier()
+        {
+            if (this.dgvAgenda.SelectedRows.Count > 0)
+            {
+                DossierMedicalForm f = new DossierMedicalForm(((Agenda)this.dgvAgenda.SelectedRows[0].Cells[0].Value).Animal);
+                f.ShowDialog();
+            }
+        }
+
         private void _refreshAgenda()
         {
 

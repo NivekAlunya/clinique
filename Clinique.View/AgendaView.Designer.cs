@@ -71,6 +71,7 @@
             // 
             // cmbVeto
             // 
+            this.cmbVeto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVeto.FormattingEnabled = true;
             this.cmbVeto.Location = new System.Drawing.Point(70, 19);
             this.cmbVeto.Name = "cmbVeto";
@@ -90,7 +91,10 @@
             // 
             this.dgvAgenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAgenda.Location = new System.Drawing.Point(0, 62);
+            this.dgvAgenda.MultiSelect = false;
             this.dgvAgenda.Name = "dgvAgenda";
+            this.dgvAgenda.ReadOnly = true;
+            this.dgvAgenda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAgenda.Size = new System.Drawing.Size(458, 304);
             this.dgvAgenda.TabIndex = 4;
             // 
