@@ -81,6 +81,12 @@
     <Compile Include="DossierMedicalView.Designer.cs">
       <DependentUpon>DossierMedicalView.cs</DependentUpon>
     </Compile>
+    <Compile Include="EcranPrincipalView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EcranPrincipalView.Designer.cs">
+      <DependentUpon>EcranPrincipalView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RendezVousView.cs">
@@ -88,6 +94,12 @@
     </Compile>
     <Compile Include="RendezVousView.Designer.cs">
       <DependentUpon>RendezVousView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaisieClientView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaisieClientView.Designer.cs">
+      <DependentUpon>SaisieClientView.cs</DependentUpon>
     </Compile>
     <Compile Include="VeterinaireFormulaireView.cs">
       <SubType>Form</SubType>
@@ -119,6 +131,9 @@
     <EmbeddedResource Include="DossierMedicalView.resx">
       <DependentUpon>DossierMedicalView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EcranPrincipalView.resx">
+      <DependentUpon>EcranPrincipalView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -131,6 +146,9 @@
     </Compile>
     <EmbeddedResource Include="RendezVousView.resx">
       <DependentUpon>RendezVousView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaisieClientView.resx">
+      <DependentUpon>SaisieClientView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VeterinaireFormulaireView.resx">
       <DependentUpon>VeterinaireFormulaireView.cs</DependentUpon>

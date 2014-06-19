@@ -102,6 +102,11 @@ namespace Clinique.Store
             }
         }
 
+        public string Afficher(Consultation consultation)
+        {
+            return (consultation.Veto.ToString() +" " + consultation.Animal.Antecedents.ToString()) ;
+        }
+
 #endregion
 
 

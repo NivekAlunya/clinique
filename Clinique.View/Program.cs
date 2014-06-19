@@ -18,8 +18,20 @@ namespace Clinique.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            System.Diagnostics.Debug.WriteLine(AgendaStore.Instance.Agendas);
-            //Application.Run(new RendezVousForm());
+            Application.Run(new EcranPrincipalView());
+            //Application.Run(new VeterinaireView());
+            //Animal animal = AnimalStore.Instance.Animaux.ElementAt(0);
+            //AnimalForm animalform = new AnimalForm(animal);
+            //animalform.evtValider += (Animal animal  ) =>
+            //{
+            //    MessageBox.Show(animal.NomAnimal);
+            //};
+
+            ////Application.Run(animalform);
+
+            //DossierMedicalForm dossierMedicalForm = new DossierMedicalForm(animal);
+            //Application.Run(dossierMedicalForm);
+            //System.Diagnostics.Debug.WriteLine(ConsultationStore.Instance.Consultations);
         }   
 
 

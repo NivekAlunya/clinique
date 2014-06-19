@@ -37,5 +37,10 @@ namespace Clinique.Controller
         {
             return ConsultationStore.Instance.Supprimer(consultation);
         }
+
+        public string AfficherConsultation(Consultation consultation)
+        {
+            return ConsultationStore.Instance.Afficher(consultation);
+        }
     }
 }

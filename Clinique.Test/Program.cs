@@ -23,64 +23,75 @@ namespace Clinique.Test
             //runCreation();
             //runCreationClient();
             //runCreationVeto();
+            runrecuperationlisteAnimal();
             //runCreationAnimal();
             //runCreationBareme();
             //runCreationFacture();
             //runCreationLignesFacture();
             //runCreationRace();
-            runCreationAgenda();
+            //runCreationAgenda();
             //runCreationConsultationFull();
 
             Console.ReadKey();
         }
 
+        private static void runrecuperationlisteAnimal()
+        {
+            Console.WriteLine("Verification remplissage de la liste");
+            foreach  (Animal animal in AnimalController.Instance.Animaux)
+	        {
+		         Console.WriteLine(animal.Espece + "  " + animal.Race);
+	        }
+              
+        }
+
         private static void runCreationLignesFacture()
         {
             Client client = ClientController.Instance.AjouterClient("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
-            Facture facture = FactureStore.Ajouter(client, DateTime.Now.ToUniversalTime(), Facture.eFactureEtats.a_imprimer, 135, DateTime.Now.ToUniversalTime(), false);
+            Facture facture = FactureStore.Instance.Ajouter(client, DateTime.Now.ToUniversalTime(), Facture.eFactureEtats.a_imprimer, 135, DateTime.Now.ToUniversalTime(), false);
             Vaccin vaccin = VaccinController.Instance.AjouterVaccin("VIH Vaccin", 50, 2, false);
-            Bareme bareme = BaremeStore.Ajouter("103", "30/07/07", "VACC", "Vaccination DT", 11, 10, 14, vaccin, false);
-            LigneFacture ligneFacture = LigneFactureStore.Ajouter(facture, bareme, 135, false);
+            Bareme bareme = BaremeStore.Instance.Ajouter("103", "30/07/07", "VACC", "Vaccination DT", 11, 10, 14, vaccin, false);
+            LigneFacture ligneFacture = LigneFactureStore.Instance.Ajouter(facture, bareme, 135, false);
             Console.WriteLine("INSERT");
             Console.ReadKey();
             Console.WriteLine("UPDATE");
-            LigneFactureStore.Modifier(ligneFacture, facture, bareme, 1350, true);
+            LigneFactureStore.Instance.Modifier(ligneFacture, facture, bareme, 1350, true);
             Console.ReadKey();
             Console.WriteLine("DELETE");
-            LigneFactureStore.Supprimer(ligneFacture);
+            LigneFactureStore.Instance.Supprimer(ligneFacture);
         }
 
         private static void runCreationFacture()
         {
             Client client = ClientController.Instance.AjouterClient("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
-            Facture facture = FactureStore.Ajouter(client, DateTime.Now.ToUniversalTime(), Facture.eFactureEtats.a_imprimer, 135, DateTime.Now.ToUniversalTime(), false);
+            Facture facture = FactureStore.Instance.Ajouter(client, DateTime.Now.ToUniversalTime(), Facture.eFactureEtats.a_imprimer, 135, DateTime.Now.ToUniversalTime(), false);
             Console.WriteLine("INSERT");
             Console.ReadKey();
             Console.WriteLine("UPDATE");
-            FactureStore.Modifier(facture, client, DateTime.Now.ToUniversalTime(), Facture.eFactureEtats.payee, 2500, DateTime.Now.ToUniversalTime(), false);
+            FactureStore.Instance.Modifier(facture, client, DateTime.Now.ToUniversalTime(), Facture.eFactureEtats.payee, 2500, DateTime.Now.ToUniversalTime(), false);
             Console.ReadKey();
             Console.WriteLine("DELETE");
-            FactureStore.Supprimer(facture);
+            FactureStore.Instance.Supprimer(facture);
         }
 
         private static void runCreationBareme()
         {
             Vaccin vaccin = VaccinController.Instance.AjouterVaccin("VIH Vaccin", 50, 2, false);
-            Bareme bareme = BaremeStore.Ajouter("103", "30/07/07", "VACC", "Vaccination DT", 11, 10, 14, vaccin, false);
+            Bareme bareme = BaremeStore.Instance.Ajouter("103", "30/07/07", "VACC", "Vaccination DT", 11, 10, 14, vaccin, false);
             Console.WriteLine("INSERT");
             Console.ReadKey();
             Console.WriteLine("UPDATE");
-            BaremeStore.Modifier(bareme, "VACC", "Vaccination DT americanos", 110, 100, 140, vaccin);
+            BaremeStore.Instance.Modifier(bareme, "VACC", "Vaccination DT americanos", 110, 100, 140, vaccin);
             Console.ReadKey();
             Console.WriteLine("DELETE");
-            BaremeStore.Supprimer(bareme);
+            BaremeStore.Instance.Supprimer(bareme);
         }
 		private static void runCreationConsultationFull()
         {
             Veterinaire veto = VeterinaireController.Instance.AjouterVeterinaire("toto", "*****", false);
-            Race Labrador = RaceStore.Ajouter("Chien", "Labrador");
-            Client amede = ClientStore.Ajouter("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
-            Animal animal = AnimalStore.Ajouter("Bethoveen", Animal.eSexe.M, "Beige", Labrador, "007", "Joueur avec le facteur", false, amede);
+            Race Labrador = RaceStore.Instance.Ajouter("Chien", "Labrador");
+            Client amede = ClientStore.Instance.Ajouter("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
+            Animal animal = AnimalStore.Instance.Ajouter("Bethoveen", Animal.eSexe.M, "Beige", Labrador, "007", "Joueur avec le facteur", false, amede);
             Console.WriteLine("INSERT");
             Consultation consultation = ConsultationController.Instance.AjouterConsultation(null, veto,animal, DateTime.Now, Consultation.eConsultationEtat.en_cours_de_saisie, "", false);
             Console.ReadKey();
@@ -90,19 +101,19 @@ namespace Clinique.Test
             Console.WriteLine("DELETE");
             ConsultationController.Instance.Supprimerconsultation(consultation);
 
-            AnimalStore.Supprimer(animal);
-            ClientStore.Supprimer(amede);
-            RaceStore.Supprimer(Labrador);
-            VeterinaireStore.Supprimer(veto);
+            AnimalStore.Instance.Supprimer(animal);
+            ClientStore.Instance.Supprimer(amede);
+            RaceStore.Instance.Supprimer(Labrador);
+            VeterinaireStore.Instance.Supprimer(veto);
 
         }
 
         private static void runCreationAgenda()
         {
             Veterinaire veto = VeterinaireController.Instance.AjouterVeterinaire("toto", "*****", false);
-            Race Labrador = RaceStore.Ajouter("Chien", "Labrador");
-            Client amede = ClientStore.Ajouter("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
-            Animal animal = AnimalStore.Ajouter("Bethoveen", Animal.eSexe.M, "Beige", Labrador, "007", "Joueur avec le facteur", false, amede);
+            Race Labrador = RaceStore.Instance.Ajouter("Chien", "Labrador");
+            Client amede = ClientStore.Instance.Ajouter("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
+            Animal animal = AnimalStore.Instance.Ajouter("Bethoveen", Animal.eSexe.M, "Beige", Labrador, "007", "Joueur avec le facteur", false, amede);
             
             
             Console.WriteLine("INSERT");
@@ -110,10 +121,10 @@ namespace Clinique.Test
             Console.ReadKey();
             Console.WriteLine("DELETE");
             AgendaController.Instance.SupprimerAgenda(agenda);
-            AnimalStore.Supprimer(animal);
-            ClientStore.Supprimer(amede);
-            RaceStore.Supprimer(Labrador);
-            VeterinaireStore.Supprimer(veto);
+            AnimalStore.Instance.Supprimer(animal);
+            ClientStore.Instance.Supprimer(amede);
+            RaceStore.Instance.Supprimer(Labrador);
+            VeterinaireStore.Instance.Supprimer(veto);
 
         }
 
@@ -128,16 +139,16 @@ namespace Clinique.Test
 
         private static void runCreationAnimal()
         {
-            Race Labrador = RaceStore.Ajouter("Chien", "Labrador");
-            Client amede = ClientStore.Ajouter("Bugeavel-Track", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
-            Animal animal = AnimalStore.Ajouter("Bethoveen", Animal.eSexe.M, "Beige", Labrador, "007", "Joueur avec le facteur", false, amede);
+            Race Tecquel = RaceStore.Instance.Ajouter("Chien", "Tecquel");
+            Client amede = ClientStore.Instance.Ajouter("Bugeavel", "Amede", "3 rue du petit paris", "", "44950", "Flurne sur Loire", "0666785713", "Non", "bens360@jjh.fr", "Pas de remarque", false);
+            Animal animal = AnimalController.Instance.AjouterAnimal("Bethoveen", Animal.eSexe.M, "Beige", Tecquel, "007", "Joueur avec le facteur", false, amede);
             Console.WriteLine("INSERT");
             Console.ReadKey();
             Console.WriteLine("UPDATE");
-            AnimalStore.Modifier(animal, "Bethoveen", Animal.eSexe.F, "Marron", Labrador, "007", "Joueur avec le facteur et la police", false, amede);
+            AnimalController.Instance.ModifierAnimal(animal, "Bethoveen", Animal.eSexe.F, "Marron", Tecquel, "007", "Joueur avec le facteur et la police",  amede, false);
             Console.ReadKey();
             Console.WriteLine("DELETE");
-            AnimalStore.Supprimer(animal);
+            AnimalController.Instance.SupprimerAnimal(animal);
         }
 
 

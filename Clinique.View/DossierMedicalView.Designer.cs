@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.lblNomAnimal = new System.Windows.Forms.Label();
-            this.cbbNomAnimal = new System.Windows.Forms.ComboBox();
             this.lblProprietaire = new System.Windows.Forms.Label();
-            this.cbbProprietaire = new System.Windows.Forms.ComboBox();
-            this.ltvConsultationq = new System.Windows.Forms.ListView();
+            this.txtAnimal = new System.Windows.Forms.TextBox();
+            this.txtProprietaire = new System.Windows.Forms.TextBox();
+            this.txtEcran = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // lblNomAnimal
@@ -44,14 +44,6 @@
             this.lblNomAnimal.TabIndex = 0;
             this.lblNomAnimal.Text = "Dossier médical de :";
             // 
-            // cbbNomAnimal
-            // 
-            this.cbbNomAnimal.FormattingEnabled = true;
-            this.cbbNomAnimal.Location = new System.Drawing.Point(120, 6);
-            this.cbbNomAnimal.Name = "cbbNomAnimal";
-            this.cbbNomAnimal.Size = new System.Drawing.Size(121, 21);
-            this.cbbNomAnimal.TabIndex = 1;
-            // 
             // lblProprietaire
             // 
             this.lblProprietaire.AutoSize = true;
@@ -61,34 +53,46 @@
             this.lblProprietaire.TabIndex = 2;
             this.lblProprietaire.Text = "Propriétaire :";
             // 
-            // cbbProprietaire
+            // txtAnimal
             // 
-            this.cbbProprietaire.FormattingEnabled = true;
-            this.cbbProprietaire.Location = new System.Drawing.Point(120, 35);
-            this.cbbProprietaire.Name = "cbbProprietaire";
-            this.cbbProprietaire.Size = new System.Drawing.Size(121, 21);
-            this.cbbProprietaire.TabIndex = 3;
+            this.txtAnimal.CausesValidation = false;
+            this.txtAnimal.Location = new System.Drawing.Point(120, 6);
+            this.txtAnimal.Name = "txtAnimal";
+            this.txtAnimal.ReadOnly = true;
+            this.txtAnimal.Size = new System.Drawing.Size(100, 20);
+            this.txtAnimal.TabIndex = 5;
             // 
-            // ltvConsultationq
+            // txtProprietaire
             // 
-            this.ltvConsultationq.Location = new System.Drawing.Point(15, 77);
-            this.ltvConsultationq.Name = "ltvConsultationq";
-            this.ltvConsultationq.Size = new System.Drawing.Size(480, 354);
-            this.ltvConsultationq.TabIndex = 4;
-            this.ltvConsultationq.UseCompatibleStateImageBehavior = false;
+            this.txtProprietaire.CausesValidation = false;
+            this.txtProprietaire.Location = new System.Drawing.Point(120, 40);
+            this.txtProprietaire.Name = "txtProprietaire";
+            this.txtProprietaire.ReadOnly = true;
+            this.txtProprietaire.Size = new System.Drawing.Size(100, 20);
+            this.txtProprietaire.TabIndex = 6;
+            // 
+            // txtEcran
+            // 
+            this.txtEcran.Location = new System.Drawing.Point(15, 77);
+            this.txtEcran.Name = "txtEcran";
+            this.txtEcran.ReadOnly = true;
+            this.txtEcran.Size = new System.Drawing.Size(492, 378);
+            this.txtEcran.TabIndex = 7;
+            this.txtEcran.Text = "";
             // 
             // DossierMedicalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(519, 477);
-            this.Controls.Add(this.ltvConsultationq);
-            this.Controls.Add(this.cbbProprietaire);
+            this.Controls.Add(this.txtEcran);
+            this.Controls.Add(this.txtProprietaire);
+            this.Controls.Add(this.txtAnimal);
             this.Controls.Add(this.lblProprietaire);
-            this.Controls.Add(this.cbbNomAnimal);
             this.Controls.Add(this.lblNomAnimal);
             this.Name = "DossierMedicalForm";
             this.Text = "Dossier Medical";
+            this.Load += new System.EventHandler(this.DossierMedicalForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,9 +101,9 @@
         #endregion
 
         private System.Windows.Forms.Label lblNomAnimal;
-        private System.Windows.Forms.ComboBox cbbNomAnimal;
         private System.Windows.Forms.Label lblProprietaire;
-        private System.Windows.Forms.ComboBox cbbProprietaire;
-        private System.Windows.Forms.ListView ltvConsultationq;
+        private System.Windows.Forms.TextBox txtAnimal;
+        private System.Windows.Forms.TextBox txtProprietaire;
+        private System.Windows.Forms.RichTextBox txtEcran;
     }
 }
