@@ -1,6 +1,6 @@
 ﻿namespace Clinique.View
 {
-    partial class SaisieClientView
+    partial class SaisieClientForm
     {
         /// <summary>
         /// Required designer variable.

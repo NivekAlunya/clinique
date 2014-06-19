@@ -19,84 +19,54 @@ namespace Clinique.View
 
         private void btnRendezVous_Click(object sender, EventArgs e)
         {
-            AgendaForm agendaForm = new AgendaForm();
-            agendaForm.ShowDialog();
+            _showRendezVous();
         }
 
         private void btnClientAnimal_Click(object sender, EventArgs e)
         {
+            _showFormClientAnimal();
+        }
+
+        private void _showFormClientAnimal()
+        {
             ClientForm clientForm = new ClientForm();
-            clientForm.ShowDialog();
-        }
-
-        private void btnRelance_Click(object sender, EventArgs e)
-        {
-            // RelanceForm relanceForm = new RelanceForm(); //Todo - enlever les commentaires lorsque RelanceForm sera créee  
-            //relanceForm.ShowDialog();
-        }
-
-        private void btnDossierMedical_Click(object sender, EventArgs e)
-        {
-            DossierMedicalForm dossierMedicalForm = new DossierMedicalForm();
-            SaisieClientView saisieClient = new SaisieClientView();
-            saisieClient.ShowDialog();
-            dossierMedicalForm.ShowDialog();
-            //dossierMedicalForm. = saisieClient.NomAnimal;
-            // = saisieClient.NomClient;
+            clientForm.MdiParent = this;
+            clientForm.Show();
         }
 
         private void priseDeRendezvousToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AgendaForm agenda = new AgendaForm();
-            agenda.ShowDialog();
+            _showRendezVous();
         }
 
-        private void dossierClientAnimauxToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _showRendezVous()
         {
-            DossierMedicalForm dossierMedicalForm = new DossierMedicalForm();
-            SaisieClientView saisieClient = new SaisieClientView();
-            saisieClient.ShowDialog();
-            dossierMedicalForm.ShowDialog();
-            //dossierMedicalForm. = saisieClient.NomAnimal;
-            // = saisieClient.NomClient;
-        }
-
-        private void relancesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // RelanceForm relanceForm = new RelanceForm(); //Todo - enlever les commentaires lorsque RelanceForm sera créee  
-            //relanceForm.ShowDialog();
-        }
-
-        private void miseaJourDuStockDeVaccinToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // VaccinForm vaccinForm = new vaccinForm(); //Todo - enlever les commentaires lorsque VaccinForm sera créee  
-            //vaccinForm.ShowDialog();
-        }
-
-        private void agendaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AgendaForm agenda = new AgendaForm();
-            agenda.ShowDialog();
-        }
-
-        private void dosssierMedicauxToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AgendaForm agenda = new AgendaForm();
-            agenda.ShowDialog();
+            RendezVousForm rdv = new RendezVousForm();
+            rdv.MdiParent = this;
+            rdv.Show();
         }
 
         private void veterinairesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VeterinaireView veterinaire = new VeterinaireView();
-            veterinaire.ShowDialog();
+            _showVeterinaire();
         }
 
-        private void miseaJourDuBaremeDeTarificationToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _showVeterinaire()
         {
-            //BaremeView bareme = new BaremeView(); //Todo - enlever les commentaires lorsque BaremeForm sera créee  
-            //bareme.showDialog();
+            VeterinaireView veterinaire = new VeterinaireView();
+            veterinaire.MdiParent = this;
+            veterinaire.Show();
         }
 
+        private void btnAgenda_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dossierClientAnimauxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _showFormClientAnimal();
+        }
 
     }
 }

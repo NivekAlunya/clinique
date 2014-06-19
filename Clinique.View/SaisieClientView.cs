@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Clinique.View
 {
-    public partial class SaisieClientView : Form
+    public partial class SaisieClientForm : Form
     {
-        public SaisieClientView()
+        public SaisieClientForm()
         {
             InitializeComponent();
         }

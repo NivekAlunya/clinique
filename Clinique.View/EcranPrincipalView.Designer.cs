@@ -41,6 +41,7 @@
             this.veterinairesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miseaJourDuBaremeDeTarificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gpbEcranPrincipal = new System.Windows.Forms.GroupBox();
+            this.btnAgenda = new System.Windows.Forms.Button();
             this.btnDossierMedical = new System.Windows.Forms.Button();
             this.btnRelance = new System.Windows.Forms.Button();
             this.btnClientAnimal = new System.Windows.Forms.Button();
@@ -90,19 +91,19 @@
             // 
             // relancesToolStripMenuItem
             // 
+            this.relancesToolStripMenuItem.Enabled = false;
             this.relancesToolStripMenuItem.Name = "relancesToolStripMenuItem";
             this.relancesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
             this.relancesToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.relancesToolStripMenuItem.Text = "&Relances";
-            this.relancesToolStripMenuItem.Click += new System.EventHandler(this.relancesToolStripMenuItem_Click);
             // 
             // miseAJourDuStockDeVaccinToolStripMenuItem
             // 
+            this.miseAJourDuStockDeVaccinToolStripMenuItem.Enabled = false;
             this.miseAJourDuStockDeVaccinToolStripMenuItem.Name = "miseAJourDuStockDeVaccinToolStripMenuItem";
             this.miseAJourDuStockDeVaccinToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
             this.miseAJourDuStockDeVaccinToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.miseAJourDuStockDeVaccinToolStripMenuItem.Text = "&Mise à jour du stock de vaccin";
-            this.miseAJourDuStockDeVaccinToolStripMenuItem.Click += new System.EventHandler(this.miseaJourDuStockDeVaccinToolStripMenuItem_Click);
             // 
             // veterinaireToolStripMenuItem
             // 
@@ -115,19 +116,19 @@
             // 
             // agendaToolStripMenuItem
             // 
+            this.agendaToolStripMenuItem.Enabled = false;
             this.agendaToolStripMenuItem.Name = "agendaToolStripMenuItem";
             this.agendaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.agendaToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.agendaToolStripMenuItem.Text = "&Agenda";
-            this.agendaToolStripMenuItem.Click += new System.EventHandler(this.agendaToolStripMenuItem_Click);
             // 
             // dosssierMedicauxToolStripMenuItem
             // 
+            this.dosssierMedicauxToolStripMenuItem.Enabled = false;
             this.dosssierMedicauxToolStripMenuItem.Name = "dosssierMedicauxToolStripMenuItem";
             this.dosssierMedicauxToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.dosssierMedicauxToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.dosssierMedicauxToolStripMenuItem.Text = "&Dosssier Medicaux";
-            this.dosssierMedicauxToolStripMenuItem.Click += new System.EventHandler(this.dosssierMedicauxToolStripMenuItem_Click);
             // 
             // parametrageToolStripMenuItem
             // 
@@ -149,37 +150,52 @@
             // 
             // miseaJourDuBaremeDeTarificationToolStripMenuItem
             // 
+            this.miseaJourDuBaremeDeTarificationToolStripMenuItem.Enabled = false;
             this.miseaJourDuBaremeDeTarificationToolStripMenuItem.Name = "miseaJourDuBaremeDeTarificationToolStripMenuItem";
             this.miseaJourDuBaremeDeTarificationToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.miseaJourDuBaremeDeTarificationToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
             this.miseaJourDuBaremeDeTarificationToolStripMenuItem.Text = "&Mise à jour du barème de tarification";
-            this.miseaJourDuBaremeDeTarificationToolStripMenuItem.Click += new System.EventHandler(this.miseaJourDuBaremeDeTarificationToolStripMenuItem_Click);
             // 
             // gpbEcranPrincipal
             // 
+            this.gpbEcranPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gpbEcranPrincipal.Controls.Add(this.btnAgenda);
             this.gpbEcranPrincipal.Controls.Add(this.btnDossierMedical);
             this.gpbEcranPrincipal.Controls.Add(this.btnRelance);
             this.gpbEcranPrincipal.Controls.Add(this.btnClientAnimal);
             this.gpbEcranPrincipal.Controls.Add(this.btnRendezVous);
             this.gpbEcranPrincipal.Location = new System.Drawing.Point(732, 27);
             this.gpbEcranPrincipal.Name = "gpbEcranPrincipal";
-            this.gpbEcranPrincipal.Size = new System.Drawing.Size(102, 527);
+            this.gpbEcranPrincipal.Size = new System.Drawing.Size(102, 538);
             this.gpbEcranPrincipal.TabIndex = 1;
             this.gpbEcranPrincipal.TabStop = false;
             // 
+            // btnAgenda
+            // 
+            this.btnAgenda.Location = new System.Drawing.Point(10, 234);
+            this.btnAgenda.Name = "btnAgenda";
+            this.btnAgenda.Size = new System.Drawing.Size(84, 47);
+            this.btnAgenda.TabIndex = 4;
+            this.btnAgenda.Text = "Agenda";
+            this.btnAgenda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAgenda.UseVisualStyleBackColor = true;
+            this.btnAgenda.Click += new System.EventHandler(this.btnAgenda_Click);
+            // 
             // btnDossierMedical
             // 
-            this.btnDossierMedical.Location = new System.Drawing.Point(10, 234);
+            this.btnDossierMedical.Enabled = false;
+            this.btnDossierMedical.Location = new System.Drawing.Point(10, 311);
             this.btnDossierMedical.Name = "btnDossierMedical";
             this.btnDossierMedical.Size = new System.Drawing.Size(84, 47);
             this.btnDossierMedical.TabIndex = 3;
             this.btnDossierMedical.Text = "Dossier Médical";
             this.btnDossierMedical.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnDossierMedical.UseVisualStyleBackColor = true;
-            this.btnDossierMedical.Click += new System.EventHandler(this.btnDossierMedical_Click);
             // 
             // btnRelance
             // 
+            this.btnRelance.Enabled = false;
             this.btnRelance.Location = new System.Drawing.Point(10, 160);
             this.btnRelance.Name = "btnRelance";
             this.btnRelance.Size = new System.Drawing.Size(84, 47);
@@ -187,7 +203,6 @@
             this.btnRelance.Text = "Relance";
             this.btnRelance.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRelance.UseVisualStyleBackColor = true;
-            this.btnRelance.Click += new System.EventHandler(this.btnRelance_Click);
             // 
             // btnClientAnimal
             // 
@@ -249,5 +264,6 @@
         private System.Windows.Forms.Button btnRelance;
         private System.Windows.Forms.Button btnClientAnimal;
         private System.Windows.Forms.Button btnRendezVous;
+        private System.Windows.Forms.Button btnAgenda;
     }
 }
