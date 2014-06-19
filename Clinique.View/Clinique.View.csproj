@@ -63,6 +63,7 @@
     <Compile Include="ClientView.Designer.cs">
       <DependentUpon>ClientView.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommonBehaviourView.cs" />
     <Compile Include="ConnexionView.cs">
       <SubType>Form</SubType>
     </Compile>

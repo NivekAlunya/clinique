@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.gpbAgenda = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpRendezVous = new System.Windows.Forms.DateTimePicker();
             this.lblDate = new System.Windows.Forms.Label();
-            this.cbbVeterinaire = new System.Windows.Forms.ComboBox();
+            this.cmbVeto = new System.Windows.Forms.ComboBox();
             this.lblVeterinaire = new System.Windows.Forms.Label();
             this.dgvAgenda = new System.Windows.Forms.DataGridView();
             this.btnDossierMedical = new System.Windows.Forms.Button();
@@ -42,9 +42,9 @@
             // 
             // gpbAgenda
             // 
-            this.gpbAgenda.Controls.Add(this.dateTimePicker1);
+            this.gpbAgenda.Controls.Add(this.dtpRendezVous);
             this.gpbAgenda.Controls.Add(this.lblDate);
-            this.gpbAgenda.Controls.Add(this.cbbVeterinaire);
+            this.gpbAgenda.Controls.Add(this.cmbVeto);
             this.gpbAgenda.Controls.Add(this.lblVeterinaire);
             this.gpbAgenda.Location = new System.Drawing.Point(0, 0);
             this.gpbAgenda.Name = "gpbAgenda";
@@ -53,12 +53,12 @@
             this.gpbAgenda.TabStop = false;
             this.gpbAgenda.Text = "De";
             // 
-            // dateTimePicker1
+            // dtpRendezVous
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(252, 19);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 3;
+            this.dtpRendezVous.Location = new System.Drawing.Point(252, 19);
+            this.dtpRendezVous.Name = "dtpRendezVous";
+            this.dtpRendezVous.Size = new System.Drawing.Size(200, 20);
+            this.dtpRendezVous.TabIndex = 3;
             // 
             // lblDate
             // 
@@ -69,13 +69,13 @@
             this.lblDate.TabIndex = 2;
             this.lblDate.Text = "Date";
             // 
-            // cbbVeterinaire
+            // cmbVeto
             // 
-            this.cbbVeterinaire.FormattingEnabled = true;
-            this.cbbVeterinaire.Location = new System.Drawing.Point(70, 19);
-            this.cbbVeterinaire.Name = "cbbVeterinaire";
-            this.cbbVeterinaire.Size = new System.Drawing.Size(121, 21);
-            this.cbbVeterinaire.TabIndex = 1;
+            this.cmbVeto.FormattingEnabled = true;
+            this.cmbVeto.Location = new System.Drawing.Point(70, 19);
+            this.cmbVeto.Name = "cmbVeto";
+            this.cmbVeto.Size = new System.Drawing.Size(121, 21);
+            this.cmbVeto.TabIndex = 1;
             // 
             // lblVeterinaire
             // 
@@ -132,9 +132,9 @@
 
         private System.Windows.Forms.GroupBox gpbAgenda;
         private System.Windows.Forms.DataGridView dgvAgenda;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpRendezVous;
         private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.ComboBox cbbVeterinaire;
+        private System.Windows.Forms.ComboBox cmbVeto;
         private System.Windows.Forms.Label lblVeterinaire;
         private System.Windows.Forms.Button btnDossierMedical;
         private System.Windows.Forms.VScrollBar vsbAgenda;
