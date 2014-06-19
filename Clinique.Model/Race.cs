@@ -29,6 +29,11 @@ namespace Clinique.Model
             private set { _espece = value; }
         }
 
+        public string Nom
+        {
+            get { return Espece + ":" + Race_; }
+        }
+
         public Race(string race,string espece)
         {
             Race_ = race;

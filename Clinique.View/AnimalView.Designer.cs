@@ -155,6 +155,7 @@
             // 
             // txtCode
             // 
+            this.txtCode.Enabled = false;
             this.txtCode.Location = new System.Drawing.Point(63, 165);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(129, 20);
@@ -192,7 +193,7 @@
             // cbbEspece
             // 
             this.cbbEspece.FormattingEnabled = true;
-            this.cbbEspece.Location = new System.Drawing.Point(67, 243);
+            this.cbbEspece.Location = new System.Drawing.Point(83, 243);
             this.cbbEspece.Name = "cbbEspece";
             this.cbbEspece.Size = new System.Drawing.Size(125, 21);
             this.cbbEspece.TabIndex = 12;

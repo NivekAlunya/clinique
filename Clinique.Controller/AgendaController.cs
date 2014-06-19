@@ -17,13 +17,13 @@ namespace Clinique.Controller
                 return null == _instance ? _instance = new AgendaController() : _instance;
             }
         }
-
+        
         private AgendaController()
         {
 
         }
         #endregion
-
+        #region methods
         public Agenda AjouterAgenda(Veterinaire veto, Animal animal, DateTime dateRdv)
         {
             return AgendaStore.Instance.Ajouter(veto, animal, dateRdv);
@@ -33,5 +33,6 @@ namespace Clinique.Controller
         {
             return AgendaStore.Instance.Supprimer(agenda);
         }
+        #endregion
     }
 }

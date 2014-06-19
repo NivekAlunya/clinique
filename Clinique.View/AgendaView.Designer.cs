@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.gpbAgenda = new System.Windows.Forms.GroupBox();
-            this.lblVeterinaire = new System.Windows.Forms.Label();
-            this.cbbVeterinaire = new System.Windows.Forms.ComboBox();
-            this.lblDate = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.cbbVeterinaire = new System.Windows.Forms.ComboBox();
+            this.lblVeterinaire = new System.Windows.Forms.Label();
+            this.dgvAgenda = new System.Windows.Forms.DataGridView();
             this.btnDossierMedical = new System.Windows.Forms.Button();
             this.vsbAgenda = new System.Windows.Forms.VScrollBar();
             this.gpbAgenda.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAgenda)).BeginInit();
             this.SuspendLayout();
             // 
             // gpbAgenda
@@ -53,22 +53,12 @@
             this.gpbAgenda.TabStop = false;
             this.gpbAgenda.Text = "De";
             // 
-            // lblVeterinaire
+            // dateTimePicker1
             // 
-            this.lblVeterinaire.AutoSize = true;
-            this.lblVeterinaire.Location = new System.Drawing.Point(7, 22);
-            this.lblVeterinaire.Name = "lblVeterinaire";
-            this.lblVeterinaire.Size = new System.Drawing.Size(57, 13);
-            this.lblVeterinaire.TabIndex = 0;
-            this.lblVeterinaire.Text = "Vétérinaire";
-            // 
-            // cbbVeterinaire
-            // 
-            this.cbbVeterinaire.FormattingEnabled = true;
-            this.cbbVeterinaire.Location = new System.Drawing.Point(70, 19);
-            this.cbbVeterinaire.Name = "cbbVeterinaire";
-            this.cbbVeterinaire.Size = new System.Drawing.Size(121, 21);
-            this.cbbVeterinaire.TabIndex = 1;
+            this.dateTimePicker1.Location = new System.Drawing.Point(252, 19);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 3;
             // 
             // lblDate
             // 
@@ -79,20 +69,30 @@
             this.lblDate.TabIndex = 2;
             this.lblDate.Text = "Date";
             // 
-            // dateTimePicker1
+            // cbbVeterinaire
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(252, 22);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 3;
+            this.cbbVeterinaire.FormattingEnabled = true;
+            this.cbbVeterinaire.Location = new System.Drawing.Point(70, 19);
+            this.cbbVeterinaire.Name = "cbbVeterinaire";
+            this.cbbVeterinaire.Size = new System.Drawing.Size(121, 21);
+            this.cbbVeterinaire.TabIndex = 1;
             // 
-            // dataGridView1
+            // lblVeterinaire
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 62);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(458, 304);
-            this.dataGridView1.TabIndex = 4;
+            this.lblVeterinaire.AutoSize = true;
+            this.lblVeterinaire.Location = new System.Drawing.Point(7, 22);
+            this.lblVeterinaire.Name = "lblVeterinaire";
+            this.lblVeterinaire.Size = new System.Drawing.Size(57, 13);
+            this.lblVeterinaire.TabIndex = 0;
+            this.lblVeterinaire.Text = "Vétérinaire";
+            // 
+            // dgvAgenda
+            // 
+            this.dgvAgenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAgenda.Location = new System.Drawing.Point(0, 62);
+            this.dgvAgenda.Name = "dgvAgenda";
+            this.dgvAgenda.Size = new System.Drawing.Size(458, 304);
+            this.dgvAgenda.TabIndex = 4;
             // 
             // btnDossierMedical
             // 
@@ -117,13 +117,13 @@
             this.ClientSize = new System.Drawing.Size(486, 466);
             this.Controls.Add(this.vsbAgenda);
             this.Controls.Add(this.btnDossierMedical);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvAgenda);
             this.Controls.Add(this.gpbAgenda);
             this.Name = "AgendaForm";
             this.Text = "Agenda";
             this.gpbAgenda.ResumeLayout(false);
             this.gpbAgenda.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAgenda)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -131,7 +131,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gpbAgenda;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvAgenda;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.ComboBox cbbVeterinaire;

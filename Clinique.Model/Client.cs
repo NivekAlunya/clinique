@@ -17,7 +17,7 @@ namespace Clinique.Model
         }
 
         /// <summary>
-        /// 
+        /// Constructeur Client
         /// </summary>
         /// <param name="codeClient"></param>
         /// <param name="nomClient"></param>
@@ -31,7 +31,7 @@ namespace Clinique.Model
         /// <param name="email"></param>
         /// <param name="remarque"></param>
         /// <param name="archive"></param>
-        /// <exception cref="Exception raise exception on exception properties"></exception>
+        /// <exception cref="Exception">raise exception on exception properties</exception>
         public Client(Guid codeClient, string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
             string ville, string numTel, string assurance, string email, string remarque, Boolean archive)
         {
@@ -52,7 +52,7 @@ namespace Clinique.Model
             }
             catch (Exception e)
             {
-                throw new Exception("Ce client ne peut être cree avec cette valeur\n" + e.Message,e);
+                throw new Exception("Ce client ne peut être cree avec ces valeurs.\n" + e.Message,e);
             }
         }
         
@@ -75,7 +75,7 @@ namespace Clinique.Model
         {
             get { return _nomClient; }
             set {
-                if (null != value && value.isEmptyOrGreaterThan(20)) throw new Exception("Le nom du client ne peut être vide ou ne contenir que des espace et ne doit pas depasser 20 caracteres.");
+                if (null != value && value.Trim().isEmptyOrGreaterThan(20)) throw new Exception("Le nom du client ne peut être vide ou ne contenir que des espace et ne doit pas depasser 20 caracteres.");
                 _nomClient = value.Trim(); 
             }
         }
@@ -90,8 +90,8 @@ namespace Clinique.Model
         {
             get { return _prenomClient; }
             set {
-                if (null != value && value.isEmptyOrGreaterThan(20)) throw new Exception("Le prenom du client ne peut être vide ou ne contenir que des espace et ne doit pas depasser 20 caracteres.");
-                _prenomClient = value; 
+                if (null != value && value.Trim().isEmptyOrGreaterThan(20)) throw new Exception("Le prenom du client ne peut être vide ou ne contenir que des espace et ne doit pas depasser 20 caracteres.");
+                _prenomClient = value.Trim(); 
             }
         }
 
@@ -105,8 +105,8 @@ namespace Clinique.Model
         {
             get { return _adresse1; }
             set {
-                if (null != value && value.Trim().Length > 30) throw new Exception("L'adresse du client ne peut avoir plus de 30 caracteres");
-                _adresse1 = value.Trim() ; 
+                if (null != value && value.isGreaterThan(30)) throw new Exception("L'adresse du client ne peut avoir plus de 30 caracteres");
+                _adresse1 = value; 
             }
         }
 
@@ -120,7 +120,7 @@ namespace Clinique.Model
         {
             get { return _adresse2; }
             set {
-                if (null != value && value.Trim().Length > 30) throw new Exception("L'adresse du client ne peut avoir plus de 30 caracteres");
+                if (null != value && value.isGreaterThan(30)) throw new Exception("L'adresse du client ne peut avoir plus de 30 caracteres");
                 _adresse2 = value;
             }
         }
@@ -135,7 +135,7 @@ namespace Clinique.Model
         {
             get { return _codePostal; }
             set {
-                if (null != value && value.Trim().Length > 6) throw new Exception("Le code postal du client ne peut avoir plus de 6 caracteres");
+                if (null != value && value.Trim().isGreaterThan(30)) throw new Exception("Le code postal du client ne peut avoir plus de 6 caracteres");
                 _codePostal = value.Trim(); 
             }
         }
@@ -150,7 +150,7 @@ namespace Clinique.Model
         {
             get { return _ville; }
             set {
-                if (null != value && value.Trim().Length > 25) throw new Exception("La ville du client ne peut avoir plus de 25 caracteres");
+                if (null != value && value.Trim().isGreaterThan(25)) throw new Exception("La ville du client ne peut avoir plus de 25 caracteres");
                 _ville = value;
                 
             }
@@ -166,7 +166,7 @@ namespace Clinique.Model
         {
             get { return _numTel; }
             set {
-                if (null != value && value.Trim().Length > 15) throw new Exception("Le numero de telephone  du client ne peut avoir plus de 30 caracteres");
+                if (null != value && value.Trim().isGreaterThan(15)) throw new Exception("Le numero de telephone  du client ne peut avoir plus de 15 caracteres");
                 _numTel = value; 
             }
         }
@@ -181,7 +181,7 @@ namespace Clinique.Model
         {
             get { return _assurance; }
             set {
-                if (null != value && value.Trim().Length > 30) throw new Exception("L'assurance du client ne peut avoir plus de 30 caracteres");
+                if (null != value && value.Trim().isGreaterThan(30)) throw new Exception("L'assurance du client ne peut avoir plus de 30 caracteres");
                 _assurance = value; 
             }
         }
@@ -196,7 +196,7 @@ namespace Clinique.Model
         {
             get { return _email; }
             set {
-                if (null != value && value.Trim().Length > 30) throw new Exception("L'assurance du client ne peut avoir plus de 30 caracteres");
+                if (null != value && value.Trim().isGreaterThan(20)) throw new Exception("L'email du client ne peut avoir plus de 20 caracteres");
                 _email = value; 
             }
         }
@@ -211,7 +211,7 @@ namespace Clinique.Model
         {
             get { return _remarque; }
             set {
-                if (null != value && value.Trim().Length > 8000) throw new Exception("Les remarques du client ne peut avoir plus de 8000 caracteres");
+                if (null != value && value.isGreaterThan(8000)) throw new Exception("Les remarques du client ne peut avoir plus de 8000 caracteres");
                 _remarque = value; 
             }
         }

@@ -13,6 +13,10 @@ namespace Clinique.Model
     {
         private Veterinaire _veto;
 
+        /// <summary>
+        /// Property Veterinaire
+        /// </summary>
+        /// <exception cref=""></exception>
         public Veterinaire Veto
         {
             get { return _veto; }
@@ -31,9 +35,7 @@ namespace Clinique.Model
             private set { _codeVeto = value; }
         }
 
-
         private DateTime _dateRdv;
-
         [Persist(SqlDbType.SmallDateTime, Persist.FieldBehaviour.pk)]
         public DateTime DateRdv
         {
@@ -44,7 +46,10 @@ namespace Clinique.Model
         }
 
         private Animal _animal;
-
+        /// <summary>
+        /// Property animal
+        /// </summary>
+        /// <exception cref=""></exception>
         public Animal Animal
         {
             get { return _animal; }
@@ -63,12 +68,25 @@ namespace Clinique.Model
             get { return _codeAnimal; }
             private set { _codeAnimal = value; }
         }
-
+        /// <summary>
+        /// Constructeur Agenda
+        /// </summary>
+        /// <param name="veto"></param>
+        /// <param name="animal"></param>
+        /// <param name="dateRdv"></param>
+        /// <exception cref="Exception"></exception>
         public Agenda(Veterinaire veto,Animal animal, DateTime dateRdv)
-        { 
-            Veto = veto;
-            Animal = animal;
-            DateRdv = dateRdv;
+        {
+            try
+            {
+                Veto = veto;
+                Animal = animal;
+                DateRdv = dateRdv;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Cet agenda ne peut être cree avec ces valeurs\n" + e.Message, e);
+            }
         }
 
     }

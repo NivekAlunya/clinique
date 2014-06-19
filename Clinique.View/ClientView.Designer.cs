@@ -208,7 +208,10 @@
             // 
             this.dgvAnimaux.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAnimaux.Location = new System.Drawing.Point(255, 107);
+            this.dgvAnimaux.MultiSelect = false;
             this.dgvAnimaux.Name = "dgvAnimaux";
+            this.dgvAnimaux.ReadOnly = true;
+            this.dgvAnimaux.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAnimaux.Size = new System.Drawing.Size(561, 176);
             this.dgvAnimaux.TabIndex = 14;
             // 

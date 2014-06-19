@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Clinique.Model;
 using Clinique.Store;
-
+using Clinique.Tools;
 namespace Clinique.View
 {
     static class Program
@@ -18,7 +18,8 @@ namespace Clinique.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new VeterinaireView());
+            System.Diagnostics.Debug.WriteLine(AgendaStore.Instance.Agendas);
+            //Application.Run(new RendezVousForm());
         }   
 
 

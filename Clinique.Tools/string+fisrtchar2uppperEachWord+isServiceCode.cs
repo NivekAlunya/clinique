@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Clinique.Tools
 {
-    public static class StringExtention
+    public static class StringExtension
     {
         public static string fisrtChar2uppperForEachWord(this string _string)
         {
@@ -33,11 +33,6 @@ namespace Clinique.Tools
         public static bool isEmptyOrGreaterThan(this string _string, int length)
         {
             return string.IsNullOrWhiteSpace(_string) || _string.Length > length;
-        }
-
-        public static bool isEmptyOrGreaterThanTrim(this string _string, int length)
-        {
-            return string.IsNullOrWhiteSpace(_string) || _string.Trim().Length > length;
         }
 
         public static bool isGreaterThan(this string _string, int length)

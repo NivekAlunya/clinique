@@ -16,7 +16,7 @@ namespace Clinique.Controller
     /// </summary>
     public class AnimalController
     {
-         #region attributes
+        #region attributes
         private BindingList<Animal> _animaux;
         #endregion
         #region properties
@@ -43,9 +43,10 @@ namespace Clinique.Controller
         {
             Animaux = new BindingList<Animal>(
                 AnimalStore.Instance.Animaux.FindAll((Animal a) => a.Archive == false)
-                );
+            );
         }
         #endregion
+        #region methods
         /// <summary>
         /// creer via le store un object animal et l'ajoute dans la bindinglist
         /// </summary>
@@ -58,27 +59,78 @@ namespace Clinique.Controller
         /// <param name="race"></param>
         /// <param name="tatouage"></param>
         /// <returns>un object animal</returns>
+        /// <exception cref="Exception"></exception>
         public Animal AjouterAnimal(string nomAnimal, Animal.eSexe sexe, string couleur, Race race,
              string tatouage, string antecedant, bool archive, Client client)
         {
-            Animal a = AnimalStore.Instance.Ajouter(nomAnimal, sexe, couleur, race,
-             tatouage, antecedant, archive, client);
-            this.Animaux.Add(a);
-            return a;
+            try
+            {
+                Animal a = AnimalStore.Instance.Ajouter(nomAnimal, sexe, couleur, race, tatouage, antecedant, archive, client);
+                this.Animaux.Add(a);
+                return a;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return null;
         }
-
+        /// <summary>
+        /// Modifier animal
+        /// </summary>
+        /// <param name="animal"></param>
+        /// <param name="nomAnimal"></param>
+        /// <param name="sexe"></param>
+        /// <param name="couleur"></param>
+        /// <param name="race"></param>
+        /// <param name="tatouage"></param>
+        /// <param name="antecedents"></param>
+        /// <param name="client"></param>
+        /// <param name="archive"></param>
+        /// <exception cref="Exception"></exception>
         public void ModifierAnimal(Animal animal, string nomAnimal, Animal.eSexe sexe, string couleur, Race race,
              string tatouage, string antecedents, Client client, bool archive = false)
         {
-            AnimalStore.Instance.Modifier(animal, nomAnimal, sexe, couleur, race,
-             tatouage, antecedents, archive, client);
+            try
+            {
+                AnimalStore.Instance.Modifier(animal, nomAnimal, sexe, couleur, race, tatouage, antecedents, archive, client);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
-
+        /// <summary>
+        /// archive un animal
+        /// </summary>
+        /// <param name="animal"></param>
+        /// <returns>vrai ou faux</returns>
+        /// <exception cref="Exception"></exception>
         public bool SupprimerAnimal(Animal animal)
         {
-            this.Animaux.Remove(animal);
-            return AnimalStore.Instance.Supprimer(animal);
+            try 
+	        {
+                if (AnimalStore.Instance.Supprimer(animal))
+                {
+                    this.Animaux.Remove(animal);
+                    return true;
+                }
+            }
+	        catch (Exception e)
+	        {
+                throw e;
+	        }
+            return false;
         }
-
+        public BindingList<Animal> getAnimalPourClient(Client client)
+        {
+            return new BindingList<Animal>(AnimalController.Instance.Animaux.ToList<Animal>().FindAll(
+                (Animal a) =>
+                {
+                    return a.Client.Equals(client);
+                }
+            ));
+        }
+        #endregion
     }
 }

@@ -47,6 +47,10 @@ namespace Clinique.Store
         public static void close(IDbConnection cn) {
             if(cn.State == ConnectionState.Open) cn.Close();
         }
+        /// <summary>
+        /// Creer un object connexion
+        /// </summary>
+        /// <returns>un object connexion</returns>
         public IDbConnection getConnection()
         {
             ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["SqlServer"];

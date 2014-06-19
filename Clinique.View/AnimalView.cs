@@ -19,24 +19,31 @@ namespace Clinique.View
         public event EventValider<Animal> evtValider;
         #endregion
 
-        /// <summary>
-        /// Construit un Formulaire de consultation des animaux
-        /// </summary>
         #region Construtors
+        /// <summary>
+        /// Construit un Formulaire de creation d'un animal pour un client
+        /// </summary>
+        /// <param name="animal"></param>
+        public AnimalForm(Client client)
+            :this()
+        {
+            this.cbbClient.SelectedItem = client;
+            this.cbbClient.Enabled = false;
+        }
+        /// <summary>
+        /// Construit un Formulaire de creation ou de modification d'un animal 
+        /// </summary>
+        /// <param name="animal"></param>
         public AnimalForm(Animal animal = null)
         {
             InitializeComponent();
-
             this.cbbClient.DisplayMember = "NomClient";
-            this.cbbClient.DataSource = ClientController.Instance.Clients; //this.cbbClient.DataSource = AnimalController.Instance.Animaux; 
+            this.cbbClient.DataSource = ClientController.Instance.Clients;
             this.cbbSexe.DisplayMember = "Sexe";
             this.cbbSexe.DataSource = new string[]{ "M", "F", "H" };
-            this.cbbEspece.DisplayMember = "Race";
+            this.cbbEspece.DisplayMember = "Nom";
             this.cbbEspece.DataSource = RaceController.Instance.Races;
             
-
-            //Animal animal = null;
-
             if (null != animal)
             {
                 this.txtCode.Text = animal.CodeAnimal.ToString();
@@ -44,6 +51,7 @@ namespace Clinique.View
                 this.txtCouleur.Text = animal.Couleur;
                 this.txtTatouage.Text = animal.Tatouage; //TODO gerer le cas ou pas de tatouage
                 this.cbbClient.SelectedItem = animal.Client;
+                this.cbbClient.Enabled = false;
                 this.cbbSexe.SelectedItem = animal.Sexe;
                 this.cbbEspece.SelectedItem = animal.Race;
                 this.btnValider.Click += (object sender, EventArgs e) =>
@@ -58,8 +66,6 @@ namespace Clinique.View
                     _valider();
                 };
             }
-
-
 
             this.btnAnnuler.Click += (object sender, EventArgs e) =>
             {
@@ -77,9 +83,11 @@ namespace Clinique.View
                      
         #region methods
         /// <summary>
-        /// Valide et ajoute un animal
+        /// Valide et modifie un animal
         /// Declenche l'evenement de validation
         /// </summary>
+        /// <param name="animal"></param>
+        /// <exception cref="Exception"></exception>
         private void _valider(Animal animal)
         {
             try
@@ -91,11 +99,15 @@ namespace Clinique.View
 
             catch (Exception e)
             {
-                MessageBox.Show(e.Message + (null != e.InnerException ? e.InnerException.Message + "\n" : ""), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Alert.Show(e.Message);
             }
 
         }
-
+        /// <summary>
+        /// Valide et ajoute un animal
+        /// Declenche l'evenement de validation
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         private void _valider()
         {
             try
@@ -107,7 +119,7 @@ namespace Clinique.View
 
             catch (Exception e)
             {
-                MessageBox.Show(e.Message + (null != e.InnerException ? e.InnerException.Message + "\n" : ""), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Alert.Show(e.Message);
             }
         }
         #endregion

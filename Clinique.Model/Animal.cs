@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using Clinique.Tools;
-
+using System.ComponentModel;
 namespace Clinique.Model
 {
     [Persist("Animaux")]
-    public class Animal
+    public class Animal : INotifyPropertyChanged
     {
 
         /// <summary>
@@ -24,10 +24,10 @@ namespace Clinique.Model
         /// <param name="antecedents"></param>
         /// <param name="archive"></param>
         /// <param name="client"></param>
+        /// <exception cref="Exception"></exception>
         public Animal(Guid codeAnimal, string nomAnimal, eSexe sexe, string couleur, Race race,
              string tatouage, string antecedents, Boolean archive, Client client)
         {
-
             try
             {
                 CodeAnimal = codeAnimal;
@@ -56,6 +56,10 @@ namespace Clinique.Model
         }
 
         private string _nomAnimal;
+        /// <summary>
+        /// Property NomAnimal
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         [Persist(SqlDbType.VarChar)]
         public string NomAnimal
         {
@@ -74,6 +78,10 @@ namespace Clinique.Model
         }
 
         private eSexe _sexe;
+        /// <summary>
+        /// Property Sexe
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         [Persist(SqlDbType.Char)]
         public eSexe Sexe
         {
@@ -85,6 +93,10 @@ namespace Clinique.Model
         }
 
         private string _couleur;
+        /// <summary>
+        /// Property Couleur
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         [Persist(SqlDbType.VarChar)]
         public string Couleur
         {
@@ -93,8 +105,6 @@ namespace Clinique.Model
                 if (null != value && value.Trim().isGreaterThan(20)) throw new Exception("La couleur de l'animal ne doit pas depasser 20 caracteres.");
                 _couleur = value; }
         }
-        
-
 
         private string _race_;
         [Persist(SqlDbType.VarChar,Persist.FieldBehaviour.common,"Race")]
@@ -102,7 +112,6 @@ namespace Clinique.Model
         {
             get { return _race_; }
             private set {
-                if (null != value && value.Trim().isEmptyOrGreaterThan(20)) throw new Exception("La race de l'animal ne peut être vide ou ne contenir que des espace et ne doit pas depasser 20 caracteres.");
                 _race_ = value;
             }
         }
@@ -113,7 +122,6 @@ namespace Clinique.Model
         {
             get { return _espece; }
             set {
-                if (null != value && value.Trim().isEmptyOrGreaterThan(30)) throw new Exception("L'espèce de l'animal ne peut être vide ou ne contenir que des espace et ne doit pas depasser 20 caracteres.");
                 _espece = value;
             }
         }
@@ -129,6 +137,10 @@ namespace Clinique.Model
         }
 
         private string _tatouage;
+        /// <summary>
+        /// Property Tatouage
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         [Persist(SqlDbType.VarChar)]
         public string Tatouage
         {
@@ -139,6 +151,10 @@ namespace Clinique.Model
         }
 
         private string _antecedents;
+        /// <summary>
+        /// Property Antecedents
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         [Persist(SqlDbType.VarChar)]
         public string Antecedents
         {
@@ -169,19 +185,22 @@ namespace Clinique.Model
             }
         }
 
-
         private Race _race;
-
+        /// <summary>
+        /// Affect un object Race a l'animal
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         public Race Race
         {
             get { return _race; }
-            set { 
+            set {
+                    if (value == null) throw new Exception("Une race et espece doivent etre fournis");
                     _race = value;
                     Race_ = _race.Race_;
                     Espece = _race.Espece;
                 }
         }
 
-
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

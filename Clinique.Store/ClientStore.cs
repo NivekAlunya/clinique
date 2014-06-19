@@ -104,7 +104,7 @@ namespace Clinique.Store
         /// <param name="remarque"></param>
         /// <param name="archive"></param>
         /// <returns>Null si l'insertion n'a pas ete effectuee</returns>
-        /// <exception cref="Exception:  erreur sur insertion en DB"></exception>
+        /// <exception cref="Exception">erreur sur insertion en DB</exception>
         public Client Ajouter ( string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
             string ville, string numTel, string assurance, string email, string remarque, Boolean archive)
         {
@@ -139,7 +139,7 @@ namespace Clinique.Store
         /// <param name="email"></param>
         /// <param name="remarque"></param>
         /// <param name="archive"></param>
-        /// <exception cref="Exception:  erreur sur insertion en DB"></exception>
+        /// <exception cref="Exception">erreur sur insertion en DB</exception>
         public void Modifier(Client client, string nomClient, string prenomClient, string adresse1, string adresse2, string codePostal,
             string ville, string numTel, string assurance, string email, string remarque, Boolean archive)
         {
@@ -168,16 +168,27 @@ namespace Clinique.Store
         /// archive le client
         /// </summary>
         /// <param name="client"></param>
-        /// <returns></returns>
+        /// <returns>boolean</returns>
         public bool Supprimer(Client client)
         {
             //@todo get facture.
             //@todo archiver animaux du client
             client.Archive = true;
-            Database.Instance.update(client);
+            try
+            {
+                Database.Instance.update(client);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
             return true;
         }
-
+        /// <summary>
+        /// recupere le client par son code
+        /// </summary>
+        /// <param name="codeClient"></param>
+        /// <returns>Client : un client</returns>
         public Client RecupererClient(Guid codeClient)
         {
             return this.Clients.Find((Client c) =>
@@ -186,6 +197,11 @@ namespace Clinique.Store
             });
         }
 
+        /// <summary>
+        /// recupere la liste des clients
+        /// </summary>
+        /// <param name="codeClient"></param>
+        /// <returns>une liste de clients</returns>
         public List<Client> getAll()
         {
             return this.Clients.FindAll((Client c) => c.Archive == false);

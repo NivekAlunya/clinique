@@ -33,9 +33,17 @@ namespace Clinique.Controller
                 return null == _instance ? _instance = new RaceController() : _instance;
             }
         }
+        /// <summary>
+        /// Recupere la liste des especes et races du store et tri cette liste puis la converti en bindinglist
+        /// </summary>
         private RaceController()
         {
-            Races = new BindingList<Race>(RaceStore.Instance.getAll());
+            List<Race> l = RaceStore.Instance.getAll();
+            l.Sort((Race x, Race y) =>
+            {
+                return (x.Nom).CompareTo(y.Nom);
+            });
+            Races = new BindingList<Race>(l);
         }
         #endregion
 
@@ -48,6 +56,5 @@ namespace Clinique.Controller
         {
             return RaceStore.Instance.Supprimer(race);
         }
-
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clinique.Tools
 {
-    public static class CharExtention
+    public static class CharExtension
     {
         public static bool isLetter(this char _char)
         {

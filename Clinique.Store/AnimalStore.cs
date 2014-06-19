@@ -39,11 +39,21 @@ namespace Clinique.Store
                 return null == _instance ? _instance = new AnimalStore() : _instance;
             }
         }
-
+        /// <summary>
+        /// constructeur AnimalStore
+        /// </summary>
         private AnimalStore()
         {
             Animaux = new List<Animal>();
-            _loadAnimaux();
+            try
+            {
+                _loadAnimaux();
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
         #endregion
         #region methods
@@ -91,16 +101,47 @@ namespace Clinique.Store
                 Database.close(cn);
             }
         }
-
+        /// <summary>
+        /// Creer un animal
+        /// </summary>
+        /// <param name="nomAnimal"></param>
+        /// <param name="sexe"></param>
+        /// <param name="couleur"></param>
+        /// <param name="race"></param>
+        /// <param name="tatouage"></param>
+        /// <param name="antecedant"></param>
+        /// <param name="archive"></param>
+        /// <param name="client"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public Animal Ajouter(string nomAnimal, Animal.eSexe sexe, string couleur, Race race,
              string tatouage, string antecedant, bool archive, Client client)
         {
             Animal animal = new Animal(Guid.NewGuid(), nomAnimal, sexe, couleur, race, tatouage, antecedant, archive, client);
-            Database.Instance.insert(animal);
-
+            try
+            {
+                Database.Instance.insert(animal);
+                this.Animaux.Add(animal);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erreur sur Ajout.\n" + e.Message, e);
+            }
             return animal;
         }
-
+        /// <summary>
+        /// Modifie l'animal
+        /// </summary>
+        /// <param name="animal"></param>
+        /// <param name="nomAnimal"></param>
+        /// <param name="sexe"></param>
+        /// <param name="couleur"></param>
+        /// <param name="race"></param>
+        /// <param name="tatouage"></param>
+        /// <param name="antecedents"></param>
+        /// <param name="archive"></param>
+        /// <param name="client"></param>
+        /// <exception cref="Exception"></exception>
         public void Modifier(Animal animal, string nomAnimal, Animal.eSexe sexe, string couleur, Race race,
              string tatouage, string antecedents, bool archive, Client client)
         {
@@ -112,13 +153,36 @@ namespace Clinique.Store
             animal.Sexe = sexe;
             animal.Tatouage = tatouage;
             animal.Race = race;
-
-            Database.Instance.update(animal);
+            try
+            {
+                Database.Instance.update(animal);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erreur sur Modification.\n" + e.Message,e);
+            }
         }
 
+        /// <summary>
+        /// archive l'animal
+        /// </summary>
+        /// <param name="animal"></param>
+        /// <returns>boolean</returns>
+        /// <exception cref="Exception"></exception>
         public bool Supprimer(Animal animal)
         {
-            return Database.Instance.delete(animal);
+            //@todo get facture.
+            //@todo archiver animaux du client
+            animal.Archive = true;
+            try
+            {
+                Database.Instance.update(animal);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erreur sur Archivage.\n" + e.Message, e);
+            }
+            return true;
         }
 
         public Animal RecupererAnimal(Guid codeAnimal)
