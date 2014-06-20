@@ -52,7 +52,11 @@ namespace Clinique.Model
         public Guid CodeAnimal
         {
             get { return _codeAnimal; }
-            private set { _codeAnimal = value; }
+            private set 
+            { 
+                _codeAnimal = value;
+                _propertyUpdated("CodeAnimal");
+            }
         }
 
         private string _nomAnimal;
@@ -64,9 +68,11 @@ namespace Clinique.Model
         public string NomAnimal
         {
             get { return _nomAnimal; }
-            set {
+            set 
+            {
                 if (null != value && value.Trim().isEmptyOrGreaterThan(30)) throw new Exception("Le nom de l'animal ne peut être vide ou ne contenir que des espace et ne doit pas depasser 30 caracteres.");
                 _nomAnimal = value;
+                _propertyUpdated("NomAnimal");
             }
         }
 
@@ -86,9 +92,11 @@ namespace Clinique.Model
         public eSexe Sexe
         {
             get { return _sexe; }
-            set {
+            set 
+            {
                 if(value != eSexe.F && value != eSexe.H && value != eSexe.M) throw new Exception("Le sexe de l'animal ne peut être différent de 'H' ou 'F' ou 'M'");    
                 _sexe = value;
+                _propertyUpdated("Sexe");
             }
         }
 
@@ -101,9 +109,12 @@ namespace Clinique.Model
         public string Couleur
         {
             get { return _couleur; }
-            set {
+            set
+            {
                 if (null != value && value.Trim().isGreaterThan(20)) throw new Exception("La couleur de l'animal ne doit pas depasser 20 caracteres.");
-                _couleur = value; }
+                _couleur = value;
+                _propertyUpdated("Couleur");
+            }
         }
 
         private string _race_;
@@ -111,7 +122,8 @@ namespace Clinique.Model
         public string Race_
         {
             get { return _race_; }
-            private set {
+            private set
+            {
                 _race_ = value;
             }
         }
@@ -132,8 +144,8 @@ namespace Clinique.Model
         {
             get { return _codeClient; }
             set {
-                
-                _codeClient = value; }
+                _codeClient = value;
+            }
         }
 
         private string _tatouage;
@@ -145,9 +157,12 @@ namespace Clinique.Model
         public string Tatouage
         {
             get { return _tatouage; }
-            set {
+            set
+            {
                 if (null != value && value.Trim().isGreaterThan(10)) throw new Exception("Le tatouage ne doit pas depasser 10 caracteres.");   
-                _tatouage = value; }
+                _tatouage = value;
+                _propertyUpdated("Tatouage");
+            }
         }
 
         private string _antecedents;
@@ -162,7 +177,9 @@ namespace Clinique.Model
             set
             {
                 if (null != value && value.Trim().isGreaterThan(8000)) throw new Exception("Les antecedents ne peuvent depasser 8000 caracteres.");
-                _antecedents = value; }
+                _antecedents = value;
+                _propertyUpdated("Antecedents");
+            }
         }
 
         private Boolean _archive;
@@ -170,7 +187,11 @@ namespace Clinique.Model
         public Boolean Archive
         {
             get { return _archive; }
-            set { _archive = value; }
+            set 
+            { 
+                _archive = value;
+                _propertyUpdated("Archive");
+            }
         }
 
         private Client _client;
@@ -182,6 +203,7 @@ namespace Clinique.Model
             set { 
                 _client = value;
                 CodeClient = _client.CodeClient;
+                _propertyUpdated("Client");
             }
         }
 
@@ -198,9 +220,16 @@ namespace Clinique.Model
                     _race = value;
                     Race_ = _race.Race_;
                     Espece = _race.Espece;
-                }
+                    _propertyUpdated("Race");
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private void _propertyUpdated(string propertyName)
+        {
+            if (null != this.PropertyChanged) this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
     }
 }
