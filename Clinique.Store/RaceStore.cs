@@ -22,6 +22,7 @@ namespace Clinique.Store
         {
             get
             {
+                //@todo synchroniser avec BD
                 return _races;
             }
             set { _races = value; }

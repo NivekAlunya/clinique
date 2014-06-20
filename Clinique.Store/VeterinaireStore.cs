@@ -22,7 +22,7 @@ namespace Clinique.Store
         public List<Veterinaire> Veterinaires
         {
             get {
-                
+                //@todo synchroniser avec BD
                 return _veterinaires; 
             }
             set { _veterinaires = value; }

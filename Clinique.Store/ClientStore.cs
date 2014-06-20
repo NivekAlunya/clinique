@@ -18,6 +18,7 @@ namespace Clinique.Store
         {
             get
             {
+                //@todo synchroniser avec BD
                 return _clients;
             }
             set { _clients = value; }
